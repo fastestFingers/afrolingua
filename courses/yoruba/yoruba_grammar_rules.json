@@ -1,0 +1,1131 @@
+{
+  "grammar_rules": [
+    {
+      "difficulty": 1,
+      "rule": "Basic Word Order: Subject-Verb-Object (SVO)",
+      "example": "Mo ra bàtà. (I bought a shoe.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Nouns do not change for number",
+      "example": "Ọmọ wa nílé. (The child/children is/are at home.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Simple present tense with verbs",
+      "example": "Mo jẹun. (I eat.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Personal pronoun 'mo' for 'I'",
+      "example": "Mo wà nílé. (I am at home.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Personal pronoun 'o' for 'you' (singular)",
+      "example": "O lọ sí ọjà. (You go to the market.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Personal pronoun 'ó' for 'he/she/it'",
+      "example": "Ó rí mi. (He/she/it saw me.)"
+    },
+    { "difficulty": 1, "rule": "Simple noun usage", "example": "Ilé (House)" },
+    {
+      "difficulty": 1,
+      "rule": "Verb 'wà' for location",
+      "example": "Mo wà lọ́dọ̀ rẹ. (I am with you.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Verb 'jẹ' for eating",
+      "example": "Ó jẹ oúnjẹ. (He/she eats food.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Verb 'lọ' for going",
+      "example": "Mo lọ sí ilé. (I go to the house.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Simple greeting",
+      "example": "Ẹ káàbọ̀. (Welcome.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Basic adjective placement after noun",
+      "example": "Ilé nla (Big house)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Use of 'tí' for possession",
+      "example": "Bàtà tí mo ra (The shoe that I bought)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Verb 'rì' for seeing",
+      "example": "Mo rí ọmọ. (I see the child.)"
+    },
+    {
+      "difficulty": 1,
+      "rule": "Simple command with verb",
+      "example": "Lọ! (Go!)"
+    },
+
+    {
+      "difficulty": 2,
+      "rule": "High tone changes meaning",
+      "example": "Ọba (king) vs. Ọbá (soup)"
+    },
+    { "difficulty": 2, "rule": "Mid tone on nouns", "example": "Omo (child)" },
+    { "difficulty": 2, "rule": "Low tone on verbs", "example": "Mọ̀ (know)" },
+    {
+      "difficulty": 2,
+      "rule": "Possessive 'mi' after noun",
+      "example": "Ọmọ mi (My child)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Possessive 'rẹ' for 'your'",
+      "example": "Ilé rẹ (Your house)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Verb 'sùn' for sleeping",
+      "example": "Mo sùn. (I sleep.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Adjective 'dára' for good",
+      "example": "Ọmọ dára (Good child)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Simple negation with 'kò'",
+      "example": "Mo kò lọ. (I didn’t go.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Verb 'wí' for saying",
+      "example": "Ó wí pé ó lọ. (He/she said that he/she went.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Use of 'ní' for location",
+      "example": "Mo wà ní ọjà. (I am at the market.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Verb 'ra' for buying",
+      "example": "Mo ra aṣọ. (I bought clothes.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Pronoun 'wọn' for 'they'",
+      "example": "Wọ́n lọ sí ilé. (They went to the house.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Simple question with 'ǹjẹ́'",
+      "example": "Ǹjẹ́ o lọ? (Did you go?)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Verb 'dùn' for being sweet",
+      "example": "Oúnjẹ dùn. (The food is sweet.)"
+    },
+    {
+      "difficulty": 2,
+      "rule": "Basic counting with 'ọkan'",
+      "example": "Ọmọ ọkan (One child)"
+    },
+
+    {
+      "difficulty": 3,
+      "rule": "Pronoun 'a' for 'we'",
+      "example": "A lọ sí ọjà. (We went to the market.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'pé' for saying",
+      "example": "Ó pé mi. (He/she called me.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Possessive 'wa' for 'our'",
+      "example": "Ilé wa (Our house)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'fún' for giving",
+      "example": "Mo fún ọ lówó. (I gave you money.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Adjective 'púpọ̀' for many",
+      "example": "Ọmọ púpọ̀ (Many children)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Simple past with verb alone",
+      "example": "Mo lọ. (I went.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'gbọ́' for hearing",
+      "example": "Mo gbọ́ ohùn rẹ. (I heard your voice.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Use of 'sí' for direction",
+      "example": "Mo lọ sí ilé. (I went to the house.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'kọ́' for learning",
+      "example": "Mo kọ́ Yorùbá. (I learned Yoruba.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Adjective 'tóbi' for big",
+      "example": "Ilé tóbi (Big house)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Pronoun 'ẹ' for 'you' (plural)",
+      "example": "Ẹ lọ sí ọjà. (You all went to the market.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'ta' for selling",
+      "example": "Ó ta aṣọ. (He/she sold clothes.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Simple greeting with 'kú'",
+      "example": "Kú ìrọ̀lẹ́. (Good evening.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Verb 'mọ̀' for knowing",
+      "example": "Mo mọ̀ ọ. (I know you.)"
+    },
+    {
+      "difficulty": 3,
+      "rule": "Counting with 'méjì'",
+      "example": "Ọmọ méjì (Two children)"
+    },
+
+    {
+      "difficulty": 4,
+      "rule": "Negation with 'kò' before verb",
+      "example": "Mo kò rí i. (I didn’t see him/her.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Possessive 'yin' for 'your' (plural)",
+      "example": "Ilé yin (Your house, plural)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'dá' for creating",
+      "example": "Mo dá ilé. (I built a house.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Adjective 'kéré' for small",
+      "example": "Ọmọ kéré (Small child)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'jọ̀' for dancing",
+      "example": "Mo jọ̀ ní ọjà. (I danced at the market.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Use of 'ní' for having",
+      "example": "Mo ní bàtà. (I have a shoe.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'kí' for greeting",
+      "example": "Mo kí ọ. (I greeted you.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Adjective 'funfun' for white",
+      "example": "Aṣọ funfun (White cloth)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Negation with 'kò' and object",
+      "example": "Mo kò fún ọ lówó. (I didn’t give you money.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'ṣe' for doing",
+      "example": "Mo ṣe iṣẹ́. (I did work.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Counting with 'mẹ́ta'",
+      "example": "Ọmọ mẹ́ta (Three children)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'bẹ̀rẹ̀' for starting",
+      "example": "Mo bẹ̀rẹ̀ iṣẹ́. (I started work.)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Adjective 'dúdú' for black",
+      "example": "Bàtà dúdú (Black shoe)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Simple command with 'ṣe'",
+      "example": "Ṣe é! (Do it!)"
+    },
+    {
+      "difficulty": 4,
+      "rule": "Verb 'ràn' for sending",
+      "example": "Mo ràn án létà. (I sent him/her a letter.)"
+    },
+
+    {
+      "difficulty": 5,
+      "rule": "Serial verb 'mú...wá' for bringing",
+      "example": "Mo mú bàtà wá. (I brought a shoe.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Question with 'sé' and verb",
+      "example": "Sé o rí i? (Did you see him/her?)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'sọ' for speaking",
+      "example": "Mo sọ Yorùbá. (I speak Yoruba.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Adjective 'gíga' for tall",
+      "example": "Ọkùnrin gíga (Tall man)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'tí' for pushing",
+      "example": "Mo tí ilẹ̀kùn. (I pushed the door.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Possessive 'wọn' for 'their'",
+      "example": "Ilé wọn (Their house)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'jáde' for going out",
+      "example": "Mo jáde lọ. (I went out.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Counting with 'mẹ́rin'",
+      "example": "Ọmọ mẹ́rin (Four children)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'gbé' for living",
+      "example": "Mo gbé ní ilé. (I live in the house.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Adjective 'tútù' for cold",
+      "example": "Omi tútù (Cold water)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Serial verb 'ra...fún' for buying for",
+      "example": "Mo ra aṣọ fún ọ. (I bought clothes for you.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'pàdé' for meeting",
+      "example": "Mo pàdé rẹ. (I met you.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Question with 'kí ni'",
+      "example": "Kí ni o ṣe? (What did you do?)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Verb 'wọ́' for wearing",
+      "example": "Mo wọ́ aṣọ. (I wore clothes.)"
+    },
+    {
+      "difficulty": 5,
+      "rule": "Adjective 'gbóná' for hot",
+      "example": "Omi gbóná (Hot water)"
+    },
+
+    {
+      "difficulty": 6,
+      "rule": "Serial verb 'mú...lọ' for taking away",
+      "example": "Mo mú bàtà lọ. (I took the shoe away.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'rú' for stirring",
+      "example": "Mo rú ọbẹ̀. (I stirred the soup.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Adjective 'ńlá' for large",
+      "example": "Ilé ńlá (Large house)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'dùn' with object",
+      "example": "Ó dùn mí. (It pleased me.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Counting with 'márùn'",
+      "example": "Ọmọ márùn (Five children)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'ṣí' for opening",
+      "example": "Mo ṣí ilẹ̀kùn. (I opened the door.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Serial verb 'wá...sí'",
+      "example": "Mo wá ilẹ̀kùn ṣí. (I came and opened the door.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'bí' for giving birth",
+      "example": "Ó bí ọmọ. (She gave birth to a child.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Adjective 'kékeré' for small",
+      "example": "Ọmọ kékeré (Small child)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'fẹ́' for wanting",
+      "example": "Mo fẹ́ lọ. (I want to go.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Serial verb 'ra...wá'",
+      "example": "Mo ra bàtà wá. (I bought and brought a shoe.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'gbà' for receiving",
+      "example": "Mo gbà létà. (I received a letter.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Adjective 'pupa' for red",
+      "example": "Aṣọ pupa (Red cloth)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Verb 'tẹ́' for pressing",
+      "example": "Mo tẹ́ aṣọ. (I pressed the cloth.)"
+    },
+    {
+      "difficulty": 6,
+      "rule": "Question with 'nibo'",
+      "example": "Nibo ni o lọ? (Where did you go?)"
+    },
+
+    {
+      "difficulty": 7,
+      "rule": "Negation with 'kò' and serial verb",
+      "example": "Mo kò mú bàtà wá. (I didn’t bring a shoe.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'rìn' for walking",
+      "example": "Mo rìn lọ sí ọjà. (I walked to the market.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Adjective 'ọ̀tọ̀' for different",
+      "example": "Ọmọ ọ̀tọ̀ (Different child)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'dù' for waiting",
+      "example": "Mo dù rẹ. (I waited for you.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Counting with 'mẹ́fà'",
+      "example": "Ọmọ mẹ́fà (Six children)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'kàn' for touching",
+      "example": "Mo kàn ilẹ̀kùn. (I touched the door.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Emphasis with 'ni' after subject",
+      "example": "Mo ni mo ra bàtà. (It’s me who bought the shoe.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'sọ́rọ̀' for talking",
+      "example": "Mo sọ́rọ̀ pẹ̀lú rẹ. (I talked with you.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Adjective 'rọ̀rùn' for easy",
+      "example": "Iṣẹ́ rọ̀rùn (Easy work)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'rò' for thinking",
+      "example": "Mo rò pé o lọ. (I thought you went.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Serial verb 'lọ...sí'",
+      "example": "Mo lọ sí ọjà ra aṣọ. (I went to the market to buy clothes.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'hù' for behaving",
+      "example": "Ó hù dáradára. (He/she behaved well.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Adjective 'gùn' for long",
+      "example": "Ọ̀nà gùn (Long road)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Verb 'já' for fighting",
+      "example": "Mo já pẹ̀lú rẹ. (I fought with you.)"
+    },
+    {
+      "difficulty": 7,
+      "rule": "Question with 'bawo'",
+      "example": "Bawo ni o ṣe ṣe é? (How did you do it?)"
+    },
+
+    {
+      "difficulty": 8,
+      "rule": "Verb 'jẹ́' as 'to be' in identity",
+      "example": "Mo jẹ́ olùkọ́. (I am a teacher.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Adjective 'tó' for enough",
+      "example": "Owó tó (Enough money)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'pè' for calling",
+      "example": "Mo pè é ní ọmọ. (I called him/her a child.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Counting with 'meje'",
+      "example": "Ọmọ meje (Seven children)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'gbín' for planting",
+      "example": "Mo gbín igi. (I planted a tree.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Serial verb 'wá...fún'",
+      "example": "Mo wá fún ọ ní owó. (I came to give you money.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'tún' for repairing",
+      "example": "Mo tún bàtà. (I repaired the shoe.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Adjective 'ṣòro' for difficult",
+      "example": "Iṣẹ́ ṣòro (Difficult work)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'ṣeun' for thanking",
+      "example": "Mo ṣeun fún ọ. (I thanked you.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Negation with 'kò' and emphasis",
+      "example": "Kò ní mo rí i. (It’s not me who saw him/her.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'dá' with object",
+      "example": "Mo dá aṣọ. (I created clothes.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Adjective 'dídùn' for sweet",
+      "example": "Oúnjẹ dídùn (Sweet food)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Verb 'kọ́' for writing",
+      "example": "Mo kọ́ létà. (I wrote a letter.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Serial verb 'ra...ta'",
+      "example": "Mo ra aṣọ ta. (I bought and sold clothes.)"
+    },
+    {
+      "difficulty": 8,
+      "rule": "Question with 'ta ni'",
+      "example": "Ta ni ó lọ? (Who went?)"
+    },
+
+    {
+      "difficulty": 9,
+      "rule": "Relative clause with 'tí'",
+      "example": "Ọmọ tí mo rí (The child that I saw)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'gbádùn' for enjoying",
+      "example": "Mo gbádùn oúnjẹ. (I enjoyed the food.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Adjective 'títí' for long-lasting",
+      "example": "Ọ̀nà títí (Long-lasting road)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'jù' for throwing",
+      "example": "Mo jù bàtà. (I threw the shoe.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Counting with 'mẹ́jọ'",
+      "example": "Ọmọ mẹ́jọ (Eight children)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'fà' for drawing",
+      "example": "Mo fà omi. (I drew water.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Serial verb 'lọ...rì'",
+      "example": "Mo lọ rí ọmọ. (I went to see the child.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'dúpẹ́' for thanking",
+      "example": "Mo dúpẹ́ fún ọ. (I thanked you.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Adjective 'lẹ́wà' for beautiful",
+      "example": "Ọmọ lẹ́wà (Beautiful child)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'bú' for insulting",
+      "example": "Mo bú ọ. (I insulted you.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Relative clause with possession",
+      "example": "Ilé tí ó ní mi (The house that belongs to me)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'sáré' for running",
+      "example": "Mo sáré lọ. (I ran away.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Adjective 'ga' for high",
+      "example": "Igi ga (High tree)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Verb 'kọrin' for singing",
+      "example": "Mo kọrin. (I sang.)"
+    },
+    {
+      "difficulty": 9,
+      "rule": "Question with 'kín ni'",
+      "example": "Kín ni ó jẹ? (What is it?)"
+    },
+
+    {
+      "difficulty": 10,
+      "rule": "Relative clause with 'ní'",
+      "example": "Ọmọ tí ó ní ilé (The child who has a house)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'gbàgbe' for forgetting",
+      "example": "Mo gbàgbe ọ. (I forgot you.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Adjective 'òkùnkùn' for dark",
+      "example": "Ilé òkùnkùn (Dark house)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'dẹ́' for trapping",
+      "example": "Mo dẹ́ ẹyẹ. (I trapped a bird.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Counting with 'mẹ́sán'",
+      "example": "Ọmọ mẹ́sán (Nine children)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'wè' for washing",
+      "example": "Mo wè aṣọ. (I washed clothes.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Serial verb 'wá...kọ́'",
+      "example": "Mo wá kọ́ Yorùbá. (I came to learn Yoruba.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'dárí' for leading",
+      "example": "Mo dárí wọn. (I led them.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Adjective 'tóótọ́' for true",
+      "example": "Ọ̀rọ̀ tóótọ́ (True word)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'fọ́' for breaking",
+      "example": "Mo fọ́ àwo. (I broke a plate.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Relative clause with negation",
+      "example": "Ọmọ tí kò lọ (The child who didn’t go)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'kún' for filling",
+      "example": "Mo kún omi. (I filled water.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Adjective 'ṣú' for dark",
+      "example": "Ọ̀nà ṣú (Dark road)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Verb 'jí' for waking",
+      "example": "Mo jí ní òwúrọ̀. (I woke up in the morning.)"
+    },
+    {
+      "difficulty": 10,
+      "rule": "Question with 'èéṣe'",
+      "example": "Èéṣe tí o lọ? (Why did you go?)"
+    },
+
+    {
+      "difficulty": 11,
+      "rule": "Conditional with 'bá'",
+      "example": "Bí mo bá lọ, mo máa rí i. (If I go, I’ll see him/her.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'sùn' with serial",
+      "example": "Mo sùn wá. (I slept and came.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Adjective 'díjú' for confusing",
+      "example": "Ọ̀rọ̀ díjú (Confusing word)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'kọ́' with object",
+      "example": "Mo kọ́ ilé. (I built a house.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Counting with 'mẹ́wà'",
+      "example": "Ọmọ mẹ́wà (Ten children)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'dá' for stopping",
+      "example": "Mo dá sáré. (I stopped running.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Emphasis with 'ni' after verb",
+      "example": "Mo lọ ni mo rí i. (I went and it’s me who saw him/her.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'tàn' for shining",
+      "example": "Òrùn tàn. (The sun is shining.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Adjective 'rẹ̀wà' for beautiful",
+      "example": "Ọmọ rẹ̀wà (Beautiful child)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'bínú' for being angry",
+      "example": "Mo bínú sí ọ. (I was angry with you.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Serial verb 'lọ...fẹ́'",
+      "example": "Mo lọ fẹ́ rí i. (I went to want to see him/her.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'dùn' for hurting",
+      "example": "Ó dùn mi. (It hurt me.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Adjective 'gbígbóná' for very hot",
+      "example": "Omi gbígbóná (Very hot water)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Verb 'rú' with serial",
+      "example": "Mo rú ọbẹ̀ wá. (I stirred the soup and brought it.)"
+    },
+    {
+      "difficulty": 11,
+      "rule": "Question with 'tí'",
+      "example": "Ọmọ tí ó lọ? (Which child went?)"
+    },
+
+    {
+      "difficulty": 12,
+      "rule": "Conditional with 'bí' and negation",
+      "example": "Bí mo bá kò lọ, mo máa rí i. (If I don’t go, I’ll see him/her.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'gbéga' for lifting",
+      "example": "Mo gbéga rẹ. (I lifted you up.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Adjective 'títí' for continuous",
+      "example": "Iṣẹ́ títí (Continuous work)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'sọ́rọ̀' with serial",
+      "example": "Mo sọ́rọ̀ wá. (I talked and came.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Counting with 'mọ́kànlá'",
+      "example": "Ọmọ mọ́kànlá (Eleven children)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'fún' with serial",
+      "example": "Mo fún ọ wá. (I gave you and came.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Serial verb 'ra...jẹ́'",
+      "example": "Mo ra oúnjẹ jẹ́. (I bought food and ate.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'dárúkọ' for naming",
+      "example": "Mo dárúkọ ọmọ. (I named the child.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Adjective 'fífún' for white",
+      "example": "Aṣọ fífún (White cloth)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'bèrè' for asking",
+      "example": "Mo bèrè lọ́wọ́ rẹ. (I asked you.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Conditional with future",
+      "example": "Bí mo bá lọ, mo máa rí ọmọ. (If I go, I will see the child.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'tú' for releasing",
+      "example": "Mo tú ẹyẹ. (I released the bird.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Adjective 'gbígbẹ̀' for dry",
+      "example": "Omi gbígbẹ̀ (Dry water)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Verb 'jáde' with serial",
+      "example": "Mo jáde wá. (I went out and came.)"
+    },
+    {
+      "difficulty": 12,
+      "rule": "Question with 'níbo ni'",
+      "example": "Níbo ni o wà? (Where are you?)"
+    },
+
+    {
+      "difficulty": 13,
+      "rule": "Progressive with 'ń'",
+      "example": "Mo ń lọ. (I am going.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'gbín' with serial",
+      "example": "Mo gbín igi wá. (I planted a tree and came.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Adjective 'dídára' for very good",
+      "example": "Oúnjẹ dídára (Very good food)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'tẹ́lẹ̀' for following",
+      "example": "Mo tẹ́lẹ̀ rẹ. (I followed you.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Counting with 'méjìlá'",
+      "example": "Ọmọ méjìlá (Twelve children)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'kọ́' with tone shift",
+      "example": "Mo ń kọ́ iṣẹ́. (I am learning work.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Serial verb 'wá...ṣe'",
+      "example": "Mo wá ṣe iṣẹ́. (I came to do work.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'dán' for testing",
+      "example": "Mo dán iṣẹ́. (I tested the work.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Adjective 'túútúù' for very cold",
+      "example": "Omi túútúù (Very cold water)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'pín' for sharing",
+      "example": "Mo pín oúnjẹ. (I shared the food.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Progressive negation",
+      "example": "Mo kò ń lọ. (I am not going.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'já' with tone",
+      "example": "Mo ń já pẹ̀lú rẹ. (I am fighting with you.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Adjective 'dídù' for black",
+      "example": "Aṣọ dídù (Black cloth)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Verb 'ṣíṣe' for working",
+      "example": "Mo ń ṣíṣe iṣẹ́. (I am working.)"
+    },
+    {
+      "difficulty": 13,
+      "rule": "Question with 'kí ló'",
+      "example": "Kí ló ṣe? (What happened?)"
+    },
+
+    {
+      "difficulty": 14,
+      "rule": "Nominalization with 'í-'",
+      "example": "Ílọ́ ni mo ń ṣe. (Going is what I’m doing.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'gbágbọ́' for believing",
+      "example": "Mo gbágbọ́ rẹ. (I believed you.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Adjective 'rọ́rọ́' for soft",
+      "example": "Aṣọ rọ́rọ́ (Soft cloth)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'dáríji' for forgiving",
+      "example": "Mo dáríji ọ. (I forgave you.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Counting with 'mẹ́tàlá'",
+      "example": "Ọmọ mẹ́tàlá (Thirteen children)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'tẹ́' with serial",
+      "example": "Mo tẹ́ aṣọ wá. (I pressed the cloth and came.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Serial verb 'lọ...kọ́'",
+      "example": "Mo lọ kọ́ Yorùbá sílẹ̀. (I went to learn Yoruba.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'gbọ́rọ̀' for listening",
+      "example": "Mo gbọ́rọ̀ sí ọ. (I listened to you.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Adjective 'gbàmì' for heavy",
+      "example": "Ilé gbàmì (Heavy house)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'fẹ́ràn' for liking",
+      "example": "Mo fẹ́ràn rẹ. (I like you.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Nominalization with 'ì-' and verb",
+      "example": "Ìsọ́rọ̀ ni mo ń ṣe. (Talking is what I’m doing.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'jáwọ́' for stopping",
+      "example": "Mo jáwọ́ iṣẹ́. (I stopped work.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Adjective 'dídá' for sharp",
+      "example": "Ọbẹ dídá (Sharp knife)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Verb 'dúró' for standing",
+      "example": "Mo dúró ní ọjà. (I stood at the market.)"
+    },
+    {
+      "difficulty": 14,
+      "rule": "Question with 'nígbà wo'",
+      "example": "Nígbà wo ni o lọ? (When did you go?)"
+    },
+
+    {
+      "difficulty": 15,
+      "rule": "Embedded clause with 'pé'",
+      "example": "Ó sọ pé kí n lọ. (He said that I should go.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'gbádùn' with serial",
+      "example": "Mo gbádùn oúnjẹ wá. (I enjoyed the food and came.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Adjective 'tóòótọ́' for very true",
+      "example": "Ọ̀rọ̀ tóòótọ́ (Very true word)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'dárúkọ' with serial",
+      "example": "Mo dárúkọ ọmọ lọ. (I named the child and went.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Counting with 'mẹ́rìndínlógún'",
+      "example": "Ọmọ mẹ́rìndínlógún (Fifteen children)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'tí' with complex",
+      "example": "Mo tí ilẹ̀kùn wá. (I pushed the door and came.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Complex clause with 'tí' and 'bá'",
+      "example": "Ó sọ pé kí n máa lọ tí mo bá ti rí i. (He said that I should go when I see him.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'gbàgbé' with serial",
+      "example": "Mo gbàgbé ọ wá. (I forgot you and came.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Adjective 'gbígbámì' for very heavy",
+      "example": "Ilé gbígbámì (Very heavy house)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'fọ́rọ̀' for discussing",
+      "example": "Mo fọ́rọ̀ pẹ̀lú rẹ. (I discussed with you.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Embedded clause with negation",
+      "example": "Ó sọ pé mo kò lọ tí mo bá rí i. (He said that I didn’t go when I saw him.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'dúró' with serial",
+      "example": "Mo dúró wà ní ọjà. (I stood and stayed at the market.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Adjective 'dídíjú' for very confusing",
+      "example": "Ọ̀rọ̀ dídíjú (Very confusing word)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Verb 'jáwọ́' with serial",
+      "example": "Mo jáwọ́ iṣẹ́ lọ. (I stopped work and went.)"
+    },
+    {
+      "difficulty": 15,
+      "rule": "Complex question",
+      "example": "Ta ni ó sọ pé kí o lọ? (Who said that you should go?)"
+    }
+  ]
+}

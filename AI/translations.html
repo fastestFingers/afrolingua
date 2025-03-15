@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translation Tasks - AfroLingua</title>
+    <link rel="stylesheet" href="/AI/styles/translations.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+      .difficulty-display {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 5px 10px;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+      }
+      .timer-display {
+        margin-top: 10px;
+        text-align: center;
+      }
+      .progress-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .progress-bar {
+        height: 20px;
+        width: 0%;
+        background: linear-gradient(to right, #000000, #ffd700);
+        transition: width 0.5s ease-in-out;
+      }
+      .progress-label {
+        text-align: center;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #333;
+      }
+      .level-up-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #ffd700;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 24px;
+        text-align: center;
+        z-index: 2000;
+        display: none;
+      }
+      .translation-container {
+        position: relative;
+        display: inline-block;
+      }
+      .translation-input {
+        margin-right: 5px;
+      }
+      .checkmark {
+        display: none;
+        color: green;
+        font-size: 20px;
+        position: absolute;
+        right: -25px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <h1><span id="selectedLanguage"></span> Translation Tasks</h1>
+      <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
+      <div id="chatArea" class="chat-area"></div>
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
+      <div class="input-area">
+        <button id="generateButton">Generate Task</button>
+      </div>
+      <p class="timer-display" id="timerDisplay">Interaction Time: 0s</p>
+      <div class="level-up-message" id="levelUpMessage"></div>
+    </div>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAgUoo-ZcYNoWJbtAbjhnsh7ZKy_PXl4oU",
+        authDomain: "afrolingua-ff97d.firebaseapp.com",
+        projectId: "afrolingua-ff97d",
+        storageBucket: "afrolingua-ff97d.appspot.com",
+        messagingSenderId: "935074229602",
+        appId: "1:935074229602:web:d795d5cf58c7696a6dd03b",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+      // Elements
+      const chatArea = document.getElementById("chatArea");
+      const generateButton = document.getElementById("generateButton");
+      const selectedLanguageElement = document.getElementById("selectedLanguage");
+      const difficultyDisplay = document.getElementById("difficultyDisplay");
+      const timerDisplay = document.getElementById("timerDisplay");
+      const progressBar = document.getElementById("progressBar");
+      const progressLabel = document.getElementById("progressLabel");
+      const levelUpMessage = document.getElementById("levelUpMessage");
+
+      // State
+      let selectedLanguage = "Default";
+      let messages = []; // Stores tasks with user answers and correctness
+      let startTime = null;
+      let interactionTime = 0;
+      let languageTimeSpent = 0;
+      let difficultyLevel = 1;
+      let answeredCorrectly = 0; // Track correct answers
+      let answeredIncorrectly = 0; // Track incorrect answers
+      const difficultyNames = [
+        "Easy", "Beginner", "Elementary", "Pre-Intermediate", "Intermediate",
+        "Upper-Intermediate", "Advanced", "Proficient", "Expert", "Master",
+        "Specialist", "Elite", "Legendary", "Epic", "Extreme"
+      ];
+      const difficultyThresholds = [
+        1800, 2700, 3600, 5400, 7200, 9000, 10800, 12600, 14400, 16200,
+        18000, 19800, 21600, 23400
+      ];
+      const positiveMessages = [
+        "Great job! You've mastered another level!",
+        "Congratulations! Your skills are soaring!",
+        "Well done! You're a language champion!",
+        "Awesome progress! Keep shining!",
+        "Level up! You're unstoppable!"
+      ];
+
+      async function getUserData() {
+        const user = await new Promise((resolve) => {
+          auth.onAuthStateChanged((user) => resolve(user));
+        });
+
+        if (user) {
+          const userDoc = await db.collection("users").doc(user.uid).get();
+          selectedLanguage = userDoc.exists ? (userDoc.data().selectedLanguage || "Default") : "Default";
+
+          const translationsDoc = await db.collection("translations").doc(`${user.uid}_${selectedLanguage}`).get();
+          if (translationsDoc.exists) {
+            languageTimeSpent = translationsDoc.data().languageTimeSpent || 0;
+            difficultyLevel = translationsDoc.data().difficulty || 1;
+            answeredCorrectly = translationsDoc.data().answered_correctly || 0; // Load from Firestore
+            answeredIncorrectly = translationsDoc.data().answered_incorrectly || 0; // Load from Firestore
+          } else {
+            languageTimeSpent = 0;
+            difficultyLevel = 1;
+            answeredCorrectly = 0;
+            answeredIncorrectly = 0;
+          }
+
+          selectedLanguageElement.textContent = selectedLanguage;
+          updateDifficultyDisplay();
+          updateProgressBar();
+          return user.uid;
+        }
+        return null;
+      }
+
+      async function updateFirestoreTimeAndAnswers(userId, timeSpent, correctDelta = 0, incorrectDelta = 0) {
+        if (!userId) return;
+
+        const previousDifficulty = difficultyLevel;
+        languageTimeSpent += timeSpent;
+        answeredCorrectly += correctDelta;
+        answeredIncorrectly += incorrectDelta;
+
+        let newDifficulty = 1;
+        for (let i = 0; i < difficultyThresholds.length; i++) {
+          if (languageTimeSpent >= difficultyThresholds[i]) {
+            newDifficulty = i + 2;
+          } else {
+            break;
+          }
+        }
+        difficultyLevel = Math.min(15, newDifficulty);
+
+        await db.collection("translations").doc(`${userId}_${selectedLanguage}`).set({
+          userId: userId,
+          language: selectedLanguage,
+          languageTimeSpent: languageTimeSpent,
+          difficulty: difficultyLevel,
+          answered_correctly: answeredCorrectly,
+          answered_incorrectly: answeredIncorrectly,
+          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+
+        updateDifficultyDisplay();
+        updateProgressBar();
+
+        if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) {
+          showLevelUpCelebration();
+        }
+      }
+
+      function updateDifficultyDisplay() {
+        difficultyDisplay.textContent = `Difficulty: ${difficultyNames[difficultyLevel - 1]} (${difficultyLevel}/15)`;
+      }
+
+      function updateProgressBar() {
+        const currentThreshold = difficultyLevel === 1 ? 0 : difficultyThresholds[difficultyLevel - 2];
+        const nextThreshold = difficultyLevel === 15 ? difficultyThresholds[difficultyThresholds.length - 1] : difficultyThresholds[difficultyLevel - 1];
+        const progressRange = nextThreshold - currentThreshold;
+        const progressMade = languageTimeSpent - currentThreshold;
+        const progressPercentage = Math.min(100, Math.max(0, (progressMade / progressRange) * 100));
+
+        progressBar.style.width = `${progressPercentage}%`;
+        progressLabel.textContent = `Progress to ${difficultyNames[difficultyLevel]}: ${Math.round(progressPercentage)}%`;
+      }
+
+      function showLevelUpCelebration() {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#000000', '#ffd700']
+        });
+
+        const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
+        levelUpMessage.textContent = `${randomMessage} Now at ${difficultyNames[difficultyLevel - 1]}!`;
+        levelUpMessage.style.display = 'block';
+
+        setTimeout(() => {
+          levelUpMessage.style.display = 'none';
+        }, 3000);
+      }
+
+      function startTimer() {
+        if (!startTime) {
+          startTime = Date.now();
+          updateTimer();
+        }
+      }
+
+      function updateTimer() {
+        if (startTime) {
+          interactionTime = Math.floor((Date.now() - startTime) / 1000);
+          timerDisplay.textContent = `Interaction Time: ${interactionTime}s`;
+          requestAnimationFrame(updateTimer);
+        }
+      }
+
+      function resetTimer() {
+        const elapsed = interactionTime;
+        startTime = Date.now();
+        return elapsed;
+      }
+
+      async function fetchTranslation() {
+        try {
+          const response = await fetch("http://localhost:5000/generateTranslation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+              language: selectedLanguage,
+              difficulty: difficultyLevel 
+            }),
+          });
+
+          if (!response.ok) {
+            const result = await response.json();
+            throw new Error(result.error || `HTTP error! Status: ${response.status}`);
+          }
+
+          const result = await response.json();
+          if (!result.success) throw new Error(result.error || "Unknown error from server");
+
+          const content = result.data.trim();
+          const sentenceMatch = content.match(/Sentence:\s*(.+)/);
+          const translationMatch = content.match(/Translation:\s*(.+)/);
+
+          return {
+            sentence: sentenceMatch ? sentenceMatch[1] : "No sentence found.",
+            translation: translationMatch ? translationMatch[1] : "No translation found.",
+            userAnswer: null, // Track user response
+            isCorrect: null // Track correctness
+          };
+        } catch (error) {
+          console.error("Fetch error:", error.message);
+          return {
+            sentence: "Error: Unable to load translation task. Please try again.",
+            translation: "N/A",
+            userAnswer: null,
+            isCorrect: null
+          };
+        }
+      }
+
+      async function generateTranslation() {
+        if (!startTime) startTimer();
+
+        const timeSpent = resetTimer();
+        await updateFirestoreTimeAndAnswers(userId, timeSpent);
+
+        const task = await fetchTranslation();
+        messages.push({ role: "ai", content: task });
+        renderChat();
+
+        const lastMessage = chatArea.lastElementChild;
+        const input = lastMessage.querySelector(".translation-input");
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            checkTranslation(input, task.translation, messages.length - 1);
+          }
+        });
+      }
+
+      function renderChat() {
+        chatArea.innerHTML = "";
+        messages.forEach((msg, index) => {
+          const messageDiv = document.createElement("div");
+          messageDiv.className = `message ${msg.role}`;
+          if (msg.role === "ai") {
+            const answered = msg.content.userAnswer !== null;
+            const isCorrect = msg.content.isCorrect;
+            messageDiv.innerHTML = `
+              <p><strong>Translate this:</strong> ${msg.content.sentence}</p>
+              <div class="translation-container">
+                <input type="text" class="translation-input" 
+                  placeholder="Type your translation" 
+                  value="${msg.content.userAnswer || ''}" 
+                  ${answered ? 'disabled' : ''} 
+                  style="background-color: ${answered ? (isCorrect ? '#d4edda' : '#f8d7da') : ''}">
+                <span class="checkmark" style="display: ${answered && isCorrect ? 'inline' : 'none'}">✔</span>
+              </div>
+              ${answered && !isCorrect ? `<p style="color: #721c24">Incorrect. Correct translation: ${msg.content.translation}</p>` : ''}
+              ${answered && isCorrect ? `<p style="color: #155724">Correct!</p>` : ''}
+            `;
+          }
+          chatArea.appendChild(messageDiv);
+        });
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      async function checkTranslation(input, correctTranslation, index) {
+        const userAnswer = input.value.trim().toLowerCase();
+        const isCorrect = userAnswer === correctTranslation.toLowerCase();
+
+        // Update state
+        messages[index].content.userAnswer = userAnswer;
+        messages[index].content.isCorrect = isCorrect;
+
+        input.disabled = true;
+        input.style.backgroundColor = isCorrect ? "#d4edda" : "#f8d7da";
+
+        const container = input.parentElement;
+        const checkmark = container.querySelector(".checkmark");
+
+        if (isCorrect) {
+          checkmark.style.display = "inline";
+          await updateFirestoreTimeAndAnswers(userId, 0, 1, 0); // Increment correct
+        } else {
+          await updateFirestoreTimeAndAnswers(userId, 0, 0, 1); // Increment incorrect
+        }
+
+        renderChat(); // Re-render to show feedback
+      }
+
+      let userId;
+      getUserData().then((uid) => {
+        userId = uid;
+        generateButton.addEventListener("click", generateTranslation);
+      }).catch((error) => {
+        console.error("Initialization failed:", error);
+      });
+
+      window.addEventListener("beforeunload", async () => {
+        if (startTime && userId) {
+          const totalTime = Math.floor((Date.now() - startTime) / 1000);
+          await updateFirestoreTimeAndAnswers(userId, totalTime);
+        }
+      });
+    </script>
+  </body>
+</html>

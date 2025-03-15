@@ -1,0 +1,133 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right, #000000, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  
+  /* Main Content Styles */
+  main {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .onboarding-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+  
+  .onboarding-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .subtext {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Grid Container for Study Goals */
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    text-align: left;
+  }
+  
+  .study-goal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .study-goal:hover {
+    border-color: #000;
+    transform: scale(1.02);
+  }
+  
+  .study-goal.selected {
+    border: 2px solid;
+    border-image: linear-gradient(to right, #000000, #ffd700) 1;
+  }
+  
+  .intensity-level {
+    color: #666;
+  }
+  
+  /* Footer Styles */
+  footer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  #nextButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    border-image: linear-gradient(to right, #000000, #ffd700) 1;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  #nextButton:not(:disabled) {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  #nextButton:disabled {
+    cursor: not-allowed;
+    opacity: 0;
+  }
+  
+  #nextButton:hover:not(:disabled) {
+    transform: scale(1.1);
+  }

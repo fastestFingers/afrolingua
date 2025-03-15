@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses - AfroLingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/homePageView/styles/courses.css" />
+  </head>
+  <body>
+    <div class="courses-container">
+      <div class="title-container">
+        <img id="languageFlag" class="title-flag" src="" alt="Language Flag" />
+        <h1><span id="selectedLanguage"></span> Courses</h1>
+      </div>
+      <div class="course-grid" id="courseList"></div>
+    </div>
+
+    <script>
+      (function () {
+        const courses = [
+          {
+            name: "Grammar Rules",
+            description: "Learn syntax and structure.",
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: "../AI/chatgptgrammer.html",
+          },
+          {
+            name: "Vocabulary",
+            description: "Expand your word bank.",
+            image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: "../AI/vocabgen.html",
+          },
+          {
+            name: "Exercises",
+            description: "Test your skills.",
+            image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: "../AI/fillBlank.html",
+          },
+          {
+            name: "Translations",
+            description: "Practice translation.",
+            image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: "../AI/translations.html",
+          },
+          {
+            name: "Conversation",
+            description: "Chat with AI.",
+            image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: "../AI/conversation.html",
+          },
+          {
+            name: "Dictionary",
+            description: "Look up words.",
+            image: "https://plus.unsplash.com/premium_photo-1681488021050-3dc2f0acb943?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGljdGlvbmFyeXxlbnwwfHwwfHx8MA%3D%3D",
+            link: "../AI/dictionary.html",
+          },
+        ];
+
+        const flagEmojiToUrl = {
+          "🇳🇬": "https://flagcdn.com/32x24/ng.png",
+          "🇰🇪": "https://flagcdn.com/32x24/ke.png",
+          "🇿🇦": "https://flagcdn.com/32x24/za.png",
+          "🇪🇹": "https://flagcdn.com/32x24/et.png",
+          "🇿🇼": "https://flagcdn.com/32x24/zw.png",
+          "🇸🇴": "https://flagcdn.com/32x24/so.png",
+          "🇸🇳": "https://flagcdn.com/32x24/sn.png",
+          "🇷🇼": "https://flagcdn.com/32x24/rw.png",
+          "🇨🇲": "https://flagcdn.com/32x24/cm.png",
+          "🇨🇩": "https://flagcdn.com/32x24/cd.png",
+          "🇲🇬": "https://flagcdn.com/32x24/mg.png",
+          "🇺🇬": "https://flagcdn.com/32x24/ug.png",
+          "🇲🇱": "https://flagcdn.com/32x24/ml.png",
+          "🇨🇫": "https://flagcdn.com/32x24/cf.png",
+          "🇳🇦": "https://flagcdn.com/32x24/na.png",
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedLanguage = urlParams.get("language") || "Language";
+        const selectedFlag = urlParams.get("flag") || "🇳🇬";
+
+        document.getElementById("selectedLanguage").textContent = selectedLanguage;
+        document.getElementById("languageFlag").src = flagEmojiToUrl[selectedFlag] || "https://flagcdn.com/32x24/ng.png";
+
+        const courseList = document.getElementById("courseList");
+        if (courseList) {
+          courseList.innerHTML = "";
+          courses.forEach((course) => {
+            const courseCard = document.createElement("div");
+            courseCard.className = "course-card";
+
+            const cardImage = document.createElement("img");
+            cardImage.className = "course-image";
+            cardImage.src = course.image;
+            cardImage.alt = `${course.name}`;
+
+            const contentDiv = document.createElement("div");
+            contentDiv.className = "course-content";
+
+            const cardTitle = document.createElement("h2");
+            cardTitle.className = "course-title";
+            cardTitle.textContent = course.name;
+
+            const cardDescription = document.createElement("p");
+            cardDescription.className = "course-description";
+            cardDescription.textContent = course.description;
+
+            contentDiv.appendChild(cardTitle);
+            contentDiv.appendChild(cardDescription);
+
+            courseCard.appendChild(cardImage);
+            courseCard.appendChild(contentDiv);
+
+            if (course.link) {
+              const linkWrapper = document.createElement("a");
+              linkWrapper.href = `${course.link}?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
+              linkWrapper.className = "course-link";
+              linkWrapper.appendChild(cardImage);
+              linkWrapper.appendChild(contentDiv);
+              courseCard.appendChild(linkWrapper);
+            }
+
+            courseList.appendChild(courseCard);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

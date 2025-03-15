@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroLingua - Onboarding</title>
+    <link rel="stylesheet" href="/onboarding/styling/onboarding1.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="logo">AfroLingua</h1>
+      </nav>
+    </header>
+
+    <main>
+      <section class="onboarding-section">
+        <h1 id="onboarding-title">
+          <span id="hiTranslation"></span>, why are you learning
+          <span id="selectedLanguage"></span>?
+        </h1>
+        <p class="subtext">Help us tailor your learning experience</p>
+
+        <!-- Selectable Containers -->
+        <div class="grid-container">
+          <div class="selectable-container" data-value="work">Work</div>
+          <div class="selectable-container" data-value="school">School</div>
+          <div class="selectable-container" data-value="travel">Travel</div>
+          <div class="selectable-container" data-value="culture">Culture</div>
+          <div class="selectable-container" data-value="community">
+            Community
+          </div>
+          <div class="selectable-container" data-value="challenge">
+            Challenge
+          </div>
+          <div class="selectable-container" data-value="other">Other</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <button id="nextButton" disabled>Next</button>
+    </footer>
+
+    <script>
+      // Get the selected language from the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedLanguage = urlParams.get("language");
+      const selectedFlag = urlParams.get("flag");
+
+      console.log("Selected Language (Onboarding):", selectedLanguage); // Debugging
+      console.log("Selected Flag (Onboarding):", selectedFlag);
+      // Fetch the translations of "Hi" from hello.json
+      fetch("../hello.json")
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch hello.json");
+          }
+          return response.json();
+        })
+        .then((translations) => {
+          console.log("Translations:", translations); // Debugging
+
+          const hiTranslationElement = document.getElementById("hiTranslation");
+          const selectedLanguageElement =
+            document.getElementById("selectedLanguage");
+
+          if (selectedLanguage) {
+            const hiTranslation = translations[selectedLanguage] || "Hi"; // Fallback to "Hi" if translation not found
+            console.log("Hi Translation:", hiTranslation); // Debugging
+
+            // Update the <span> elements
+            hiTranslationElement.textContent = hiTranslation;
+            selectedLanguageElement.textContent = selectedLanguage;
+          } else {
+            // Fallback if no language is selected
+            hiTranslationElement.textContent = "Hi";
+            selectedLanguageElement.textContent = "this language";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching translations:", error);
+        });
+
+      // Selectable Containers Logic
+      const containers = document.querySelectorAll(".selectable-container");
+      const nextButton = document.getElementById("nextButton");
+
+      // Restore selection from localStorage (if any)
+      const savedSelection = localStorage.getItem("selectedReason");
+      if (savedSelection) {
+        const selectedContainer = document.querySelector(
+          `.selectable-container[data-value="${savedSelection}"]`
+        );
+        if (selectedContainer) {
+          selectedContainer.classList.add("selected");
+          nextButton.disabled = false;
+        }
+      }
+
+      containers.forEach((container) => {
+        container.addEventListener("click", () => {
+          // Deselect all containers
+          containers.forEach((c) => c.classList.remove("selected"));
+          // Select the clicked container
+          container.classList.add("selected");
+          console.log("Selected:", container.dataset.value); // Debugging
+
+          // Save the selected value to localStorage
+          localStorage.setItem("selectedReason", container.dataset.value);
+
+          // Enable the Next button
+          nextButton.disabled = false;
+        });
+      });
+
+      // Next Button Logic
+      nextButton.addEventListener("click", () => {
+        const selectedContainer = document.querySelector(
+          ".selectable-container.selected"
+        );
+        if (selectedContainer) {
+          console.log("Proceeding with:", selectedContainer.dataset.value); // Debugging
+          // Redirect to onboarding2.html with the selected reason, language, and flag as query parameters
+          window.location.href = `onboarding2.html?reason=${selectedContainer.dataset.value}&language=${selectedLanguage}&flag=${selectedFlag}`;
+        }
+      });
+    </script>
+  </body>
+</html>
