@@ -1,0 +1,172 @@
+/* dictionary.css - Adapted from vocabgen.css with list and black loader */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: white;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #000000, #ffd700);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+}
+
+#languageDisplay {
+    color: #000000;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+#searchBox {
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #000000;
+    border-radius: 30px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchBox:focus {
+    border-color: #ffd700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#searchButton {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 15px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+#searchButton:hover {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+#searchButton:active {
+    transform: scale(0.95);
+}
+
+#resultBox {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #000000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+#resultBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+#resultList {
+    width: 100%;
+    color: #000000;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: left;
+    padding-left: 20px; /* Align with ordered list numbering */
+}
+
+#resultList li {
+    margin-bottom: 10px;
+}
+
+.loader {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #000000; /* Black spinner */
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    #searchBox {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+    #searchButton {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+    #resultList {
+        font-size: 1rem;
+    }
+}

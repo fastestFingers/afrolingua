@@ -1,0 +1,134 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  min-height: 100vh; /* Ensure body takes full height */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  width: 100%; /* Ensure container takes available width */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Override default styles when in fullscreen */
+:-webkit-full-screen .container,
+:-moz-full-screen .container,
+:fullscreen .container {
+  max-width: 90vw; /* Slightly narrower in fullscreen */
+  margin: 0 auto;
+}
+
+:-webkit-full-screen body,
+:-moz-full-screen body,
+:fullscreen body {
+  padding: 20px; /* Add some padding in fullscreen */
+}
+
+/* Rest of your existing CSS remains the same */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+.chart-container {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+  min-height: 400px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 350px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  margin: 0 10px;
+}
+
+/* ... rest of your existing CSS ... */
+
+.difficulty-display {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+
+.timer-display {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 20px;
+  width: 0%;
+  background: linear-gradient(to right, #000000, #ffd700);
+  transition: width 0.5s ease-in-out;
+}
+
+.progress-label {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.level-up-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffd700;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 24px;
+  text-align: center;
+  z-index: 2000;
+  display: none;
+}

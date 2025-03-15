@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AfroLingua - Continue Learning</title>
+  <link rel="stylesheet" href="styling/auth.css" />
+  <style>
+    /* Circular Progress Indicator for Initial Load */
+    .progress-indicator {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      display: flex; /* Visible by default */
+    }
+
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid #000000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Authentication Progress Indicator */
+    .auth-progress-indicator {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+    }
+
+    .auth-spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid #000000;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Overlay styles */
+    .overlay {
+      display: none; /* Hidden by default */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 999;
+    }
+
+    /* Main content hidden by default */
+    main {
+      display: none; /* Hidden until JS shows it */
+    }
+
+    .blur {
+      filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Circular Progress Indicator for Initial Load -->
+  <div class="progress-indicator" id="progressIndicator">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Authentication Progress Indicator -->
+  <div class="auth-progress-indicator" id="authProgressIndicator">
+    <div class="auth-spinner"></div>
+  </div>
+
+  <!-- Overlay for blur effect -->
+  <div class="overlay" id="overlay"></div>
+
+  <header>
+    <nav>
+      <h1 class="logo">AfroLingua</h1>
+      <div class="right-buttons"></div>
+    </nav>
+  </header>
+
+  <main id="mainContent">
+    <section class="auth-section">
+      <div class="language-flag" id="language-flag"></div>
+      <h2 id="language-message">
+        Want to unlock hundreds of
+        <span id="selected-language">lessons</span> lessons?
+      </h2>
+      <div class="auth-options">
+        <a href="#" class="auth-option google">
+          <svg class="auth-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.344-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.386-.189-1.989H12.24z" />
+          </svg>
+          Continue with Google
+        </a>
+        <a href="#" class="auth-option facebook">
+          <svg class="auth-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.733 0 1.325-.592 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+          </svg>
+          Continue with Facebook
+        </a>
+        <a href="#" class="auth-option apple">
+          <svg class="auth-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47c-1.34.03-1.77-.79-3.29-.79c-1.53 0-2 .77-3.27.82c-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51c1.28-.02 2.5.87 3.29.87c.78 0 2.26-1.07 3.81-.91c.65.03 2.47.26 3.64 1.98c-.09.06-2.17 1.28-2.15 3.81c.03 3.02 2.65 4.03 2.68 4.04c-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5c.13 1.17-.34 2.35-1.04 3.19c-.69.85-1.83 1.51-2.95 1.42c-.15-1.15.33-2.33 1.05-3.11z" />
+          </svg>
+          Continue with Apple
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { 
+      getAuth, 
+      signInWithPopup, 
+      GoogleAuthProvider, 
+      FacebookAuthProvider, 
+      OAuthProvider, 
+      onAuthStateChanged 
+    } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAgUoo-ZcYNoWJbtAbjhnsh7ZKy_PXl4oU",
+      authDomain: "afrolingua-ff97d.firebaseapp.com",
+      projectId: "afrolingua-ff97d",
+      storageBucket: "afrolingua-ff97d.appspot.com",
+      messagingSenderId: "935074229602",
+      appId: "1:935074229602:web:d795d5cf58c7696a6dd03b",
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    console.log("Firebase initialized:", app);
+
+    // Initial loading logic
+    const initializePage = () => {
+      const progressIndicator = document.getElementById("progressIndicator");
+      const mainContent = document.getElementById("mainContent");
+
+      console.log("Page loading started, spinner visible");
+
+      setTimeout(() => {
+        console.log("Hiding spinner, showing main content");
+        progressIndicator.style.display = "none";
+        mainContent.style.display = "block";
+      }, 2000); // 2-second delay
+    };
+
+    window.addEventListener("load", initializePage);
+
+    // URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedLanguage = urlParams.get("language") || "default";
+    const selectedFlag = urlParams.get("flag") || "";
+
+    console.log("Selected Language:", selectedLanguage);
+    console.log("Selected Flag:", selectedFlag);
+
+    if (selectedLanguage && selectedFlag) {
+      document.getElementById("selected-language").textContent = selectedLanguage;
+      document.getElementById("language-flag").textContent = selectedFlag;
+    } else {
+      document.getElementById("language-message").textContent = "Want to unlock hundreds of your selected language lessons?";
+    }
+
+    // Show/hide auth progress
+    const showAuthProgress = () => {
+      document.getElementById("authProgressIndicator").style.display = "block";
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("mainContent").classList.add("blur");
+    };
+
+    const hideAuthProgress = () => {
+      document.getElementById("authProgressIndicator").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("mainContent").classList.remove("blur");
+    };
+
+    // Save user data to Firestore
+    const saveUserDataToFirestore = async (user, selectedLanguage, selectedFlag) => {
+      try {
+        const userRef = doc(db, "users", user.uid);
+        const userData = {
+          uid: user.uid,
+          name: user.displayName || "Unknown",
+          email: user.email || "No email",
+          photoURL: user.photoURL || null,
+          selectedLanguage: selectedLanguage,
+          selectedFlag: selectedFlag,
+          provider: "google",
+          createdAt: new Date(),
+          lastLogin: new Date()
+        };
+
+        console.log("Attempting to save user data:", userData);
+
+        // Save data to Firestore with a promise
+        await setDoc(userRef, userData, { merge: true });
+        console.log("User data successfully saved to Firestore:", userData);
+        return true; // Indicate success
+      } catch (error) {
+        console.error("Failed to save user data to Firestore:", error.code, error.message);
+        throw error; // Re-throw to handle in caller
+      }
+    };
+
+    // Google Sign-In
+    const googleAuth = async () => {
+      showAuthProgress();
+      const provider = new GoogleAuthProvider();
+      provider.addScope("profile email");
+
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log("Google Sign-In Success:", user);
+
+        // Save data and wait for it to complete before redirecting
+        await saveUserDataToFirestore(user, selectedLanguage, selectedFlag);
+
+        // Redirect only after successful save
+        console.log("Redirecting to onboarding...");
+        window.location.href = `onboarding/onboarding1.html?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
+      } catch (error) {
+        console.error("Google Sign-In or Firestore Error:", error.code, error.message);
+        if (error.code === "auth/popup-blocked") {
+          alert("Popup blocked. Please allow popups and try again.");
+        }
+      } finally {
+        hideAuthProgress();
+      }
+    };
+
+    // Facebook Sign-In (unchanged for now, adapt similarly if needed)
+    const facebookAuth = () => {
+      showAuthProgress();
+      const provider = new FacebookAuthProvider();
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("Facebook Sign-In Success:", user);
+          saveUserDataToFirestore(user, selectedLanguage, selectedFlag);
+          window.location.href = `onboarding/onboarding1.html?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
+        })
+        .catch((error) => console.error("Facebook Sign-In Error:", error))
+        .finally(hideAuthProgress);
+    };
+
+    // Apple Sign-In (unchanged for now, adapt similarly if needed)
+    const appleAuth = () => {
+      showAuthProgress();
+      const provider = new OAuthProvider("apple.com");
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("Apple Sign-In Success:", user);
+          saveUserDataToFirestore(user, selectedLanguage, selectedFlag);
+          window.location.href = `onboarding/onboarding1.html?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
+        })
+        .catch((error) => console.error("Apple Sign-In Error:", error))
+        .finally(hideAuthProgress);
+    };
+
+    // Event listeners
+    document.querySelector(".auth-option.google").addEventListener("click", (e) => {
+      e.preventDefault();
+      googleAuth();
+    });
+    document.querySelector(".auth-option.facebook").addEventListener("click", (e) => {
+      e.preventDefault();
+      facebookAuth();
+    });
+    document.querySelector(".auth-option.apple").addEventListener("click", (e) => {
+      e.preventDefault();
+      appleAuth();
+    });
+
+    // Check auth state
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        console.log("User is signed in:", user);
+        if (!window.location.pathname.includes("onboarding")) {
+          try {
+            await saveUserDataToFirestore(user, selectedLanguage, selectedFlag);
+            window.location.href = `onboarding/onboarding1.html?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
+          } catch (error) {
+            console.error("Error during auth state change save:", error);
+          }
+        } else {
+          console.log("Already on onboarding, no redirect needed.");
+        }
+      } else {
+        console.log("No user signed in, showing auth options.");
+        initializePage();
+      }
+    });
+  </script>
+</body>
+</html>

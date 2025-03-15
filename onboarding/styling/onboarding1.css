@@ -1,0 +1,214 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: #333;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right, #000000, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  
+  /* Main Content Styles */
+  main {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .onboarding-section {
+    max-width: 800px; /* Increased width */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    /* Removed box-shadow */
+  }
+  
+  .onboarding-section h1 {
+    font-size: 2rem;
+    margin-bottom: 10px; /* Reduced margin */
+    color: #333;
+  }
+  
+  /* Title Styles */
+  #onboarding-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px; /* Reduced margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between greeting and language */
+  }
+  
+  #hiTranslation {
+    font-size: 2.5rem;
+    background: linear-gradient(
+      to right,
+      #000000,
+      #ffd700
+    ); /* Match logo gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+  
+  #selectedLanguage {
+    font-size: 2.5rem;
+    color: #000; /* Black color for the language name */
+    font-weight: bold;
+  }
+  
+  /* Subtext Styles */
+  .subtext {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  /* Grid Container for Selectable Items */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Space between items */
+    margin-top: 30px;
+  }
+  
+  /* Selectable Containers */
+  .selectable-container {
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.5s ease;
+  }
+  
+  .selectable-container.selected {
+    border: 2px solid;
+    border-image: linear-gradient(to right, #000000, #ffd700) 1;
+  }
+  
+  /* Next Button Styles */
+  #nextButton {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    border-image: linear-gradient(to right, #000000, #ffd700) 1;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  #nextButton:not(:disabled) {
+    opacity: 1; /* Visible when enabled */
+    transform: scale(1.05); /* Slight scale effect */
+  }
+  
+  #nextButton:disabled {
+    cursor: not-allowed;
+    opacity: 0; /* Hidden when disabled */
+  }
+  
+  #nextButton:hover:not(:disabled) {
+    transform: scale(1.1); /* Hover effect */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .onboarding-section h1 {
+      font-size: 1.5rem;
+    }
+  
+    #onboarding-title {
+      font-size: 2rem;
+      flex-direction: column; /* Stack greeting and language on smaller screens */
+    }
+  
+    #hiTranslation {
+      font-size: 2rem;
+    }
+  
+    #selectedLanguage {
+      font-size: 2rem;
+    }
+  
+    .subtext {
+      font-size: 1rem;
+    }
+  
+    .grid-container {
+      grid-template-columns: 1fr; /* 1 column on smaller screens */
+    }
+  
+    #nextButton {
+      padding: 10px 20px;
+      font-size: 14px;
+    right: 10px;
+      bottom: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .onboarding-section h1 {
+      font-size: 1.25rem;
+    }
+  
+    #onboarding-title {
+      font-size: 1.75rem;
+    }
+  
+    #hiTranslation {
+      font-size: 1.75rem;
+    }
+  
+    #selectedLanguage {
+      font-size: 1.75rem;
+    }
+  
+    .subtext {
+      font-size: 0.9rem;
+    }
+  
+    #nextButton {
+      padding: 8px 16px;
+      font-size: 12px;
+      right: 5px;
+      bottom: 5px;
+    }
+  }

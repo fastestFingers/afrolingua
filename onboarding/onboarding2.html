@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroLingua - Set a Daily Study Goal</title>
+    <link rel="stylesheet" href="/onboarding/styling/onboarding2.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="logo">AfroLingua</h1>
+      </nav>
+    </header>
+
+    <main>
+      <section class="onboarding-section">
+        <h1>Set a Daily Study Goal</h1>
+        <p class="subtext" id="subtext">
+          Create a learning habit to improve your
+          <span id="selectedLanguage"></span>
+        </p>
+
+        <!-- Study Goal Containers -->
+        <div class="grid-container">
+          <div class="study-goal" data-value="5">
+            <span>5 minutes/day</span>
+            <span class="intensity-level">Casual</span>
+          </div>
+          <div class="study-goal" data-value="10">
+            <span>10 minutes/day</span>
+            <span class="intensity-level">Regular</span>
+          </div>
+          <div class="study-goal" data-value="15">
+            <span>15 minutes/day</span>
+            <span class="intensity-level">Serious</span>
+          </div>
+          <div class="study-goal" data-value="25">
+            <span>25 minutes/day</span>
+            <span class="intensity-level">Intense</span>
+          </div>
+          <div class="study-goal" data-value="30">
+            <span>30 minutes/day</span>
+            <span class="intensity-level">Competitive</span>
+          </div>
+          <div class="study-goal" data-value="45">
+            <span>45 minutes/day</span>
+            <span class="intensity-level">Pro</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <button id="nextButton" disabled>Next</button>
+    </footer>
+
+    <script>
+      // Get the selected language and reason from the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedLanguage = urlParams.get("language");
+      const selectedReason = urlParams.get("reason");
+      const selectedFlag = urlParams.get("flag");
+
+      console.log("Selected Language (Onboarding 2):", selectedLanguage); // Debugging
+      console.log("Selected Reason (Onboarding 2):", selectedReason); // Debugging
+      console.log("Selected Flag (Onboarding 2):", selectedFlag); // Debugging
+
+      // Update the subtext with the selected language
+      const subtextElement = document.getElementById("subtext");
+      if (selectedLanguage) {
+        subtextElement.querySelector("#selectedLanguage").textContent =
+          selectedLanguage;
+      } else {
+        subtextElement.querySelector("#selectedLanguage").textContent =
+          "this language";
+      }
+
+      // Study Goal Selection Logic
+      const studyGoals = document.querySelectorAll(".study-goal");
+      const nextButton = document.getElementById("nextButton");
+
+      studyGoals.forEach((goal) => {
+        goal.addEventListener("click", () => {
+          // Deselect all goals
+          studyGoals.forEach((g) => g.classList.remove("selected"));
+          // Select the clicked goal
+          goal.classList.add("selected");
+          console.log("Selected:", goal.dataset.value); // Debugging
+
+          // Enable the Next button
+          nextButton.disabled = false;
+        });
+      });
+
+      // Next Button Logic
+      nextButton.addEventListener("click", () => {
+        const selectedGoal = document.querySelector(".study-goal.selected");
+        if (selectedGoal) {
+          console.log("Proceeding with:", selectedGoal.dataset.value); // Debugging
+          // Save the selected goal to localStorage
+          localStorage.setItem("selectedGoal", selectedGoal.dataset.value);
+          // Redirect to onboarding3.html with the selected goal, language, and flag as query parameters
+          window.location.href = `onboarding3.html?goal=${selectedGoal.dataset.value}&language=${selectedLanguage}&flag=${selectedFlag}`;
+        }
+      });
+    </script>
+  </body>
+</html>

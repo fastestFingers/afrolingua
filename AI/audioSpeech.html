@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Text - AfroLingua</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            gap: 20px;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+            transition: all 0.3s ease;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        #toggleButton {
+            background: #ffd700;
+            color: #333;
+            border: none;
+            padding: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: 600;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        #toggleButton:hover:not(.recording) {
+            background: #ffca28;
+            transform: scale(1.05);
+        }
+        #toggleButton.recording {
+            animation: pulse 1.5s infinite ease-in-out;
+            background: #ffeb3b;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        .transcription-box {
+            background: #fff9e6;
+            color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            word-wrap: break-word;
+            border: 1px solid #ffd700;
+            position: relative;
+        }
+        .loader {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #000;
+            border-top: 4px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            #toggleButton {
+                width: 120px;
+                height: 120px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voice to Text</h1>
+        <div class="transcription-box">
+            <span id="transcription">Press "Play" to begin</span>
+            <div class="loader" id="loader"></div>
+        </div>
+    </div>
+    <button id="toggleButton">Play</button>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const transcription = document.getElementById('transcription');
+        const loader = document.getElementById('loader');
+        let isRecording = false;
+        let mediaRecorder;
+        let audioChunks = [];
+
+        // Request microphone access and set up recorder
+        async function setupRecorder() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+
+                mediaRecorder.onstop = async () => {
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    await sendAudioToServer(audioBlob);
+                    stream.getTracks().forEach(track => track.stop()); // Stop the stream
+                };
+
+                return true;
+            } catch (error) {
+                transcription.textContent = "Microphone access denied or unavailable";
+                console.error("Setup error:", error);
+                toggleButton.disabled = true;
+                return false;
+            }
+        }
+
+        // Send audio to server
+        async function sendAudioToServer(audioBlob) {
+            loader.style.display = 'block';
+            transcription.textContent = 'Processing...';
+
+            const formData = new FormData();
+            formData.append('audio', audioBlob, 'recording.webm');
+            formData.append('language', 'yoruba');
+
+            try {
+                const response = await fetch('http://localhost:5000/transcribe', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+                if (result.success) {
+                    transcription.textContent = result.data || 'No transcription returned';
+                    console.log("Transcription:", result.data);
+                } else {
+                    transcription.textContent = `Server error: ${result.error}`;
+                    console.error("Server error:", result.error);
+                }
+            } catch (error) {
+                transcription.textContent = 'Server connection failed';
+                console.error("Fetch error:", error);
+            } finally {
+                loader.style.display = 'none';
+            }
+        }
+
+        // Toggle recording
+        toggleButton.addEventListener('click', async () => {
+            if (!mediaRecorder) {
+                const success = await setupRecorder();
+                if (!success) return;
+            }
+
+            if (!isRecording) {
+                console.log("Starting recording...");
+                mediaRecorder.start();
+                toggleButton.textContent = 'Stop';
+                toggleButton.classList.add('recording');
+                transcription.textContent = 'Recording...';
+                isRecording = true;
+            } else {
+                console.log("Stopping recording...");
+                mediaRecorder.stop();
+                toggleButton.textContent = 'Play';
+                toggleButton.classList.remove('recording');
+                isRecording = false;
+            }
+        });
+    </script>
+</body>
+</html>

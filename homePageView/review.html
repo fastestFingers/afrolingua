@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress Review - AfroLingua</title>
+    <link rel="stylesheet" href="/homePageView/styles/review.css" />
+    <script type="module">
+      // Import Firebase v10 modular dependencies (loaded via home.html or CDN)
+      import { getAuth } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+      import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+      // Assume Firebase app is initialized in home.html
+      const auth = getAuth();
+      const db = getFirestore();
+
+      const collections = [
+        "AIgrammer",
+        "ConversationalPractice",
+        "fillBlank",
+        "translations",
+        "vocabgen"
+      ];
+      const difficultyNames = [
+        "Easy", "Beginner", "Elementary", "Pre-Intermediate", "Intermediate",
+        "Upper-Intermediate", "Advanced", "Proficient", "Expert", "Master",
+        "Specialist", "Elite", "Legendary", "Epic", "Extreme"
+      ];
+
+      async function fetchUserData(user) {
+        if (!user) {
+          console.log("No user provided for fetchUserData.");
+          return null;
+        }
+
+        const userData = {};
+        for (const coll of collections) {
+          const q = query(
+            collection(db, coll),
+            where("userId", "==", user.uid)
+          );
+          const querySnapshot = await getDocs(q);
+          
+          userData[coll] = [];
+          querySnapshot.forEach(doc => {
+            userData[coll].push(doc.data());
+          });
+
+          if (userData[coll].length === 0) {
+            userData[coll].push({ 
+              languageTimeSpent: 0, 
+              difficulty: 1,
+              answered_correctly: 0,
+              answered_incorrectly: 0 
+            });
+          }
+        }
+        return userData;
+      }
+
+      function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        return `${hours}h ${minutes}m`;
+      }
+
+      function calculateProficiency(difficulty) {
+        return Math.round((difficulty / 15) * 100);
+      }
+
+      async function renderCharts(user) {
+        const userData = await fetchUserData(user);
+        if (!userData) {
+          document.querySelector(".container").innerHTML = "<p>Please log in to view your progress.</p>";
+          return;
+        }
+
+        let totalTime = 0;
+        let totalDifficulty = 0;
+        let totalCorrect = 0;
+        let totalIncorrect = 0;
+        let validCollections = 0;
+
+        const timeData = [];
+        const difficultyData = [];
+        const correctData = [];
+        const incorrectData = [];
+        const labels = collections.map(c => c.replace(/([A-Z])/g, ' $1').trim());
+
+        collections.forEach((collection) => {
+          const docs = userData[collection];
+          let collectionTime = 0;
+          let collectionDifficulty = 0;
+          let collectionCorrect = 0;
+          let collectionIncorrect = 0;
+          let docCount = docs.length;
+
+          docs.forEach(doc => {
+            const time = doc.languageTimeSpent || 0;
+            const difficulty = doc.difficulty || 1;
+            const correct = doc.answered_correctly || 0;
+            const incorrect = doc.answered_incorrectly || 0;
+
+            collectionTime += time;
+            collectionDifficulty += difficulty;
+            collectionCorrect += correct;
+            collectionIncorrect += incorrect;
+          });
+
+          const avgDifficulty = docCount > 0 ? collectionDifficulty / docCount : 1;
+
+          timeData.push(collectionTime / 3600);
+          difficultyData.push(avgDifficulty);
+          correctData.push(collectionCorrect);
+          incorrectData.push(collectionIncorrect);
+
+          totalTime += collectionTime;
+          totalDifficulty += avgDifficulty;
+          totalCorrect += collectionCorrect;
+          totalIncorrect += collectionIncorrect;
+          if (collectionTime > 0) validCollections++;
+        });
+
+        document.getElementById("totalTime").textContent = formatTime(totalTime);
+        document.getElementById("proficiency").textContent = validCollections > 0 
+          ? `${calculateProficiency(totalDifficulty / validCollections)}%` 
+          : "N/A";
+        document.getElementById("difficulty").textContent = validCollections > 0 
+          ? difficultyNames[Math.min(14, Math.floor(totalDifficulty / validCollections) - 1)] 
+          : "N/A";
+
+        const timeCtx = document.getElementById("timeChart").getContext("2d");
+        new Chart(timeCtx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Time Spent (hours)",
+              data: timeData,
+              backgroundColor: "rgba(75, 192, 192, 0.6)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: { display: true, text: "Hours" }
+              }
+            },
+            plugins: {
+              legend: { display: true },
+              tooltip: { callbacks: { label: (context) => `${context.parsed.y.toFixed(2)} hours` } }
+            }
+          }
+        });
+
+        const difficultyCtx = document.getElementById("difficultyChart").getContext("2d");
+        new Chart(difficultyCtx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: "Average Difficulty Level",
+              data: difficultyData,
+              backgroundColor: "rgba(255, 159, 64, 0.6)",
+              borderColor: "rgba(255, 159, 64, 1)",
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 15,
+                title: { display: true, text: "Difficulty Level" },
+                ticks: { stepSize: 1 }
+              }
+            },
+            plugins: {
+              legend: { display: true },
+              tooltip: { callbacks: { label: (context) => `Level ${context.parsed.y.toFixed(1)}` } }
+            }
+          }
+        });
+
+        const answersCtx = document.getElementById("answersChart").getContext("2d");
+        new Chart(answersCtx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Correct Answers",
+                data: correctData,
+                backgroundColor: "rgba(54, 162, 235, 0.6)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1
+              },
+              {
+                label: "Incorrect Answers",
+                data: incorrectData,
+                backgroundColor: "rgba(255, 99, 132, 0.6)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            scales: {
+              x: { stacked: true },
+              y: { 
+                stacked: true, 
+                beginAtZero: true, 
+                title: { display: true, text: "Number of Answers" }
+              }
+            },
+            plugins: {
+              legend: { display: true },
+              tooltip: { mode: "index", intersect: false }
+            }
+          }
+        });
+      }
+
+      // Export renderCharts for home.html to call
+      window.renderReviewCharts = renderCharts;
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Progress Review</h1>
+      <div class="stats">
+        <div class="stat-box">
+          <h3>Total Time Spent</h3>
+          <p id="totalTime">0h 0m</p>
+        </div>
+        <div class="stat-box">
+          <h3>Average Proficiency</h3>
+          <p id="proficiency">-</p>
+        </div>
+        <div class="stat-box">
+          <h3>Average Difficulty</h3>
+          <p id="difficulty">-</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <h2>Time Spent by Activity</h2>
+        <canvas id="timeChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Difficulty Levels by Activity</h2>
+        <canvas id="difficultyChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2>Correct vs Incorrect Answers by Activity</h2>
+        <canvas id="answersChart"></canvas>
+      </div>
+    </div>
+  </body>
+</html>

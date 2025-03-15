@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroLingua - Languages</title>
+    <link rel="stylesheet" href="styling/languages.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1 class="logo">AfroLingua</h1>
+        <div class="right-buttons"></div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="languages-section">
+        <h2>Explore African Languages</h2>
+        <ul class="languages-list" id="languages-list">
+          <!-- Languages will be dynamically inserted here -->
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      // Fetch the list of languages from languages.json
+      fetch("languages.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const languagesList = document.getElementById("languages-list");
+
+          // Generate the list of languages dynamically
+          data.forEach((language) => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                        <a href="auth.html?language=${encodeURIComponent(
+                          language.name
+                        )}&flag=${encodeURIComponent(language.flag)}">
+                            <div class="flag-container">
+                                <span class="flag">${language.flag}</span>
+                                <span class="language-name">${
+                                  language.name
+                                }</span>
+                            </div>
+                        </a>
+                    `;
+            languagesList.appendChild(listItem);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching languages:", error);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+[
+    { "name": "Yoruba", "flag": "🇳🇬" },
+    { "name": "Hausa", "flag": "🇳🇬" },
+    { "name": "Igbo", "flag": "🇳🇬" },
+    { "name": "Swahili", "flag": "🇰🇪" },
+    { "name": "Zulu", "flag": "🇿🇦" },
+    { "name": "Xhosa", "flag": "🇿🇦" },
+    { "name": "Amharic", "flag": "🇪🇹" },
+    { "name": "Oromo", "flag": "🇪🇹" },
+    { "name": "Shona", "flag": "🇿🇼" },
+    { "name": "Somali", "flag": "🇸🇴" },
+    { "name": "Wolof", "flag": "🇸🇳" },
+    { "name": "Kinyarwanda", "flag": "🇷🇼" },
+    { "name": "Fula", "flag": "🇨🇲" },
+    { "name": "Lingala", "flag": "🇨🇩" },
+    { "name": "Malagasy", "flag": "🇲🇬" },
+    { "name": "Luganda", "flag": "🇺🇬" },
+    { "name": "Bambara", "flag": "🇲🇱" },
+    { "name": "Sango", "flag": "🇨🇫" },
+    { "name": "Oshiwambo", "flag": "🇳🇦" }
+]

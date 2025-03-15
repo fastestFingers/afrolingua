@@ -1,0 +1,1368 @@
+{
+  "vocabulary": [
+    {
+      "difficulty": 1,
+      "word": "ilé",
+      "translation": "house",
+      "usage": "Mo wà ní ilé. (I am at home.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "ọmọ",
+      "translation": "child",
+      "usage": "Ọmọ wà nílé. (The child is at home.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "bàtà",
+      "translation": "shoe",
+      "usage": "Mo ra bàtà. (I bought a shoe.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "aṣọ",
+      "translation": "clothes",
+      "usage": "Mo wọ́ aṣọ. (I wear clothes.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "omi",
+      "translation": "water",
+      "usage": "Mo mu omi. (I drank water.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "lọ",
+      "translation": "go",
+      "usage": "Mo lọ sí ọjà. (I go to the market.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "wá",
+      "translation": "come",
+      "usage": "Mo wá sí ilé. (I come to the house.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "ra",
+      "translation": "buy",
+      "usage": "Mo ra aṣọ. (I buy clothes.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "jẹ",
+      "translation": "eat",
+      "usage": "Mo jẹ oúnjẹ. (I eat food.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "sùn",
+      "translation": "sleep",
+      "usage": "Mo sùn ní ilé. (I sleep at home.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "rí",
+      "translation": "see",
+      "usage": "Mo rí ọmọ. (I see the child.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "owó",
+      "translation": "money",
+      "usage": "Mo ní owó. (I have money.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "ọjà",
+      "translation": "market",
+      "usage": "Mo lọ sí ọjà. (I go to the market.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "kí",
+      "translation": "greet",
+      "usage": "Mo kí ọ. (I greet you.)"
+    },
+    {
+      "difficulty": 1,
+      "word": "mi",
+      "translation": "me/my",
+      "usage": "Ilé mi nla. (My house is big.)"
+    },
+
+    {
+      "difficulty": 2,
+      "word": "dùn",
+      "translation": "sweet",
+      "usage": "Oúnjẹ dùn. (The food is sweet.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "gbọ́",
+      "translation": "hear",
+      "usage": "Mo gbọ́ ohùn rẹ. (I hear your voice.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "tóbi",
+      "translation": "big",
+      "usage": "Ilé tóbi. (The house is big.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "kéré",
+      "translation": "small",
+      "usage": "Ọmọ kéré wà nílé. (A small child is at home.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "mọ̀",
+      "translation": "know",
+      "usage": "Mo mọ̀ ọ. (I know you.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "fún",
+      "translation": "give",
+      "usage": "Mo fún ọ lówó. (I give you money.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "sọ",
+      "translation": "say/speak",
+      "usage": "Mo sọ Yorùbá. (I speak Yoruba.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "púpọ̀",
+      "translation": "many/much",
+      "usage": "Ọmọ púpọ̀ wà ní ọjà. (Many children are at the market.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "kọ́",
+      "translation": "write/learn",
+      "usage": "Mo kọ́ létà. (I wrote a letter.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "ta",
+      "translation": "sell",
+      "usage": "Mo ta aṣọ. (I sell clothes.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "funfun",
+      "translation": "white",
+      "usage": "Mo wọ́ aṣọ funfun. (I wear white clothes.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "dúdú",
+      "translation": "black",
+      "usage": "Mo ra bàtà dúdú. (I bought a black shoe.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "tútù",
+      "translation": "cold",
+      "usage": "Mo mu omi tútù. (I drank cold water.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "gbóná",
+      "translation": "hot",
+      "usage": "Omi gbóná. (The water is hot.)"
+    },
+    {
+      "difficulty": 2,
+      "word": "rẹ",
+      "translation": "your",
+      "usage": "Ilé rẹ nla. (Your house is big.)"
+    },
+
+    {
+      "difficulty": 3,
+      "word": "a",
+      "translation": "we",
+      "usage": "A lọ sí ọjà. (We went to the market.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "wọn",
+      "translation": "they",
+      "usage": "Wọ́n wà ní ilé. (They are at home.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "ẹ",
+      "translation": "you (plural)",
+      "usage": "Ẹ lọ sí ọjà. (You all went to the market.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "wa",
+      "translation": "our",
+      "usage": "Ilé wa tóbi. (Our house is big.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "yin",
+      "translation": "your (plural)",
+      "usage": "Ilé yin nla. (Your house is big, plural.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "pupa",
+      "translation": "red",
+      "usage": "Mo wọ́ aṣọ pupa. (I wore red clothes.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "gíga",
+      "translation": "tall/high",
+      "usage": "Ọkùnrin gíga wà nílé. (A tall man is at home.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "oúnjẹ",
+      "translation": "food",
+      "usage": "Mo jẹ oúnjẹ dùn. (I ate sweet food.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "ohùn",
+      "translation": "voice",
+      "usage": "Mo gbọ́ ohùn rẹ. (I heard your voice.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "pàdé",
+      "translation": "meet",
+      "usage": "Mo pàdé rẹ ní ọjà. (I met you at the market.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "sí",
+      "translation": "to/at",
+      "usage": "Mo lọ sí ilé. (I went to the house.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "létà",
+      "translation": "letter",
+      "usage": "Mo kọ́ létà. (I wrote a letter.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "ọkan",
+      "translation": "one",
+      "usage": "Ọmọ ọkan wà nílé. (One child is at home.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "méjì",
+      "translation": "two",
+      "usage": "Ọmọ méjì wà ní ọjà. (Two children are at the market.)"
+    },
+    {
+      "difficulty": 3,
+      "word": "ní",
+      "translation": "have/at",
+      "usage": "Mo ní owó. (I have money.)"
+    },
+
+    {
+      "difficulty": 4,
+      "word": "kò",
+      "translation": "not",
+      "usage": "Mo kò lọ. (I didn’t go.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "ṣe",
+      "translation": "do/make",
+      "usage": "Mo ṣe iṣẹ́. (I did work.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "bẹ̀rẹ̀",
+      "translation": "start",
+      "usage": "Mo bẹ̀rẹ̀ iṣẹ́. (I started work.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "ràn",
+      "translation": "send",
+      "usage": "Mo ràn án létà. (I sent him/her a letter.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "jọ̀",
+      "translation": "dance",
+      "usage": "Mo jọ̀ ní ọjà. (I danced at the market.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "dá",
+      "translation": "create/build",
+      "usage": "Mo dá ilé. (I built a house.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "ṣí",
+      "translation": "open",
+      "usage": "Mo ṣí ilẹ̀kùn. (I opened the door.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "fẹ́",
+      "translation": "want",
+      "usage": "Mo fẹ́ lọ. (I want to go.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "gbà",
+      "translation": "receive/take",
+      "usage": "Mo gbà létà. (I received a letter.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "tẹ́",
+      "translation": "press",
+      "usage": "Mo tẹ́ aṣọ. (I pressed the clothes.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "rú",
+      "translation": "stir",
+      "usage": "Mo rú ọbẹ̀. (I stirred the soup.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "bí",
+      "translation": "give birth",
+      "usage": "Ó bí ọmọ. (She gave birth to a child.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "mẹ́ta",
+      "translation": "three",
+      "usage": "Ọmọ mẹ́ta wà nílé. (Three children are at home.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "ọbẹ",
+      "translation": "soup",
+      "usage": "Ọbẹ gbóná. (The soup is hot.)"
+    },
+    {
+      "difficulty": 4,
+      "word": "lẹ́wà",
+      "translation": "beautiful",
+      "usage": "Ọmọ lẹ́wà. (The child is beautiful.)"
+    },
+
+    {
+      "difficulty": 5,
+      "word": "mú",
+      "translation": "bring/take",
+      "usage": "Mo mú bàtà wá. (I brought a shoe.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "sé",
+      "translation": "question marker",
+      "usage": "Sé o lọ? (Did you go?)"
+    },
+    {
+      "difficulty": 5,
+      "word": "jáde",
+      "translation": "go out",
+      "usage": "Mo jáde lọ. (I went out.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "gbé",
+      "translation": "live",
+      "usage": "Mo gbé ní ilé. (I live in the house.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "kí ni",
+      "translation": "what",
+      "usage": "Kí ni o ṣe? (What did you do?)"
+    },
+    {
+      "difficulty": 5,
+      "word": "nibo",
+      "translation": "where",
+      "usage": "Nibo ni o lọ? (Where did you go?)"
+    },
+    {
+      "difficulty": 5,
+      "word": "rìn",
+      "translation": "walk",
+      "usage": "Mo rìn lọ sí ọjà. (I walked to the market.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "dù",
+      "translation": "wait",
+      "usage": "Mo dù rẹ. (I waited for you.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "kàn",
+      "translation": "touch",
+      "usage": "Mo kàn ilẹ̀kùn. (I touched the door.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "sọ́rọ̀",
+      "translation": "talk",
+      "usage": "Mo sọ́rọ̀ pẹ̀lú rẹ. (I talked with you.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "rò",
+      "translation": "think",
+      "usage": "Mo rò pé o lọ. (I thought you went.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "hù",
+      "translation": "behave",
+      "usage": "Ó hù dáradára. (He/she behaved well.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "márùn",
+      "translation": "five",
+      "usage": "Ọmọ márùn wà ní ọjà. (Five children are at the market.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "ilẹ̀kùn",
+      "translation": "door",
+      "usage": "Mo ṣí ilẹ̀kùn. (I opened the door.)"
+    },
+    {
+      "difficulty": 5,
+      "word": "ọkùnrin",
+      "translation": "man",
+      "usage": "Ọkùnrin gíga wà nílé. (A tall man is at home.)"
+    },
+
+    {
+      "difficulty": 6,
+      "word": "kékeré",
+      "translation": "small/tiny",
+      "usage": "Ọmọ kékeré wà nílé. (A tiny child is at home.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "ṣòro",
+      "translation": "difficult",
+      "usage": "Iṣẹ́ ṣòro. (The work is difficult.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "rọ̀rùn",
+      "translation": "easy",
+      "usage": "Iṣẹ́ rọ̀rùn. (The work is easy.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "ga",
+      "translation": "high",
+      "usage": "Igi ga. (The tree is high.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "sáré",
+      "translation": "run",
+      "usage": "Mo sáré lọ. (I ran away.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "kọrin",
+      "translation": "sing",
+      "usage": "Mo kọrin ní ọjà. (I sang at the market.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "fà",
+      "translation": "draw/pull",
+      "usage": "Mo fà omi. (I drew water.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "jù",
+      "translation": "throw",
+      "usage": "Mo jù bàtà. (I threw the shoe.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "bú",
+      "translation": "insult",
+      "usage": "Mo bú ọ. (I insulted you.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "gbín",
+      "translation": "plant",
+      "usage": "Mo gbín igi. (I planted a tree.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "tún",
+      "translation": "repair",
+      "usage": "Mo tún bàtà. (I repaired the shoe.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "pè",
+      "translation": "call",
+      "usage": "Mo pè ọ ní ọmọ. (I called you a child.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "mẹ́fà",
+      "translation": "six",
+      "usage": "Ọmọ mẹ́fà wà ní ilé. (Six children are at home.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "igi",
+      "translation": "tree",
+      "usage": "Igi ga wà ní ọjà. (A high tree is at the market.)"
+    },
+    {
+      "difficulty": 6,
+      "word": "dídùn",
+      "translation": "sweet (intense)",
+      "usage": "Oúnjẹ dídùn. (The food is very sweet.)"
+    },
+
+    {
+      "difficulty": 7,
+      "word": "ni",
+      "translation": "is (emphasis)",
+      "usage": "Mo ni mo lọ. (It’s me who went.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "jà",
+      "translation": "fight",
+      "usage": "Mo jà pẹ̀lú rẹ. (I fought with you.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "tàn",
+      "translation": "shine",
+      "usage": "Òrùn tàn. (The sun shines.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "bínú",
+      "translation": "angry",
+      "usage": "Mo bínú sí ọ. (I am angry with you.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "dúpẹ́",
+      "translation": "thank",
+      "usage": "Mo dúpẹ́ fún ọ. (I thank you.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "ṣeun",
+      "translation": "thanks",
+      "usage": "Mo ṣeun fún ọ. (I give thanks to you.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "fọ́",
+      "translation": "break",
+      "usage": "Mo fọ́ àwo. (I broke a plate.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "wè",
+      "translation": "wash",
+      "usage": "Mo wè aṣọ. (I washed clothes.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "dẹ́",
+      "translation": "trap",
+      "usage": "Mo dẹ́ ẹyẹ. (I trapped a bird.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "gbàgbe",
+      "translation": "forget",
+      "usage": "Mo gbàgbe ọ. (I forgot you.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "jí",
+      "translation": "wake",
+      "usage": "Mo jí ní òwúrọ̀. (I woke up in the morning.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "kún",
+      "translation": "fill",
+      "usage": "Mo kún omi. (I filled water.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "mẹ́jọ",
+      "translation": "eight",
+      "usage": "Ọmọ mẹ́jọ wà ní ọjà. (Eight children are at the market.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "ẹyẹ",
+      "translation": "bird",
+      "usage": "Mo dẹ́ ẹyẹ. (I trapped a bird.)"
+    },
+    {
+      "difficulty": 7,
+      "word": "òkùnkùn",
+      "translation": "dark",
+      "usage": "Ilé òkùnkùn. (The house is dark.)"
+    },
+
+    {
+      "difficulty": 8,
+      "word": "jẹ́",
+      "translation": "be (identity)",
+      "usage": "Mo jẹ́ olùkọ́. (I am a teacher.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "tó",
+      "translation": "enough",
+      "usage": "Owó tó. (Enough money.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "ṣú",
+      "translation": "dark (intense)",
+      "usage": "Ọ̀nà ṣú. (The road is very dark.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "dárí",
+      "translation": "lead",
+      "usage": "Mo dárí wọn. (I led them.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "gbọ́rọ̀",
+      "translation": "listen",
+      "usage": "Mo gbọ́rọ̀ sí ọ. (I listened to you.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "fẹ́ràn",
+      "translation": "like",
+      "usage": "Mo fẹ́ràn rẹ. (I like you.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "jáwọ́",
+      "translation": "stop",
+      "usage": "Mo jáwọ́ iṣẹ́. (I stopped work.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "dúró",
+      "translation": "stand/wait",
+      "usage": "Mo dúró ní ọjà. (I stood at the market.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "tẹ́lẹ̀",
+      "translation": "follow",
+      "usage": "Mo tẹ́lẹ̀ rẹ. (I followed you.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "dán",
+      "translation": "test",
+      "usage": "Mo dán iṣẹ́. (I tested the work.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "pín",
+      "translation": "share",
+      "usage": "Mo pín oúnjẹ. (I shared the food.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "ṣíṣe",
+      "translation": "working",
+      "usage": "Mo ń ṣíṣe iṣẹ́. (I am working.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "mẹ́sán",
+      "translation": "nine",
+      "usage": "Ọmọ mẹ́sán wà ní ilé. (Nine children are at home.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "olùkọ́",
+      "translation": "teacher",
+      "usage": "Mo jẹ́ olùkọ́. (I am a teacher.)"
+    },
+    {
+      "difficulty": 8,
+      "word": "rọ́rọ́",
+      "translation": "soft",
+      "usage": "Aṣọ rọ́rọ́. (The cloth is soft.)"
+    },
+
+    {
+      "difficulty": 9,
+      "word": "tí",
+      "translation": "that/which",
+      "usage": "Ọmọ tí mo rí. (The child that I saw.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "díjú",
+      "translation": "confusing",
+      "usage": "Ọ̀rọ̀ díjú. (The word is confusing.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "rẹ̀wà",
+      "translation": "beautiful (person)",
+      "usage": "Ọmọ rẹ̀wà. (The child is beautiful.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "gbéga",
+      "translation": "lift",
+      "usage": "Mo gbéga rẹ. (I lifted you up.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "dárúkọ",
+      "translation": "name",
+      "usage": "Mo dárúkọ ọmọ. (I named the child.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "tú",
+      "translation": "release",
+      "usage": "Mo tú ẹyẹ. (I released the bird.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "bèrè",
+      "translation": "ask",
+      "usage": "Mo bèrè lọ́wọ́ rẹ. (I asked you.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "gbígbẹ̀",
+      "translation": "dry",
+      "usage": "Omi gbígbẹ̀. (The water is dry.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "títí",
+      "translation": "continuous",
+      "usage": "Iṣẹ́ títí. (Continuous work.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "fífún",
+      "translation": "white (intense)",
+      "usage": "Aṣọ fífún. (Very white cloth.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "gbàmì",
+      "translation": "heavy",
+      "usage": "Ilé gbàmì. (The house is heavy.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "dídá",
+      "translation": "sharp",
+      "usage": "Ọbẹ dídá. (The knife is sharp.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "mẹ́wà",
+      "translation": "ten",
+      "usage": "Ọmọ mẹ́wà wà ní ọjà. (Ten children are at the market.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "ọ̀rọ̀",
+      "translation": "word",
+      "usage": "Ọ̀rọ̀ díjú. (The word is confusing.)"
+    },
+    {
+      "difficulty": 9,
+      "word": "tóótọ́",
+      "translation": "true",
+      "usage": "Ọ̀rọ̀ tóótọ́. (The word is true.)"
+    },
+
+    {
+      "difficulty": 10,
+      "word": "bá",
+      "translation": "if/with",
+      "usage": "Bí mo bá lọ. (If I go.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "gbágbọ́",
+      "translation": "believe",
+      "usage": "Mo gbágbọ́ rẹ. (I believed you.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "dáríji",
+      "translation": "forgive",
+      "usage": "Mo dáríji ọ. (I forgave you.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "túútúù",
+      "translation": "very cold",
+      "usage": "Omi túútúù. (The water is very cold.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "gbígbóná",
+      "translation": "very hot",
+      "usage": "Omi gbígbóná. (The water is very hot.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "dídíjú",
+      "translation": "very confusing",
+      "usage": "Ọ̀rọ̀ dídíjú. (The word is very confusing.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "gbàmì",
+      "translation": "very heavy",
+      "usage": "Ilé gbàmì. (The house is very heavy.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "fọ́rọ̀",
+      "translation": "discuss",
+      "usage": "Mo fọ́rọ̀ pẹ̀lú rẹ. (I discussed with you.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "dúró",
+      "translation": "stop (motion)",
+      "usage": "Mo dá sáré. (I stopped running.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "pẹ́",
+      "translation": "call/name",
+      "usage": "Mo pẹ́ ọ ní ọmọ. (I called you a child.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "ṣúgún",
+      "translation": "shout",
+      "usage": "Mo ṣúgún sí ọ. (I shouted at you.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "kẹ́kọ̀ọ́",
+      "translation": "study",
+      "usage": "Mo kẹ́kọ̀ọ́ Yorùbá. (I studied Yoruba.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "mọ́kànlá",
+      "translation": "eleven",
+      "usage": "Ọmọ mọ́kànlá wà ní ilé. (Eleven children are at home.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "ọ̀nà",
+      "translation": "road",
+      "usage": "Ọ̀nà ga wà ní ọjà. (A high road is at the market.)"
+    },
+    {
+      "difficulty": 10,
+      "word": "òwúrọ̀",
+      "translation": "morning",
+      "usage": "Mo jí ní òwúrọ̀. (I woke up in the morning.)"
+    },
+
+    {
+      "difficulty": 11,
+      "word": "ṣọ́rọ̀",
+      "translation": "speak (formal)",
+      "usage": "Mo ṣọ́rọ̀ pẹ̀lú ọba. (I spoke with the king.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "dádé",
+      "translation": "create (formal)",
+      "usage": "Mo dádé ilé tuntun. (I created a new house.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "tẹ́jú",
+      "translation": "look closely",
+      "usage": "Mo tẹ́jú rí ọmọ. (I looked closely and saw the child.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "gbẹ́",
+      "translation": "carry on head",
+      "usage": "Mo gbẹ́ omi lọ sí ọjà. (I carried water on my head to the market.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "sún",
+      "translation": "push/move",
+      "usage": "Mo sún ilẹ̀kùn. (I pushed the door.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "yọ",
+      "translation": "rejoice",
+      "usage": "Mo yọ nígbà tí mo rí ọ. (I rejoiced when I saw you.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "kọ́lẹ̀",
+      "translation": "build (house)",
+      "usage": "Mo kọ́lẹ̀ ní ọjà. (I built a house at the market.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "sọ́dọ̀",
+      "translation": "approach",
+      "usage": "Mo sọ́dọ̀ rẹ ní ilé. (I approached you at home.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "gbọ́n",
+      "translation": "wise",
+      "usage": "Ọmọ gbọ́n wà nílé. (A wise child is at home.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "tẹ́wọ́",
+      "translation": "touch (carefully)",
+      "usage": "Mo tẹ́wọ́ rí bàtà. (I carefully touched the shoe.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "fẹ̀",
+      "translation": "blow (wind)",
+      "usage": "Afẹ́fẹ́ fẹ̀ ní ọjà. (The wind blew at the market.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "ṣàlàyé",
+      "translation": "explain",
+      "usage": "Mo ṣàlàyé fún ọ. (I explained to you.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "méjìlá",
+      "translation": "twelve",
+      "usage": "Ọmọ méjìlá wà ní ilé. (Twelve children are at home.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "ọba",
+      "translation": "king",
+      "usage": "Ọba wà ní ilé. (The king is at home.)"
+    },
+    {
+      "difficulty": 11,
+      "word": "dáradára",
+      "translation": "well/good",
+      "usage": "Ó hù dáradára. (He/she behaved well.)"
+    },
+
+    {
+      "difficulty": 12,
+      "word": "pẹ́lẹ́",
+      "translation": "sorry",
+      "usage": "Mo pẹ́lẹ́ fún ọ. (I’m sorry for you.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "rárá",
+      "translation": "no (emphatic)",
+      "usage": "Rárá, mo kò lọ. (No, I didn’t go.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "ṣì",
+      "translation": "still/yet",
+      "usage": "Mo ṣì wà ní ilé. (I am still at home.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "dùn",
+      "translation": "hurt",
+      "usage": "Ó dùn mí. (It hurt me.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "yí",
+      "translation": "turn/change",
+      "usage": "Mo yí ilẹ̀kùn. (I turned the door.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "fúnrarẹ",
+      "translation": "yourself",
+      "usage": "Mo fúnrarẹ wọ́ aṣọ. (I dressed myself.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "kẹ́",
+      "translation": "care/shout",
+      "usage": "Mo kẹ́ sí ọmọ. (I shouted at the child.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "gbọ́dọ̀",
+      "translation": "must",
+      "usage": "Mo gbọ́dọ̀ lọ. (I must go.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "ṣọ́kan",
+      "translation": "unite",
+      "usage": "Mo ṣọ́kan pẹ̀lú wọn. (I united with them.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "dẹ̀",
+      "translation": "arrive",
+      "usage": "Mo dẹ̀ sí ilé. (I arrived at home.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "rẹ́",
+      "translation": "tired",
+      "usage": "Mo rẹ́ mí. (I am tired.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "sù",
+      "translation": "tire",
+      "usage": "Iṣẹ́ sù mí. (The work tired me.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "mẹ́tàlá",
+      "translation": "thirteen",
+      "usage": "Ọmọ mẹ́tàlá wà ní ọjà. (Thirteen children are at the market.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "iṣẹ́",
+      "translation": "work",
+      "usage": "Mo ṣe iṣẹ́. (I did work.)"
+    },
+    {
+      "difficulty": 12,
+      "word": "àyọ̀",
+      "translation": "joy",
+      "usage": "Mo ní àyọ̀. (I have joy.)"
+    },
+
+    {
+      "difficulty": 13,
+      "word": "ń",
+      "translation": "is (progressive)",
+      "usage": "Mo ń lọ. (I am going.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "kẹ́dùn",
+      "translation": "complain",
+      "usage": "Mo kẹ́dùn sí ọ. (I complained to you.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "sọ́nù",
+      "translation": "lose",
+      "usage": "Mo sọ́nù bàtà. (I lost the shoe.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "wọ́n",
+      "translation": "weigh",
+      "usage": "Mo wọ́n omi. (I weighed the water.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "fẹ́yẹ",
+      "translation": "blow gently",
+      "usage": "Afẹ́fẹ́ fẹ́yẹ ní ilé. (The breeze blew gently at home.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "dùn",
+      "translation": "sound",
+      "usage": "Ohùn dùn mí. (The voice sounded to me.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "gbọ́n",
+      "translation": "shake",
+      "usage": "Mo gbọ́n igi. (I shook the tree.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "ṣẹ́",
+      "translation": "sin/offend",
+      "usage": "Mo ṣẹ́ sí ọ. (I offended you.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "rẹ́wà",
+      "translation": "fade",
+      "usage": "Aṣọ rẹ́wà. (The cloth faded.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "dẹ́kun",
+      "translation": "cease",
+      "usage": "Mo dẹ́kun iṣẹ́. (I ceased work.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "ṣàwárí",
+      "translation": "discover",
+      "usage": "Mo ṣàwárí ilé. (I discovered the house.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "kọ́sí",
+      "translation": "lack",
+      "usage": "Mo kọ́sí owó. (I lack money.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "mẹ́rìndínlógún",
+      "translation": "sixteen",
+      "usage": "Ọmọ mẹ́rìndínlógún wà ní ilé. (Sixteen children are at home.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "afẹ́fẹ́",
+      "translation": "wind",
+      "usage": "Afẹ́fẹ́ fẹ̀ ní ọjà. (The wind blew at the market.)"
+    },
+    {
+      "difficulty": 13,
+      "word": "ìdí",
+      "translation": "reason",
+      "usage": "Mo mọ̀ ìdí rẹ. (I know your reason.)"
+    },
+
+    {
+      "difficulty": 14,
+      "word": "í-",
+      "translation": "(nominalizer)",
+      "usage": "Ílọ́ ni mo ṣe. (Going is what I did.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "ṣín",
+      "translation": "serve/worship",
+      "usage": "Mo ṣín ọba. (I served the king.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "kọ́lábà",
+      "translation": "collaborate",
+      "usage": "Mo kọ́lábà pẹ̀lú rẹ. (I collaborated with you.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "dẹ̀dẹ̀",
+      "translation": "exactly",
+      "usage": "Mo lọ dẹ̀dẹ̀ sí ilé. (I went exactly to the house.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "rọ́jú",
+      "translation": "endure",
+      "usage": "Mo rọ́jú sí iṣẹ́. (I endured the work.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "ṣọ́pẹ́",
+      "translation": "be grateful",
+      "usage": "Mo ṣọ́pẹ́ fún ọ. (I am grateful to you.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "dẹ́wọ̀",
+      "translation": "prohibit",
+      "usage": "Mo dẹ́wọ̀ fún ọmọ. (I prohibited the child.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "gbọ́ràn",
+      "translation": "obey",
+      "usage": "Mo gbọ́ràn sí ọ. (I obeyed you.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "sáré",
+      "translation": "hurry",
+      "usage": "Mo sáré lọ sí ọjà. (I hurried to the market.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "yọ́",
+      "translation": "remove",
+      "usage": "Mo yọ́ bàtà. (I removed the shoe.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "ṣẹ̀dá",
+      "translation": "create (divine)",
+      "usage": "Ọlọ́run ṣẹ̀dá ilé. (God created the house.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "kọ́sẹ́",
+      "translation": "stumble",
+      "usage": "Mo kọ́sẹ́ ní ọ̀nà. (I stumbled on the road.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "mẹ́rìnlá",
+      "translation": "fourteen",
+      "usage": "Ọmọ mẹ́rìnlá wà ní ọjà. (Fourteen children are at the market.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "òrùn",
+      "translation": "sun",
+      "usage": "Òrùn tàn. (The sun shines.)"
+    },
+    {
+      "difficulty": 14,
+      "word": "ọlọ́run",
+      "translation": "God",
+      "usage": "Ọlọ́run ṣẹ̀dá ilé. (God created the house.)"
+    },
+
+    {
+      "difficulty": 15,
+      "word": "pẹ́",
+      "translation": "delay/last long",
+      "usage": "Iṣẹ́ pẹ́ ní ọjà. (The work lasted long at the market.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ṣẹ́kẹ́",
+      "translation": "lie/deceive",
+      "usage": "Mo ṣẹ́kẹ́ sí ọ. (I lied to you.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "dídán",
+      "translation": "shine brightly",
+      "usage": "Òrùn dídán. (The sun shines brightly.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "rárù",
+      "translation": "confuse",
+      "usage": "Mo rárù ọmọ. (I confused the child.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ṣínú",
+      "translation": "enter (emotion)",
+      "usage": "Mo ṣínú bínú. (I entered into anger.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "dẹ́ẹ́dẹ́",
+      "translation": "gradually",
+      "usage": "Mo dẹ́ẹ́dẹ́ lọ. (I went gradually.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "gbọ́nṣẹ́",
+      "translation": "trust",
+      "usage": "Mo gbọ́nṣẹ́ rẹ. (I trusted you.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ṣọ́ra",
+      "translation": "be careful",
+      "usage": "Mo ṣọ́ra ní ọ̀nà. (I was careful on the road.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "rọ́wọ́",
+      "translation": "handle gently",
+      "usage": "Mo rọ́wọ́ ilẹ̀kùn. (I handled the door gently.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "dẹ́kunlẹ́",
+      "translation": "kneel",
+      "usage": "Mo dẹ́kunlẹ́ sí ọba. (I knelt to the king.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ṣẹ̀kẹ́ṣẹ̀kẹ́",
+      "translation": "mock",
+      "usage": "Mo ṣẹ̀kẹ́ṣẹ̀kẹ́ ọmọ. (I mocked the child.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "kúnlẹ̀",
+      "translation": "kneel (formal)",
+      "usage": "Mo kúnlẹ̀ níwájú ọba. (I knelt before the king.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "mẹ́rìndínlógún",
+      "translation": "fifteen",
+      "usage": "Ọmọ mẹ́rìndínlógún wà ní ilé. (Fifteen children are at home.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ìwà",
+      "translation": "character",
+      "usage": "Ìwà rẹ dáradára. (Your character is good.)"
+    },
+    {
+      "difficulty": 15,
+      "word": "ọ̀ràn",
+      "translation": "trouble",
+      "usage": "Mo rí ọ̀ràn ní ọjà. (I saw trouble at the market.)"
+    }
+  ]
+}

@@ -1,0 +1,1107 @@
+{
+  "translations": [
+    {
+      "difficulty": 1,
+      "sentence": "Mo lọ sí ilé.",
+      "translation": "I go to the house."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ọmọ wà nílé.",
+      "translation": "The child is at home."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ra bàtà.",
+      "translation": "I bought a shoe."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ó rí mi.",
+      "translation": "He/she saw me."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo wọ́ aṣọ.",
+      "translation": "I wear clothes."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ilé tóbi.",
+      "translation": "The house is big."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo sọ Yorùbá.",
+      "translation": "I speak Yoruba."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "O lọ sí ọjà.",
+      "translation": "You go to the market."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ó mu omi.",
+      "translation": "He/she drank water."
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo kọ́ létà.",
+      "translation": "I wrote a letter."
+    },
+    { "difficulty": 1, "sentence": "Ẹ káàbọ̀.", "translation": "Welcome." },
+    { "difficulty": 1, "sentence": "Mo jẹun.", "translation": "I eat." },
+    { "difficulty": 1, "sentence": "Ilé mi.", "translation": "My house." },
+    { "difficulty": 1, "sentence": "Ó sùn.", "translation": "He/she sleeps." },
+    { "difficulty": 1, "sentence": "Mo gbọ́.", "translation": "I hear." },
+
+    {
+      "difficulty": 2,
+      "sentence": "Ọba wà ní ilé.",
+      "translation": "The king is at home."
+    },
+    { "difficulty": 2, "sentence": "Mo kò lọ.", "translation": "I didn’t go." },
+    {
+      "difficulty": 2,
+      "sentence": "Ilé rẹ nla.",
+      "translation": "Your house is big."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ó jẹ oúnjẹ dùn.",
+      "translation": "He/she ate sweet food."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ọmọ púpọ̀ wà ní ọjà.",
+      "translation": "Many children are at the market."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo wọ́ aṣọ funfun.",
+      "translation": "I wore white clothes."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ọbẹ gbóná.",
+      "translation": "The soup is hot."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo kò ní owó.",
+      "translation": "I don’t have money."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Wọ́n lọ sí ilé.",
+      "translation": "They went to the house."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo ra bàtà dúdú.",
+      "translation": "I bought a black shoe."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "O rí ọmọ.",
+      "translation": "You saw the child."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ó kọ́ létà fún mi.",
+      "translation": "He/she wrote a letter for me."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo mu omi tútù.",
+      "translation": "I drank cold water."
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ọmọ ọkan wà nílé.",
+      "translation": "One child is at home."
+    },
+    { "difficulty": 2, "sentence": "Mo sọ̀rọ̀.", "translation": "I talked." },
+
+    {
+      "difficulty": 3,
+      "sentence": "A lọ sí ọjà.",
+      "translation": "We went to the market."
+    },
+    { "difficulty": 3, "sentence": "Mo pàdé rẹ.", "translation": "I met you." },
+    {
+      "difficulty": 3,
+      "sentence": "Ilé wa tóbi.",
+      "translation": "Our house is big."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ó fún mi lówó.",
+      "translation": "He/she gave me money."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ọmọ kéré wà nílé.",
+      "translation": "A small child is at home."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ẹ wọ́ aṣọ pupa.",
+      "translation": "You all wore red clothes."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo gbọ́ ohùn rẹ.",
+      "translation": "I heard your voice."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo lọ sí ilé rẹ.",
+      "translation": "I went to your house."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ó kọ́ Yorùbá.",
+      "translation": "He/she learned Yoruba."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ta aṣọ.",
+      "translation": "I sold clothes."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Kú ìrọ̀lẹ́.",
+      "translation": "Good evening."
+    },
+    { "difficulty": 3, "sentence": "Mo mọ̀ ọ.", "translation": "I know you." },
+    {
+      "difficulty": 3,
+      "sentence": "Ọmọ méjì wà ní ọjà.",
+      "translation": "Two children are at the market."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "O ní bàtà.",
+      "translation": "You have a shoe."
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ràn án létà.",
+      "translation": "I sent him/her a letter."
+    },
+
+    {
+      "difficulty": 4,
+      "sentence": "Mo kò rí ọmọ.",
+      "translation": "I didn’t see the child."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ilé yin nla.",
+      "translation": "Your house is big (plural)."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo dá ilé.",
+      "translation": "I built a house."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ó kò jẹ oúnjẹ dùn.",
+      "translation": "He/she didn’t eat sweet food."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ọmọ púpọ̀ wà ní ilé rẹ.",
+      "translation": "Many children are at your house."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo kò wọ́ aṣọ funfun.",
+      "translation": "I didn’t wear white clothes."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ọbẹ kò gbóná.",
+      "translation": "The soup isn’t hot."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Wọ́n kò ní owó.",
+      "translation": "They don’t have money."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo ra bàtà dúdú fún ọ.",
+      "translation": "I bought a black shoe for you."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "O kò rí mi.",
+      "translation": "You didn’t see me."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ó kọ́ létà sí ọjà.",
+      "translation": "He/she wrote a letter to the market."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo mu omi tútù lọ.",
+      "translation": "I took cold water away."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ọmọ mẹ́ta wà nílé.",
+      "translation": "Three children are at home."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo sọ̀rọ̀ pẹ̀lú rẹ.",
+      "translation": "I talked with you."
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo kí ọ ní ọjà.",
+      "translation": "I greeted you at the market."
+    },
+
+    {
+      "difficulty": 5,
+      "sentence": "Mo mú bàtà wá.",
+      "translation": "I brought a shoe."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Sé o rí mi?",
+      "translation": "Did you see me?"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó sọ Yorùbá wá.",
+      "translation": "He/she spoke Yoruba and came."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo wọ́ aṣọ gíga.",
+      "translation": "I wore tall clothes."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ra bàtà fún ọ.",
+      "translation": "I bought a shoe for you."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Kí ni o kọ́?",
+      "translation": "What did you learn?"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó mú omi tútù wá.",
+      "translation": "He/she brought cold water."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo lọ sí ọjà rí ọ.",
+      "translation": "I went to the market and saw you."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Wọ́n wọ́ aṣọ pupa.",
+      "translation": "They wore red clothes."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo fẹ́ lọ sí ilé.",
+      "translation": "I want to go to the house."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó pàdé mi ní ọjà.",
+      "translation": "He/she met me at the market."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo kọ́ létà wá fún ọ.",
+      "translation": "I wrote a letter and brought it for you."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ọmọ mẹ́rin wà ní ilé.",
+      "translation": "Four children are at home."
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Nibo ni o lọ?",
+      "translation": "Where did you go?"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo gbádùn oúnjẹ.",
+      "translation": "I enjoyed the food."
+    },
+
+    {
+      "difficulty": 6,
+      "sentence": "Mo mú bàtà lọ sí ọjà.",
+      "translation": "I took the shoe to the market."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó wá ilẹ̀kùn ṣí.",
+      "translation": "He/she came and opened the door."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ra aṣọ wá fún ọ.",
+      "translation": "I bought clothes and brought them for you."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó mú omi gbóná lọ.",
+      "translation": "He/she took hot water away."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo lọ sí ilé kọ́ Yorùbá.",
+      "translation": "I went to the house and learned Yoruba."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Wọ́n wá sọ̀rọ̀ pẹ̀lú mi.",
+      "translation": "They came and talked with me."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo kọ́ létà rà bàtà.",
+      "translation": "I wrote a letter and bought a shoe."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó fún mi wá ní owó.",
+      "translation": "He/she gave me money and came."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo wọ́ aṣọ pupa lọ.",
+      "translation": "I wore red clothes and went."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Bawo ni o ṣe lọ?",
+      "translation": "How did you go?"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo mú ọmọ wá sí ilé.",
+      "translation": "I brought the child to the house."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó ra bàtà dúdú wá.",
+      "translation": "He/she bought a black shoe and came."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ọmọ mẹ́fà wà ní ọjà.",
+      "translation": "Six children are at the market."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo pàdé rẹ wá sí ilé.",
+      "translation": "I met you and came to the house."
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó kí mi lọ sí ọjà.",
+      "translation": "He/she greeted me and went to the market."
+    },
+
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò mú bàtà wá.",
+      "translation": "I didn’t bring a shoe."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó ni mo lọ sí ọjà.",
+      "translation": "It’s he/she who said I went to the market."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò rí ọmọ ní ilé.",
+      "translation": "I didn’t see the child at home."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Wọ́n kò wọ́ aṣọ funfun.",
+      "translation": "They didn’t wear white clothes."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo ni mo ra bàtà dúdú.",
+      "translation": "It’s me who bought a black shoe."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó kò fún mi lówó wá.",
+      "translation": "He/she didn’t give me money and come."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ta ni ó lọ sí ilé?",
+      "translation": "Who went to the house?"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò sọ Yorùbá wá.",
+      "translation": "I didn’t speak Yoruba and come."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó ni mo kọ́ létà lọ.",
+      "translation": "It’s he/she who wrote a letter and went."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò pàdé rẹ ní ọjà.",
+      "translation": "I didn’t meet you at the market."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Wọ́n kò mú omi tútù wá.",
+      "translation": "They didn’t bring cold water."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ọmọ mẹ́jọ wà ní ilé.",
+      "translation": "Eight children are at home."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò wọ́ aṣọ pupa lọ.",
+      "translation": "I didn’t wear red clothes and go."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó kò rí mi wá sí ilé.",
+      "translation": "He/she didn’t see me and come to the house."
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo ni mo gbádùn oúnjẹ.",
+      "translation": "It’s me who enjoyed the food."
+    },
+
+    {
+      "difficulty": 8,
+      "sentence": "Mo jẹ́ olùkọ́ ní ilé.",
+      "translation": "I am a teacher at home."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó kò mú bàtà wá sí ọjà.",
+      "translation": "He/she didn’t bring a shoe to the market."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo wọ́ aṣọ tí ó ra.",
+      "translation": "I wore the clothes that he/she bought."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Wọ́n lọ sí ilé tí mo kọ́.",
+      "translation": "They went to the house that I learned."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ra bàtà dúdú wá fún ọ.",
+      "translation": "I bought a black shoe and brought it for you."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó sọ Yorùbá tí mo gbọ́.",
+      "translation": "He/she spoke Yoruba that I heard."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo kò fún ọ lówó wá.",
+      "translation": "I didn’t give you money and come."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ọmọ mẹ́sán wà ní ọjà.",
+      "translation": "Nine children are at the market."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo pàdé rẹ ní ilé tí ó ní aṣọ.",
+      "translation": "I met you at the house that has clothes."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó kọ́ létà wá sí ilé mi.",
+      "translation": "He/she wrote a letter and came to my house."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo wọ́ aṣọ funfun lọ sí ọjà.",
+      "translation": "I wore white clothes and went to the market."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó mú omi tútù wá fún mi.",
+      "translation": "He/she brought cold water for me."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ni mo rí ọmọ ní ilé.",
+      "translation": "It’s me who saw the child at home."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó kò sọ̀rọ̀ pẹ̀lú mi wá.",
+      "translation": "He/she didn’t talk with me and come."
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo gbádùn oúnjẹ tí ó jẹ.",
+      "translation": "I enjoyed the food that he/she ate."
+    },
+
+    {
+      "difficulty": 9,
+      "sentence": "Ọmọ tí mo rí wà ní ọjà.",
+      "translation": "The child that I saw is at the market."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo wọ́ aṣọ tí ó ra wá.",
+      "translation": "I wore the clothes that he/she bought and brought."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó kò mú omi tí mo ra.",
+      "translation": "He/she didn’t bring the water that I bought."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo lọ sí ilé tí ó ní ọmọ.",
+      "translation": "I went to the house that has a child."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Wọ́n rí bàtà tí mo kọ́.",
+      "translation": "They saw the shoe that I learned."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo sọ Yorùbá tí ó gbọ́ wá.",
+      "translation": "I spoke the Yoruba that he/she heard and came."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó kọ́ létà tí mo mú lọ.",
+      "translation": "He/she wrote the letter that I took away."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo fún ọmọ tí ó wà nílé lówó.",
+      "translation": "I gave money to the child who is at home."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ọmọ tí mo pàdé wọ́ aṣọ pupa.",
+      "translation": "The child that I met wore red clothes."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo ra aṣọ tí ó wọ́ wá fún mi.",
+      "translation": "I bought the clothes that he/she wore and brought for me."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó kò rí ilé tí mo ní.",
+      "translation": "He/she didn’t see the house that I have."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo mú omi tí ó jẹun wá.",
+      "translation": "I brought the water that he/she ate with."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ọmọ mẹ́wà wà ní ilé tí mo lọ sí.",
+      "translation": "Ten children are at the house that I went to."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo kò sọ̀rọ̀ pẹ̀lú ọmọ tí ó wá.",
+      "translation": "I didn’t talk with the child who came."
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó gbádùn oúnjẹ tí mo ra wá.",
+      "translation": "He/she enjoyed the food that I bought and brought."
+    },
+
+    {
+      "difficulty": 10,
+      "sentence": "Ọmọ tí ó ní ilé wà ní ọjà.",
+      "translation": "The child who has a house is at the market."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo wọ́ aṣọ tí ó mú wá lọ.",
+      "translation": "I wore the clothes that he/she brought and took away."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó kò rí omi tí mo fún ọ.",
+      "translation": "He/she didn’t see the water that I gave you."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo lọ sí ọjà tí ó ní bàtà.",
+      "translation": "I went to the market that has a shoe."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Wọ́n sọ Yorùbá tí mo kọ́ wá.",
+      "translation": "They spoke the Yoruba that I learned and came."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo kọ́ létà tí ó ra aṣọ wá.",
+      "translation": "I wrote the letter that he/she bought clothes and brought."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó mú bàtà tí mo wọ́ lọ sí ilé.",
+      "translation": "He/she took the shoe that I wore to the house."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo fún ọmọ tí ó sọ̀rọ̀ lówó.",
+      "translation": "I gave money to the child who talked."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ọmọ tí mo gbọ́ wọ́ aṣọ funfun.",
+      "translation": "The child that I heard wore white clothes."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo ra omi tí ó kọ́ létà wá.",
+      "translation": "I bought the water that he/she wrote a letter and brought."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó kò pàdé ọmọ tí mo ní ilé.",
+      "translation": "He/she didn’t meet the child that I have at home."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo mú aṣọ tí ó wà ní ọjà wá.",
+      "translation": "I brought the clothes that are at the market."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ọmọ mẹ́wà wà ní ilé tí ó ra bàtà.",
+      "translation": "Ten children are at the house that bought a shoe."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo kò sọ Yorùbá tí ó fún mi wá.",
+      "translation": "I didn’t speak the Yoruba that he/she gave me and came."
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó gbádùn oúnjẹ tí mo wọ́ aṣọ ra.",
+      "translation": "He/she enjoyed the food that I wore clothes and bought."
+    },
+
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá lọ, mo máa rí ọ.",
+      "translation": "If I go, I’ll see you."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo ni mo wọ́ aṣọ tí ó ra.",
+      "translation": "It’s me who wore the clothes that he/she bought."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó kò mú omi tí mo fún ọ wá.",
+      "translation": "He/she didn’t bring the water that I gave you."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo lọ sí ilé tí ó ní ọmọ wá.",
+      "translation": "I went to the house that has a child and came."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá kò ra bàtà, mo máa wọ́ aṣọ.",
+      "translation": "If I don’t buy a shoe, I’ll wear clothes."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó ni mo sọ Yorùbá tí ó gbọ́.",
+      "translation": "It’s he/she who said I spoke the Yoruba that he/she heard."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo kọ́ létà tí ó mú wá sí ọjà.",
+      "translation": "I wrote the letter that he/she brought to the market."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Wọ́n fún ọmọ tí mo rí lówó.",
+      "translation": "They gave money to the child that I saw."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ọmọ tí mo pàdé wà ní ilé tí ó ní aṣọ.",
+      "translation": "The child that I met is at the house that has clothes."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo ra aṣọ tí ó wọ́ lọ sí ọjà.",
+      "translation": "I bought the clothes that he/she wore and went to the market."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó kò rí ilé tí mo wọ́ aṣọ lọ sí.",
+      "translation": "He/she didn’t see the house that I wore clothes and went to."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo mú omi tí ó sọ̀rọ̀ wá fún ọ.",
+      "translation": "I brought the water that he/she talked about for you."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ọmọ mọ́kànlá wà ní ọjà tí mo lọ sí.",
+      "translation": "Eleven children are at the market that I went to."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá wọ́ aṣọ, mo máa lọ sí ilé.",
+      "translation": "If I wear clothes, I’ll go to the house."
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó gbádùn oúnjẹ tí mo kọ́ létà ra.",
+      "translation": "He/she enjoyed the food that I wrote a letter and bought."
+    },
+
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá kò lọ, mo máa rí ọmọ.",
+      "translation": "If I don’t go, I’ll see the child."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo ni mo wọ́ aṣọ tí ó mú wá lọ.",
+      "translation": "It’s me who wore the clothes that he/she brought and took away."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó kò fún mi lówó tí mo ra bàtà.",
+      "translation": "He/she didn’t give me money that I bought a shoe with."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo lọ sí ọjà tí ó ní ilé wá fún ọ.",
+      "translation": "I went to the market that has a house and came for you."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá ra aṣọ, mo máa wọ́ tí ó ní ọmọ.",
+      "translation": "If I buy clothes, I’ll wear what has a child."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó ni mo sọ Yorùbá tí ó mú wá.",
+      "translation": "It’s he/she who said I spoke the Yoruba that he/she brought."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo kọ́ létà tí ó wọ́ aṣọ lọ sí ọjà.",
+      "translation": "I wrote the letter that he/she wore clothes and went to the market with."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Wọ́n mú omi tí mo ra wá fún ọmọ.",
+      "translation": "They brought the water that I bought for the child."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ọmọ tí mo rí lọ sí ilé tí ó ní aṣọ.",
+      "translation": "The child that I saw went to the house that has clothes."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo ra bàtà tí ó kọ́ létà wá sí ilé.",
+      "translation": "I bought the shoe that he/she wrote a letter and brought to the house."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó kò pàdé ọmọ tí mo wọ́ aṣọ fún.",
+      "translation": "He/she didn’t meet the child that I wore clothes for."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo mú aṣọ tí ó ní ilé wá fún ọ.",
+      "translation": "I brought the clothes that have a house for you."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ọmọ méjìlá wà ní ọjà tí mo ra omi.",
+      "translation": "Twelve children are at the market that I bought water from."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá kò sọ Yorùbá, mo máa wà nílé.",
+      "translation": "If I don’t speak Yoruba, I’ll stay at home."
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó gbádùn oúnjẹ tí mo lọ sí ọjà ra.",
+      "translation": "He/she enjoyed the food that I went to the market and bought."
+    },
+
+    {
+      "difficulty": 13,
+      "sentence": "Mo ń lọ sí ọjà tí ó ní ilé.",
+      "translation": "I am going to the market that has a house."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó ni mo ń wọ́ aṣọ tí ó ra.",
+      "translation": "It’s he/she who said I am wearing the clothes that he/she bought."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo kò ń mú omi tí ó fún mi.",
+      "translation": "I am not bringing the water that he/she gave me."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ń lọ sí ilé tí ó ní ọmọ wá.",
+      "translation": "I am going to the house that has a child and coming."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Bí mo bá ń ra bàtà, mo máa wọ́ aṣọ.",
+      "translation": "If I am buying a shoe, I’ll wear clothes."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó ń sọ Yorùbá tí mo gbọ́ wá.",
+      "translation": "He/she is speaking the Yoruba that I heard and came."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ń kọ́ létà tí ó mú wá sí ọjà.",
+      "translation": "I am writing the letter that he/she brought to the market."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Wọ́n ń mú omi tí mo ra lọ.",
+      "translation": "They are bringing the water that I bought away."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ọmọ tí mo ń rí wọ́ aṣọ tí ó ní ilé.",
+      "translation": "The child that I am seeing is wearing the clothes that have a house."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ń ra aṣọ tí ó wọ́ wá fún mi.",
+      "translation": "I am buying the clothes that he/she wore and brought for me."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó kò ń pàdé ọmọ tí mo fún lówó.",
+      "translation": "He/she isn’t meeting the child that I gave money to."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ń mú omi tí ó sọ̀rọ̀ wá sí ilé.",
+      "translation": "I am bringing the water that he/she talked about to the house."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ọmọ mẹ́tàlá wà ní ọjà tí mo ń lọ sí.",
+      "translation": "Thirteen children are at the market that I am going to."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Bí mo bá ń wọ́ aṣọ, mo máa lọ sí ọjà.",
+      "translation": "If I am wearing clothes, I’ll go to the market."
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó ń gbádùn oúnjẹ tí mo ń kọ́ létà ra.",
+      "translation": "He/she is enjoying the food that I am writing a letter and buying."
+    },
+
+    {
+      "difficulty": 14,
+      "sentence": "Ílọ́ ni mo ń ṣe tí ó ní ọmọ.",
+      "translation": "Going is what I am doing that has a child."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó ni mo ń wọ́ aṣọ tí ó mú wá lọ.",
+      "translation": "It’s he/she who said I am wearing the clothes that he/she brought and took away."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo kò ń mú omi tí ó ra wá sí ilé.",
+      "translation": "I am not bringing the water that he/she bought to the house."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ìsọ̀rọ̀ ni mo ń ṣe tí ó ní ilé.",
+      "translation": "Talking is what I am doing that has a house."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Bí mo bá ń ra aṣọ, mo máa wọ́ tí ó lọ sí ọjà.",
+      "translation": "If I am buying clothes, I’ll wear what went to the market."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó ń sọ Yorùbá tí mo kọ́ wá fún ọ.",
+      "translation": "He/she is speaking the Yoruba that I learned and came for you with."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo ń kọ́ létà tí ó wọ́ aṣọ lọ sí ilé.",
+      "translation": "I am writing the letter that he/she wore clothes and went to the house with."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Wọ́n ń mú omi tí mo fún ọ wá sí ọjà.",
+      "translation": "They are bringing the water that I gave you to the market."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ọmọ tí mo ń rí lọ sí ilé tí ó ní bàtà.",
+      "translation": "The child that I am seeing went to the house that has a shoe."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo ń ra bàtà tí ó kọ́ létà wá sí ọjà.",
+      "translation": "I am buying the shoe that he/she wrote a letter and brought to the market."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó kò ń pàdé ọmọ tí mo wọ́ aṣọ fún lọ.",
+      "translation": "He/she isn’t meeting the child that I wore clothes for and went."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo ń mú aṣọ tí ó ní ilé wá fún ọmọ.",
+      "translation": "I am bringing the clothes that have a house for the child."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ọmọ mẹ́rìndínlógún wà ní ọjà tí mo ń ra omi.",
+      "translation": "Fifteen children are at the market that I am buying water from."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Bí mo bá ń sọ Yorùbá, mo máa wà nílé tí ó ní aṣọ.",
+      "translation": "If I am speaking Yoruba, I’ll stay at the house that has clothes."
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó ń gbádùn oúnjẹ tí mo ń lọ sí ọjà ra.",
+      "translation": "He/she is enjoying the food that I am going to the market and buying."
+    },
+
+    {
+      "difficulty": 15,
+      "sentence": "Ó sọ pé kí mo lọ tí mo bá rí ọ.",
+      "translation": "He said that I should go when I see you."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ni mo ń wọ́ aṣọ tí ó mú wá tí mo lọ sí ọjà.",
+      "translation": "It’s me who is wearing the clothes that he/she brought that I went to the market with."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó kò ń mú omi tí mo fún ọ tí mo lọ sí ilé.",
+      "translation": "He/she isn’t bringing the water that I gave you that I went to the house with."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ìlọ́ ni mo ń ṣe tí ó ní ọmọ tí mo ra aṣọ.",
+      "translation": "Going is what I am doing that has a child that I bought clothes for."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Bí mo bá ń ra aṣọ tí ó lọ sí ọjà, mo máa wọ́ tí ó wá.",
+      "translation": "If I am buying clothes that went to the market, I’ll wear what came."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó ń sọ Yorùbá tí mo kọ́ wá tí mo fún ọ.",
+      "translation": "He/she is speaking the Yoruba that I learned and came with that I gave you."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ń kọ́ létà tí ó wọ́ aṣọ tí mo lọ sí ọjà wá.",
+      "translation": "I am writing the letter that he/she wore clothes with that I went to the market and came with."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Wọ́n ń mú omi tí mo ra tí mo lọ sí ilé fún ọmọ.",
+      "translation": "They are bringing the water that I bought that I went to the house with for the child."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ọmọ tí mo ń rí wọ́ aṣọ tí ó ní ilé tí mo lọ sí.",
+      "translation": "The child that I am seeing is wearing the clothes that have a house that I went to."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ń ra bàtà tí ó kọ́ létà wá tí mo fún ọ sí ọjà.",
+      "translation": "I am buying the shoe that he/she wrote a letter and brought with that I gave you to the market."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó kò ń pàdé ọmọ tí mo wọ́ aṣọ tí mo lọ sí ilé fún.",
+      "translation": "He/she isn’t meeting the child that I wore clothes with that I went to the house for."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ń mú aṣọ tí ó ní ilé tí mo lọ sí tí mo ra omi.",
+      "translation": "I am bringing the clothes that have a house that I went to that I bought water from."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ọmọ mẹ́rìndínlógún wà ní ọjà tí mo ń ra omi tí mo lọ sí ilé.",
+      "translation": "Fifteen children are at the market that I am buying water from that I went to the house with."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Bí mo bá ń sọ Yorùbá tí ó wà nílé, mo máa wọ́ aṣọ tí ó ra.",
+      "translation": "If I am speaking the Yoruba that is at home, I’ll wear the clothes that he/she bought."
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó ń gbádùn oúnjẹ tí mo ń lọ sí ọjà tí ó ní ilé ra.",
+      "translation": "He/she is enjoying the food that I am going to the market that has a house and buying."
+    }
+  ]
+}

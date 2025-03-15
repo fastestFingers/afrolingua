@@ -1,0 +1,148 @@
+/* /AI/styles/vocabgen.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background: white; /* Black background */
+    color: #ffffff; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  .container {
+    background: #ffffff; /* White container */
+    border-radius: 15px;
+    padding: 30px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, #000000, #ffd700); /* Logo gradient for title */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  #selectedLanguage {
+    color: #000000; /* Black for language highlight (since h1 is on white background) */
+    font-weight: 700;
+  }
+  
+  #vocabContent {
+    margin-bottom: 25px;
+  }
+  
+  .vocab-card {
+    background: #ffffff; /* White card */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #000000; /* Black accent */
+  }
+  
+  .vocab-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4); /* Black shadow */
+  }
+  
+  .vocab-card h2 {
+    font-size: 1.6rem;
+    color: #000000; /* Black word */
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .vocab-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #000000; /* Black text */
+  }
+  
+  .vocab-card p strong {
+    color: #000000; /* Black for emphasis */
+    font-weight: 600;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  button {
+    background: #000000; /* Black buttons */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover {
+    background: #ffffff; /* White on hover */
+    color: #000000; /* Black text on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  #timerDisplay {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #000000; /* Black timer (on white container) */
+    margin-top: 20px;
+    font-style: italic;
+  }
+  
+  /* Animation for card entry */
+  .vocab-card {
+    animation: slideIn 0.4s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .vocab-card h2 {
+      font-size: 1.4rem;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }

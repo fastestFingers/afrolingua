@@ -1,0 +1,1135 @@
+{
+  "exercises": [
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ sí ilé. (I go to the house.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "____ wa nílé. (The child is at home.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ bàtà. (I bought a shoe.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ó ____ mi. (He/she saw me.)",
+      "answer": "rí"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ ní ọjà. (I am at the market.)",
+      "answer": "wà"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "____ jẹ oúnjẹ. (He/she eats food.)",
+      "answer": "Ó"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ aṣọ. (I wear clothes.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ilé ____ nla. (The big house)",
+      "answer": "tóbi"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ Yorùbá. (I speak Yoruba.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "____ lọ sí ọjà. (You go to the market.)",
+      "answer": "O"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ létà. (I wrote a letter.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "Ó ____ omi. (He/she drank water.)",
+      "answer": "mu"
+    },
+    { "difficulty": 1, "sentence": "____ káàbọ̀. (Welcome.)", "answer": "Ẹ" },
+    {
+      "difficulty": 1,
+      "sentence": "Mo ____ ọmọ. (I see the child.)",
+      "answer": "rí"
+    },
+    {
+      "difficulty": 1,
+      "sentence": "____ ni ilé mi. (This is my house.)",
+      "answer": "Èyí"
+    },
+
+    {
+      "difficulty": 2,
+      "sentence": "____ (king) wà ní ilé. (The king is at home.)",
+      "answer": "Ọba"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo kò ____. (I didn’t go.)",
+      "answer": "lọ"
+    },
+    { "difficulty": 2, "sentence": "Ilé ____ (my house)", "answer": "mi" },
+    {
+      "difficulty": 2,
+      "sentence": "Ó ____ oúnjẹ dùn. (He/she ate sweet food.)",
+      "answer": "jẹ"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo rí ____ púpọ̀. (I saw many children.)",
+      "answer": "ọmọ"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "____ rẹ wà ní ọjà. (Your house is at the market.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo ____ aṣọ funfun. (I wore white clothes.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "____ (soup) gbóná. (The soup is hot.)",
+      "answer": "Ọbẹ"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo kò ____ owó. (I didn’t have money.)",
+      "answer": "ní"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Wọ́n ____ sí ilé. (They went to the house.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo ____ bàtà dúdú. (I bought a black shoe.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "____ ni mo rí. (It’s you I saw.)",
+      "answer": "O"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Ó ____ létà fún mi. (He/she wrote a letter for me.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "Mo ____ omi tútù. (I drank cold water.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 2,
+      "sentence": "____ ọkan wà nílé. (One child is at home.)",
+      "answer": "Ọmọ"
+    },
+
+    {
+      "difficulty": 3,
+      "sentence": "____ lọ sí ọjà. (We went to the market.)",
+      "answer": "A"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ____ rẹ ní ọjà. (I met you at the market.)",
+      "answer": "pàdé"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ilé ____ wà nílé. (Our house is at home.)",
+      "answer": "wa"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ó ____ mi lówó. (He/she gave me money.)",
+      "answer": "fún"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo rí ____ kéré. (I saw a small child.)",
+      "answer": "ọmọ"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "____ wọ́ aṣọ pupa. (You wore red clothes.)",
+      "answer": "O"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ____ ohùn rẹ. (I heard your voice.)",
+      "answer": "gbọ́"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "____ sí ilé ni mo lọ. (To the house is where I went.)",
+      "answer": "Sí"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ____ Yorùbá ní ilé. (I learned Yoruba at home.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "____ ni mo wà. (It’s me who is here.)",
+      "answer": "Mo"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ẹ ____ sí ọjà. (You all went to the market.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Ó ____ aṣọ fún mi. (He/she sold clothes to me.)",
+      "answer": "ta"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "____ ìrọ̀lẹ́ ni mo wá. (Good evening, I came.)",
+      "answer": "Kú"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "Mo ____ ọ ní ilé. (I know you at home.)",
+      "answer": "mọ̀"
+    },
+    {
+      "difficulty": 3,
+      "sentence": "____ méjì wà ní ọjà. (Two children are at the market.)",
+      "answer": "Ọmọ"
+    },
+
+    {
+      "difficulty": 4,
+      "sentence": "Mo kò ____ sí ilé. (I didn’t go to the house.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ilé ____ wà ní ọjà. (Your house is at the market.)",
+      "answer": "rẹ"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo ____ ilé nílé. (I built a house at home.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ó rí ____ kéré ní ọjà. (He/she saw a small child at the market.)",
+      "answer": "ọmọ"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo kò ____ bàtà. (I didn’t buy a shoe.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "____ wa wà nílé. (Our child is at home.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo ____ aṣọ funfun ní ọjà. (I wore white clothes at the market.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ó kò ____ omi. (He/she didn’t drink water.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo rí ____ púpọ̀ ní ilé. (I saw many houses at home.)",
+      "answer": "ilé"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "____ yin wà ní ọjà. (Your house is at the market, plural.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo ____ bàtà dúdú ní ọjà. (I bought a black shoe at the market.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "____ ni mo kọ́ ní ilé. (It’s Yoruba I learned at home.)",
+      "answer": "Yorùbá"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Ó kò ____ létà fún mi. (He/she didn’t write a letter for me.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "Mo ____ omi tútù ní ilé. (I drank cold water at home.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 4,
+      "sentence": "____ mẹ́ta wà ní ọjà. (Three children are at the market.)",
+      "answer": "Ọmọ"
+    },
+
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ bàtà wá. (I brought a shoe.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "____ ni o rí ní ọjà? (What did you see at the market?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó ____ Yorùbá ní ilé. (He/she spoke Yoruba at home.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo rí ____ gíga ní ọjà. (I saw a tall man at the market.)",
+      "answer": "ọkùnrin"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "____ lọ sí ilé? (Did you go to the house?)",
+      "answer": "Sé"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ aṣọ pupa wá. (I wore red clothes and came.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó ____ omi gbóná. (He/she drank hot water.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ bàtà fún ọ. (I bought a shoe for you.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "____ wọn wà ní ọjà. (Their house is at the market.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ lọ sí ilé rẹ. (I wanted to go to your house.)",
+      "answer": "fẹ́"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Ó ____ aṣọ tí mo ra. (He/she saw the clothes that I bought.)",
+      "answer": "rí"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ létà wá fún ọ. (I wrote a letter and brought it for you.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "____ mẹ́rin wà ní ilé. (Four children are at home.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "Mo ____ pẹ̀lú rẹ ní ọjà. (I met with you at the market.)",
+      "answer": "pàdé"
+    },
+    {
+      "difficulty": 5,
+      "sentence": "____ ni o wọ́? (What did you wear?)",
+      "answer": "Kí"
+    },
+
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ bàtà lọ. (I took the shoe away.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó ____ ọbẹ̀ wá. (He/she brought the soup.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ ilẹ̀kùn sí ọjà. (I opened the door to the market.)",
+      "answer": "ṣí"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "____ ni o wá sí ilé? (Where did you come to the house from?)",
+      "answer": "Nibo"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ aṣọ fún ọ wá. (I bought clothes for you and came.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó ____ omi tútù wá. (He/she brought cold water.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ lọ sí ọjà rí ọ. (I went to the market to see you.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "____ wọn rí ní ilé. (Their child saw at home.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ bàtà dúdú lọ sí ọjà. (I took a black shoe to the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó ____ létà kọ́ wá. (He/she wrote a letter and brought it.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ sí ilé fún ọ. (I came to the house for you.)",
+      "answer": "wá"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "____ mẹ́fà wà ní ọjà. (Six children are at the market.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ aṣọ pupa sí ilé. (I wore red clothes to the house.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Ó ____ omi gbóná lọ. (He/she took hot water away.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 6,
+      "sentence": "Mo ____ Yorùbá sílẹ̀ wá. (I learned Yoruba and came.)",
+      "answer": "kọ́"
+    },
+
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò ____ bàtà wá. (I didn’t bring a shoe.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ ni mo rí ní ọjà. (It’s me who saw at the market.)",
+      "answer": "Mo"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó kò ____ ilẹ̀kùn. (He/she didn’t open the door.)",
+      "answer": "ṣí"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo ____ aṣọ funfun lọ sí ilé. (I wore white clothes to the house.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ wọn kò lọ sí ọjà. (Their child didn’t go to the market.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò ____ omi tútù. (I didn’t drink cold water.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ ni o ra bàtà? (Who bought the shoe?)",
+      "answer": "Ta"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo ____ létà kọ́ fún ọ. (I wrote a letter for you.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó kò ____ pẹ̀lú mi ní ọjà. (He/she didn’t meet with me at the market.)",
+      "answer": "pàdé"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo ____ bàtà dúdú wá fún ọ. (I brought a black shoe for you.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ ni mo wà ní ilé. (It’s me who is at home.)",
+      "answer": "Mo"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Ó kò ____ Yorùbá sílẹ̀. (He/she didn’t learn Yoruba.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ mẹ́jọ wà ní ilé. (Eight children are at home.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "Mo kò ____ aṣọ pupa. (I didn’t wear red clothes.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 7,
+      "sentence": "____ ni o mu omi gbóná? (Who drank hot water?)",
+      "answer": "Ta"
+    },
+
+    {
+      "difficulty": 8,
+      "sentence": "Mo ____ ni olùkọ́ ní ilé. (I am a teacher at home.)",
+      "answer": "jẹ́"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ ni mo wọ́ ní ọjà? (What did I wear at the market?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó ____ létà kọ́ wá fún mi. (He/she wrote a letter and brought it for me.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ____ aṣọ funfun sí ilé rẹ. (I wore white clothes to your house.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ wọn rí ọmọ tí mo ra bàtà fún. (Their child saw the child I bought a shoe for.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo kò ____ omi gbóná wá. (I didn’t bring hot water.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ ni o pàdé ní ọjà? (Who did you meet at the market?)",
+      "answer": "Ta"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ____ bàtà dúdú lọ sí ilé. (I took a black shoe to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó ____ Yorùbá sílẹ̀ wá fún mi. (He/she learned Yoruba and came for me.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ____ aṣọ pupa wá sí ọjà. (I wore red clothes to the market.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ ni mo ra fún ní ilé. (It’s clothes I bought for him/her at home.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Ó ____ omi tútù lọ sí ọjà. (He/she took cold water to the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ mẹ́sán wà ní ọjà. (Nine children are at the market.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "Mo ____ lọ sí ilé rẹ rí ọ. (I went to your house to see you.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 8,
+      "sentence": "____ ni o wà ní ilé mi? (Who is at my house?)",
+      "answer": "Ta"
+    },
+
+    {
+      "difficulty": 9,
+      "sentence": "Ọmọ ____ mo rí wà ní ọjà. (The child that I saw is at the market.)",
+      "answer": "tí"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo ____ aṣọ tí ó ra wá. (I wore the clothes that he/she bought and came.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ ni o mú omi tí mo ra? (Who brought the water that I bought?)",
+      "answer": "Ta"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó ____ létà tí mo kọ́ wá. (He/she brought the letter that I wrote.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo rí ____ tí ó wọ́ aṣọ pupa. (I saw the child who wore red clothes.)",
+      "answer": "ọmọ"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ ni mo lọ sí tí ó wà ní ọjà. (It’s the house I went to that is at the market.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó kò ____ omi tí mo mu. (He/she didn’t drink the water that I drank.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo ____ bàtà tí ó ra lọ sí ilé. (I took the shoe that he/she bought to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ tí mo wọ́ wà ní ọjà. (The clothes that I wore are at the market.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Ó ____ Yorùbá tí mo kọ́ wá. (He/she spoke the Yoruba that I learned and came.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo ____ lọ sí ilé tí ó wà ní ọjà. (I went to the house that is at the market.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ tí mo ra wà ní ilé rẹ. (The shoe that I bought is at your house.)",
+      "answer": "Bàtà"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ mẹ́wà wà ní ilé tí mo lọ sí. (Ten children are at the house I went to.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "Mo kò ____ omi tí ó mu wá. (I didn’t bring the water that he/she drank.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 9,
+      "sentence": "____ ni o rí tí mo wọ́? (What did you see that I wore?)",
+      "answer": "Kí"
+    },
+
+    {
+      "difficulty": 10,
+      "sentence": "Ọmọ ____ ó ní ilé wà ní ọjà. (The child who has a house is at the market.)",
+      "answer": "tí"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo ____ aṣọ tí ó wọ́ lọ sí ilé. (I took the clothes that he/she wore to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ ni o ra tí mo wọ́? (What did you buy that I wore?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó ____ létà tí mo kọ́ wá fún ọ. (He/she brought the letter that I wrote for you.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo rí ____ tí ó mú bàtà wá. (I saw the child who brought a shoe.)",
+      "answer": "ọmọ"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ tí ó wà ní ilé rí mi. (The house that is at home saw me.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó kò ____ omi tí mo mú lọ. (He/she didn’t take the water that I brought.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo ____ bàtà tí ó ra wá fún mi. (I wore the shoe that he/she bought for me.)",
+      "answer": "wọ́"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ tí mo sọ wà ní ọjà. (The Yoruba that I spoke is at the market.)",
+      "answer": "Yorùbá"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Ó ____ aṣọ tí mo ra lọ sí ilé. (He/she took the clothes that I bought to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo ____ lọ sí ilé tí ó ní ọmọ. (I went to the house that has a child.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ tí mo mu wà ní ọjà rẹ. (The water that I drank is at your market.)",
+      "answer": "Omi"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ mọ́kànlá wà ní ilé tí ó ra aṣọ. (Eleven children are at the house that bought clothes.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "Mo kò ____ bàtà tí ó wọ́ wá. (I didn’t bring the shoe that he/she wore.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 10,
+      "sentence": "____ ni o wọ́ tí mo rí? (What did you wear that I saw?)",
+      "answer": "Kí"
+    },
+
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá ____, mo máa rí i. (If I go, I’ll see him/her.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ ni mo wọ́ aṣọ tí ó ra. (It’s me who wore the clothes that he/she bought.)",
+      "answer": "Mo"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó kò ____ omi tí mo mú wá fún ọ. (He/she didn’t drink the water that I brought for you.)",
+      "answer": "mu"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo ____ létà tí ó kọ́ lọ sí ilé. (I took the letter that he/she wrote to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ tí mo rí wọ́ aṣọ pupa. (The child that I saw wore red clothes.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá kò ____, mo máa wà ní ilé. (If I don’t go, I’ll be at home.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ ni o ra bàtà tí mo wọ́? (Who bought the shoe that I wore?)",
+      "answer": "Ta"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo ____ Yorùbá tí ó sọ wá fún ọ. (I spoke the Yoruba that he/she spoke and came for you.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó ____ aṣọ tí mo wọ́ wá sí ọjà. (He/she brought the clothes that I wore to the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ tí mo ní wà ní ilé rẹ. (The house that I have is at your place.)",
+      "answer": "Ilé"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Mo kò ____ omi tí ó ra lọ. (I didn’t take the water that he/she bought.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ méjìlá wà ní ọjà tí mo lọ sí. (Twelve children are at the market I went to.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Bí mo bá ____ bàtà, mo máa wọ́ aṣọ. (If I buy a shoe, I’ll wear clothes.)",
+      "answer": "ra"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "____ ni mo kọ́ tí ó wà ní ilé? (What did I learn that is at home?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 11,
+      "sentence": "Ó ____ lọ sí ilé tí mo ra aṣọ fún. (He/she went to the house that I bought clothes for.)",
+      "answer": "lọ"
+    },
+
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá kò ____, mo máa rí ọmọ ní ọjà. (If I don’t go, I’ll see a child at the market.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ ni mo wọ́ tí ó ra wá fún mi. (It’s the clothes I wore that he/she bought and brought for me.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó kò ____ omi tí mo mú lọ sí ilé. (He/she didn’t take the water that I brought to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo ____ létà tí ó kọ́ wá sí ọjà. (I brought the letter that he/she wrote to the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ tí mo rí wà ní ilé tí ó ní aṣọ. (The child that I saw is at the house that has clothes.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá ____ bàtà, mo máa wọ́ aṣọ pupa. (If I bring a shoe, I’ll wear red clothes.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ ni o ra tí mo wọ́ wá? (What did you buy that I wore and came?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo ____ Yorùbá tí ó sọ lọ sí ilé. (I spoke the Yoruba that he/she spoke and went to the house.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó ____ aṣọ tí mo ra wá fún ọ ní ọjà. (He/she brought the clothes that I bought for you at the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ tí mo wọ́ wà ní ọjà tí ó ní ilé. (The clothes that I wore are at the market that has a house.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Mo kò ____ omi tí ó wọ́ wá. (I didn’t bring the water that he/she wore and came.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ mẹ́tàlá wà ní ilé tí mo ra bàtà fún. (Thirteen children are at the house I bought a shoe for.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Bí mo bá kò ____ Yorùbá, mo máa wà ní ilé. (If I don’t learn Yoruba, I’ll be at home.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "____ ni mo lọ sí tí ó wà ní ọjà rẹ? (What did I go to that is at your market?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 12,
+      "sentence": "Ó ____ lọ sí ilé tí mo mú omi wá fún. (He/she went to the house that I brought water for.)",
+      "answer": "lọ"
+    },
+
+    {
+      "difficulty": 13,
+      "sentence": "Mo ____ lọ sí ọjà tí ó ní ilé. (I am going to the market that has a house.)",
+      "answer": "ń"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ ni mo wọ́ tí ó ra wá sí ilé. (It’s the clothes I am wearing that he/she bought and brought to the house.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó kò ____ omi tí mo ń mu wá. (He/she didn’t bring the water that I am drinking.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ____ létà tí ó ń kọ́ wá fún ọ. (I am bringing the letter that he/she is writing for you.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ tí mo ń rí wọ́ aṣọ tí ó ra. (The child that I am seeing is wearing the clothes that he/she bought.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Bí mo bá kò ____, mo máa wà ní ilé tí ó ní ọmọ. (If I don’t go, I’ll be at the house that has a child.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ ni o ń ra tí mo wọ́? (What are you buying that I am wearing?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo ____ Yorùbá tí ó ń sọ wá sí ọjà. (I am speaking the Yoruba that he/she is speaking and coming to the market.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó ____ aṣọ tí mo ń wọ́ wá fún ọ. (He/she is bringing the clothes that I am wearing for you.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ tí mo ń kọ́ wà ní ilé tí ó ní aṣọ. (The Yoruba that I am learning is at the house that has clothes.)",
+      "answer": "Yorùbá"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Mo kò ____ omi tí ó ń mu lọ sí ilé. (I am not bringing the water that he/she is drinking to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ mẹ́rìndínlógún wà ní ọjà tí mo ń lọ sí. (Fifteen children are at the market that I am going to.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Bí mo bá ____ bàtà, mo máa wọ́ aṣọ tí ó ra. (If I am buying a shoe, I’ll wear the clothes that he/she bought.)",
+      "answer": "ń ra"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "____ ni mo ń wọ́ tí ó wà ní ilé? (What am I wearing that is at home?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 13,
+      "sentence": "Ó ____ lọ sí ilé tí mo ń ra aṣọ fún. (He/she is going to the house that I am buying clothes for.)",
+      "answer": "ń"
+    },
+
+    {
+      "difficulty": 14,
+      "sentence": "____ ni mo ń ṣe ní ọjà. (Going is what I am doing at the market.)",
+      "answer": "Ílọ́"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ ni mo wọ́ tí ó ń ra wá fún mi. (It’s the clothes I am wearing that he/she is buying and bringing for me.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó kò ____ omi tí mo ń mu wá sí ilé. (He/she isn’t bringing the water that I am drinking to the house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo ____ létà tí ó ń kọ́ lọ sí ọjà. (I am taking the letter that he/she is writing to the market.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ tí mo ń rí wà ní ilé tí ó ń wọ́ aṣọ. (The child that I am seeing is at the house that is wearing clothes.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Bí mo bá kò ____ Yorùbá, mo máa wà ní ilé tí ó ń sọ. (If I’m not learning Yoruba, I’ll be at the house that is speaking.)",
+      "answer": "kọ́"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ ni o ń ra tí mo ń wọ́ wá? (What are you buying that I am wearing and coming?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo ____ Yorùbá tí ó ń sọ lọ sí ilé rẹ. (I am speaking the Yoruba that he/she is speaking and going to your house.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó ____ aṣọ tí mo ń wọ́ wá sí ọjà tí ó ní ilé. (He/she is bringing the clothes that I am wearing to the market that has a house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ tí mo ń ra wà ní ilé tí ó ń mu omi. (The shoe that I am buying is at the house that is drinking water.)",
+      "answer": "Bàtà"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Mo kò ____ omi tí ó ń wọ́ wá sí ilé rẹ. (I am not bringing the water that he/she is wearing to your house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ mẹ́rìndínlógún wà ní ọjà tí mo ń ra aṣọ fún. (Fifteen children are at the market that I am buying clothes for.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Bí mo bá ____ aṣọ, mo máa wọ́ tí ó ń ra wá. (If I am wearing clothes, I’ll wear what he/she is buying and bringing.)",
+      "answer": "ń wọ́"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "____ ni mo ń sọ tí ó wà ní ilé rẹ? (What am I speaking that is at your house?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 14,
+      "sentence": "Ó ____ lọ sí ilé tí mo ń mú omi wá fún ní ọjà. (He/she is going to the house that I am bringing water for at the market.)",
+      "answer": "ń"
+    },
+
+    {
+      "difficulty": 15,
+      "sentence": "Ó sọ pé kí mo ____ tí mo bá rí i. (He said that I should go when I see him.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ ni mo ń wọ́ tí ó ń ra wá sí ilé tí ó ní ọmọ. (It’s the clothes I am wearing that he/she is buying and bringing to the house that has a child.)",
+      "answer": "Aṣọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó kò ____ omi tí mo ń mu wá sí ilé tí ó ń sọ Yorùbá. (He/she isn’t bringing the water that I am drinking to the house that is speaking Yoruba.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ____ létà tí ó ń kọ́ wá sí ọjà tí ó ní ilé rẹ. (I am bringing the letter that he/she is writing to the market that has your house.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ tí mo ń rí wọ́ aṣọ tí ó ń ra wá sí ilé. (The child that I am seeing is wearing the clothes that he/she is buying and bringing to the house.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Bí mo bá kò ____, mo máa wà ní ilé tí ó ń mú omi wá fún mi. (If I’m not going, I’ll be at the house that is bringing water for me.)",
+      "answer": "lọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ ni o ń ra tí mo ń wọ́ wá sí ọjà tí ó ní ilé? (What are you buying that I am wearing and coming to the market that has a house?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo ____ Yorùbá tí ó ń sọ wá sí ilé tí ó ní aṣọ rẹ. (I am speaking the Yoruba that he/she is speaking and coming to the house that has your clothes.)",
+      "answer": "sọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó ____ aṣọ tí mo ń wọ́ wá sí ọjà tí ó ń ra bàtà fún mi. (He/she is bringing the clothes that I am wearing to the market that is buying a shoe for me.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ tí mo ń kọ́ wà ní ilé tí ó ń sọ Yorùbá wá fún ọ. (The Yoruba that I am learning is at the house that is speaking Yoruba and coming for you.)",
+      "answer": "Yorùbá"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Mo kò ____ omi tí ó ń mu wá sí ilé tí ó ń wọ́ aṣọ rẹ. (I am not bringing the water that he/she is drinking to the house that is wearing your clothes.)",
+      "answer": "mú"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ mẹ́rìndínlógún wà ní ọjà tí mo ń ra aṣọ wá sí tí ó ní ilé. (Fifteen children are at the market that I am buying clothes and coming to that has a house.)",
+      "answer": "Ọmọ"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Bí mo bá ____ tí ó ń ra, mo máa wọ́ tí ó ń wá sí ilé rẹ. (If I am buying what he/she is buying, I’ll wear what he/she is bringing to your house.)",
+      "answer": "ń ra"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "____ ni mo ń sọ tí ó ń wà ní ilé tí ó ní aṣọ rẹ? (What am I speaking that he/she is at the house that has your clothes?)",
+      "answer": "Kí"
+    },
+    {
+      "difficulty": 15,
+      "sentence": "Ó ____ tí mo ń lọ sí wá sí ilé tí ó ń ra aṣọ fún ní ọjà. (He/she is going to what I am going to and coming to the house that is buying clothes for at the market.)",
+      "answer": "ń"
+    }
+  ]
+}
