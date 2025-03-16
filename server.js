@@ -10,8 +10,25 @@ dotenv.config();
 
 const app = express();
 
+// app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(cors());
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public','index.html'));
+// });
+
+// app.get('/home', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'index.html'));
+// });
+
+// app.get('/auth.html', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'auth.html'));
+// });
+
+// app.get('/languages.html', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'languages.html'));
+// });
 
 app.use((req, res, next) => {
   console.log(`Incoming request: ${req.method} ${req.url} from ${req.headers.origin}`);
