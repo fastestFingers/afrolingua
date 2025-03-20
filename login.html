@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfroLingua - Login</title>
+    <link rel="stylesheet" href="styling/login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <body>
+    <div class="progress-overlay" id="progressOverlay">
+      <div class="circular-progress"></div>
+    </div>
+
+    <header>
+      <nav class="container">
+        <h1 class="logo"><a href="/index.html">AfroLingua</a></h1>
+        <ul>
+          <li><a href="/index.html" class="nav-link">Back to Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="login-section">
+        <div class="login-card">
+          <h2>Login to AfroLingua</h2>
+          <p>Access your personalized language learning journey.</p>
+          <div class="social-login">
+            <button class="social-btn google" id="googleLogin">
+              <i class="fab fa-google"></i> Google
+            </button>
+            <button class="social-btn facebook" id="facebookLogin">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </button>
+            <button class="social-btn twitter" id="twitterLogin">
+              <i class="fab fa-twitter"></i> Twitter
+            </button>
+          </div>
+          <div class="divider">or</div>
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" placeholder="Enter your password" required />
+            </div>
+            <button type="submit" class="cta">Login</button>
+          </form>
+          <p class="error-message" id="errorMessage"></p>
+          <p class="signup-prompt">
+            Don't have an account? <a href="#signup" class="signup-link">Sign Up</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container">
+      <p>© 2025 AfroLingua. All Rights Reserved.</p>
+    </footer>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+      import { 
+        getAuth, 
+        signInWithEmailAndPassword, 
+        GoogleAuthProvider, 
+        FacebookAuthProvider, 
+        TwitterAuthProvider, 
+        signInWithPopup 
+      } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAgUoo-ZcYNoWJbtAbjhnsh7ZKy_PXl4oU",
+        authDomain: "afrolingua-ff97d.firebaseapp.com",
+        projectId: "afrolingua-ff97d",
+        storageBucket: "afrolingua-ff97d.appspot.com",
+        messagingSenderId: "935074229602",
+        appId: "1:935074229602:web:d795d5cf58c7696a6dd03b",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      const googleProvider = new GoogleAuthProvider();
+      const facebookProvider = new FacebookAuthProvider();
+      const twitterProvider = new TwitterAuthProvider();
+
+      const loginForm = document.getElementById("loginForm");
+      const errorMessage = document.getElementById("errorMessage");
+      const googleLoginBtn = document.getElementById("googleLogin");
+      const facebookLoginBtn = document.getElementById("facebookLogin");
+      const twitterLoginBtn = document.getElementById("twitterLogin");
+      const progressOverlay = document.getElementById("progressOverlay");
+
+      function showProgress() {
+        progressOverlay.style.display = "flex";
+      }
+
+      function hideProgress() {
+        progressOverlay.style.display = "none";
+      }
+
+      // Email/Password Login
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        showProgress();
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            console.log("User signed in with email:", userCredential.user);
+            window.location.href = "screens/home.html";
+          })
+          .catch((error) => {
+            console.error("Email login error:", error.message);
+            errorMessage.textContent = "Invalid email or password. Please try again.";
+          })
+          .finally(() => {
+            hideProgress();
+          });
+      });
+
+      // Google Login
+      googleLoginBtn.addEventListener("click", () => {
+        showProgress();
+        signInWithPopup(auth, googleProvider)
+          .then((result) => {
+            console.log("User signed in with Google:", result.user);
+            window.location.href = "screens/home.html";
+          })
+          .catch((error) => {
+            console.error("Google login error:", error.message);
+            errorMessage.textContent = "Error signing in with Google. Please try again.";
+          })
+          .finally(() => {
+            hideProgress();
+          });
+      });
+
+      // Facebook Login
+      facebookLoginBtn.addEventListener("click", () => {
+        showProgress();
+        signInWithPopup(auth, facebookProvider)
+          .then((result) => {
+            console.log("User signed in with Facebook:", result.user);
+            window.location.href = "screens/home.html";
+          })
+          .catch((error) => {
+            console.error("Facebook login error:", error.message);
+            errorMessage.textContent = "Error signing in with Facebook. Please try again.";
+          })
+          .finally(() => {
+            hideProgress();
+          });
+      });
+
+      // Twitter Login
+      twitterLoginBtn.addEventListener("click", () => {
+        showProgress();
+        signInWithPopup(auth, twitterProvider)
+          .then((result) => {
+            console.log("User signed in with Twitter:", result.user);
+            window.location.href = "screens/home.html";
+          })
+          .catch((error) => {
+            console.error("Twitter login error:", error.message);
+            errorMessage.textContent = "Error signing in with Twitter. Please try again.";
+          })
+          .finally(() => {
+            hideProgress();
+          });
+      });
+    </script>
+  </body>
+</html>

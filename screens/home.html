@@ -230,8 +230,12 @@
             const updatedData = await updateFirestoreLanguage(uid, flag, name);
             if (updatedData) {
               updateUI(updatedData);
-              // Reload review content with new language
+              // Reload both review and courses content with new language
               loadReviewContent(auth.currentUser);
+              if (document.getElementById("coursesScreen").classList.contains("active")) {
+                coursesLoaded = false; // Force reload
+                loadCoursesContent(updatedData.selectedLanguage, updatedData.selectedFlag);
+              }
             }
             dropdown.classList.remove("show");
           });
@@ -257,8 +261,7 @@
       let coursesLoaded = false;
       let reviewLoaded = false;
 
-      const loadCoursesContent = async () => {
-        if (coursesLoaded) return;
+      const loadCoursesContent = async (selectedLanguage = "Yoruba", selectedFlag = "🇳🇬") => {
         try {
           const response = await fetch("../homePageView/courses.html");
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -271,7 +274,13 @@
           const scriptContent = doc.querySelector("script")?.innerHTML;
           if (scriptContent) {
             const script = document.createElement("script");
-            script.textContent = scriptContent;
+            script.textContent = scriptContent.replace(
+              /const selectedLanguage = urlParams.get\("language"\) \|\| "Language";/,
+              `const selectedLanguage = "${selectedLanguage}";`
+            ).replace(
+              /const selectedFlag = urlParams.get\("flag"\) \|\| "🇳🇬";/,
+              `const selectedFlag = "${selectedFlag}";`
+            );
             document.body.appendChild(script);
           }
           coursesLoaded = true;
@@ -282,7 +291,7 @@
       };
 
       const loadReviewContent = async (user) => {
-        if (reviewLoaded && !user) return; // Skip reload if already loaded unless language changed
+        if (reviewLoaded && !user) return;
         try {
           const response = await fetch("/homePageView/review.html");
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -299,7 +308,6 @@
             script.textContent = scriptContent;
             document.body.appendChild(script);
 
-            // Wait for script to load and call renderReviewCharts
             script.onload = () => {
               if (window.renderReviewCharts && user) {
                 window.renderReviewCharts(user).catch(error => {
@@ -308,7 +316,6 @@
                 });
               }
             };
-            // Fallback in case onload doesn't fire
             setTimeout(() => {
               if (window.renderReviewCharts && user) {
                 window.renderReviewCharts(user).catch(error => {
@@ -324,31 +331,34 @@
           document.getElementById("reviewScreen").innerHTML = "<p>Error loading review data.</p>";
         }
       };
+
       const switchScreen = (screenId, user) => {
-  // Only update the active screen without reloading content
-  document.querySelectorAll(".content-screen").forEach((screen) => {
-    screen.classList.remove("active");
-  });
-  document.querySelectorAll(".footer-button").forEach((button) => {
-    button.classList.remove("active");
-  });
+        document.querySelectorAll(".content-screen").forEach((screen) => {
+          screen.classList.remove("active");
+        });
+        document.querySelectorAll(".footer-button").forEach((button) => {
+          button.classList.remove("active");
+        });
 
-  const selectedScreen = document.getElementById(screenId);
-  const selectedButton = document.querySelector(`[data-screen="${screenId}"]`);
+        const selectedScreen = document.getElementById(screenId);
+        const selectedButton = document.querySelector(`[data-screen="${screenId}"]`);
 
-  if (selectedScreen && selectedButton) {
-    selectedScreen.classList.add("active");
-    selectedButton.classList.add("active");
+        if (selectedScreen && selectedButton) {
+          selectedScreen.classList.add("active");
+          selectedButton.classList.add("active");
 
-    // Check if the content has already been loaded
-    if (screenId === "coursesScreen" && !coursesLoaded) {
-      loadCoursesContent(); // Load courses only if not already loaded
-    } else if (screenId === "reviewScreen" && !reviewLoaded) {
-      loadReviewContent(user); // Load review only if not already loaded
-    }
-  }
-};
-
+          if (screenId === "coursesScreen" && !coursesLoaded) {
+            const userData = user ? fetchUserData(user.uid) : Promise.resolve(null);
+            userData.then(data => {
+              const lang = data?.selectedLanguage || "Yoruba";
+              const flag = data?.selectedFlag || "🇳🇬";
+              loadCoursesContent(lang, flag);
+            });
+          } else if (screenId === "reviewScreen" && !reviewLoaded) {
+            loadReviewContent(user);
+          }
+        }
+      };
 
       document.querySelectorAll(".footer-button").forEach((button) => {
         button.addEventListener("click", () => {
@@ -389,7 +399,7 @@
           setTimeout(() => {
             document.getElementById("loadingScreen").style.display = "none";
             document.getElementById("mainContent").style.display = "block";
-            switchScreen("reviewScreen", user); // Default to Review screen with user
+            switchScreen("reviewScreen", user);
           }, 1000);
         } else {
           console.log("No user signed in, redirecting to auth page.");

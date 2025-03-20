@@ -4,69 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Conversational Practice - AfroLingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/AI/styles/conversation.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-      .difficulty-display {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-      }
-      .timer-display {
-        margin-top: 10px;
-        text-align: center;
-      }
-      .progress-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-      .progress-bar {
-        height: 20px;
-        width: 0%;
-        background: linear-gradient(to right, #000000, #ffd700); /* Black to Gold */
-        transition: width 0.5s ease-in-out;
-      }
-      .progress-label {
-        text-align: center;
-        margin-top: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-      .level-up-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #ffd700;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 24px;
-        text-align: center;
-        z-index: 2000;
-        display: none;
-      }
-    </style>
   </head>
   <body>
-    <div class="chat-container">
-      <h1><span id="selectedLanguage"></span> Conversation</h1>
+    <div class="progress-indicator" id="progressIndicator">
+      <div class="spinner"></div>
+    </div>
+    <div class="chat-container" id="chatContainer" style="display: none;">
+      <h1><span id="selectedLanguage"></span> Conversational Practice</h1>
       <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
-      <div id="chatArea" class="chat-area"></div>
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
+      <div class="content-wrapper">
+        <div id="chatArea" class="chat-area"></div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+          <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
+        </div>
       </div>
-      <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
       <div class="input-area">
         <input type="text" id="userInput" placeholder="Type your message..." />
         <button id="sendButton">Send</button>
@@ -99,6 +57,8 @@
       const progressBar = document.getElementById("progressBar");
       const progressLabel = document.getElementById("progressLabel");
       const levelUpMessage = document.getElementById("levelUpMessage");
+      const progressIndicator = document.getElementById("progressIndicator");
+      const chatContainer = document.getElementById("chatContainer");
 
       // State
       let selectedLanguage = "Default";
@@ -113,20 +73,8 @@
         "Specialist", "Elite", "Legendary", "Epic", "Extreme"
       ];
       const difficultyThresholds = [
-        1800,  // 30 minutes
-        2700,  // 45 minutes
-        3600,  // 1 hour
-        5400,  // 1.5 hours
-        7200,  // 2 hours
-        9000,  // 2.5 hours
-        10800, // 3 hours
-        12600, // 3.5 hours
-        14400, // 4 hours
-        16200, // 4.5 hours
-        18000, // 5 hours
-        19800, // 5.5 hours
-        21600, // 6 hours
-        23400  // 6.5 hours
+        1800, 2700, 3600, 5400, 7200, 9000, 10800, 12600, 14400, 16200,
+        18000, 19800, 21600, 23400
       ];
       const positiveMessages = [
         "Great job! You've mastered another level!",
@@ -137,13 +85,19 @@
       ];
 
       async function getUserData() {
-        const user = await new Promise((resolve) => {
-          auth.onAuthStateChanged((user) => resolve(user));
-        });
+        try {
+          const user = await new Promise((resolve) => auth.onAuthStateChanged(resolve));
+          if (!user) throw new Error("No user logged in");
 
-        if (user) {
+          const urlParams = new URLSearchParams(window.location.search);
+          selectedLanguage = urlParams.get("language") || "Default";
+          selectedLanguageElement.textContent = selectedLanguage;
+
           const userDoc = await db.collection("users").doc(user.uid).get();
-          selectedLanguage = userDoc.exists ? (userDoc.data().selectedLanguage || "Default") : "Default";
+          if (userDoc.exists && !urlParams.get("language")) {
+            selectedLanguage = userDoc.data().selectedLanguage || "Default";
+            selectedLanguageElement.textContent = selectedLanguage;
+          }
 
           const practiceDoc = await db.collection("ConversationalPractice").doc(`${user.uid}_${selectedLanguage}`).get();
           if (practiceDoc.exists) {
@@ -154,12 +108,14 @@
             difficultyLevel = 1;
           }
 
-          selectedLanguageElement.textContent = selectedLanguage;
           updateDifficultyDisplay();
           updateProgressBar();
           return user.uid;
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          chatArea.innerHTML = "<p class='error'>Failed to load chat. Please try again.</p>";
+          return null;
         }
-        return null;
       }
 
       async function updateFirestoreTime(userId, timeSpent) {
@@ -170,27 +126,28 @@
 
         let newDifficulty = 1;
         for (let i = 0; i < difficultyThresholds.length; i++) {
-          if (languageTimeSpent >= difficultyThresholds[i]) {
-            newDifficulty = i + 2;
-          } else {
-            break;
-          }
+          if (languageTimeSpent >= difficultyThresholds[i]) newDifficulty = i + 2;
+          else break;
         }
         difficultyLevel = Math.min(15, newDifficulty);
 
-        await db.collection("ConversationalPractice").doc(`${userId}_${selectedLanguage}`).set({
-          userId: userId,
-          language: selectedLanguage,
-          languageTimeSpent: languageTimeSpent,
-          difficulty: difficultyLevel,
-          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
+        try {
+          await db.collection("ConversationalPractice").doc(`${userId}_${selectedLanguage}`).set({
+            userId: userId,
+            language: selectedLanguage,
+            languageTimeSpent: languageTimeSpent,
+            difficulty: difficultyLevel,
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
 
-        updateDifficultyDisplay();
-        updateProgressBar();
+          updateDifficultyDisplay();
+          updateProgressBar();
 
-        if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) {
-          showLevelUpCelebration();
+          if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) {
+            showLevelUpCelebration();
+          }
+        } catch (error) {
+          console.error("Error updating Firestore:", error);
         }
       }
 
@@ -220,10 +177,7 @@
         const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
         levelUpMessage.textContent = `${randomMessage} Now at ${difficultyNames[difficultyLevel - 1]}!`;
         levelUpMessage.style.display = 'block';
-
-        setTimeout(() => {
-          levelUpMessage.style.display = 'none';
-        }, 3000);
+        setTimeout(() => levelUpMessage.style.display = 'none', 3000);
       }
 
       function startTimer() {
@@ -248,6 +202,7 @@
       }
 
       async function fetchAIResponse(userMessage) {
+        progressIndicator.style.display = "block";
         try {
           const response = await fetch("http://localhost:5000/converse", {
             method: "POST",
@@ -273,6 +228,8 @@
         } catch (error) {
           console.error("Fetch error:", error.message);
           return "Sorry, I couldn't respond. Please try again.";
+        } finally {
+          progressIndicator.style.display = "none";
         }
       }
 
@@ -296,24 +253,33 @@
 
       function renderChat() {
         chatArea.innerHTML = "";
-        messages.forEach((msg) => {
-          const messageDiv = document.createElement("div");
-          messageDiv.className = `message ${msg.role}`;
-          messageDiv.textContent = msg.content;
-          chatArea.appendChild(messageDiv);
-        });
+        if (messages.length === 0) {
+          chatArea.innerHTML = "<p class='welcome'>Start chatting to practice your language skills!</p>";
+        } else {
+          messages.forEach((msg) => {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${msg.role}`;
+            messageDiv.textContent = msg.content;
+            chatArea.appendChild(messageDiv);
+          });
+        }
         chatArea.scrollTop = chatArea.scrollHeight;
       }
 
       let userId;
       getUserData().then((uid) => {
         userId = uid;
+        progressIndicator.style.display = "none";
+        chatContainer.style.display = "block";
+
         sendButton.addEventListener("click", sendMessage);
         userInput.addEventListener("keypress", (e) => {
           if (e.key === "Enter") sendMessage();
         });
       }).catch((error) => {
         console.error("Initialization failed:", error);
+        progressIndicator.style.display = "none";
+        chatContainer.style.display = "block";
       });
 
       window.addEventListener("beforeunload", async () => {

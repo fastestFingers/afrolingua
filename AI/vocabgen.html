@@ -4,73 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vocabulary Generator - AfroLingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/AI/styles/vocabgen.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-      .difficulty-display {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-      }
-      .progress-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-      .progress-bar {
-        height: 20px;
-        width: 0%;
-        background: linear-gradient(to right, #000000, #ffd700); /* Black to Gold */
-        transition: width 0.5s ease-in-out;
-      }
-      .progress-label {
-        text-align: center;
-        margin-top: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-      .level-up-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #ffd700;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 24px;
-        text-align: center;
-        z-index: 2000;
-        display: none;
-      }
-    </style>
   </head>
   <body>
-    <div class="container">
-      <h1><span id="selectedLanguage"></span> Vocabulary Generator</h1>
-      <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
-      <div id="vocabContent">
-        <p id="welcomeMessage">Click "Generate" to get a new vocabulary word!</p>
+    <div class="progress-indicator" id="progressIndicator">
+      <div class="spinner"></div>
+    </div>
+    <div class="container" id="vocabContainer" style="display: none;">
+      <div class="sidebar">
+        <h2>Settings</h2>
+        <label for="languageSelect">Language:</label>
+        <select id="languageSelect">
+          <option value="yoruba">Yoruba</option>
+          <option value="swahili">Swahili</option>
+          <option value="zulu">Zulu</option>
+          <option value="amharic">Amharic</option>
+          <option value="hausa">Hausa</option>
+        </select>
+        <h3>Progress</h3>
+        <p>Words Learned: <span id="wordsLearned">0</span></p>
+        <h3>Vocabulary History</h3>
+        <ul id="historyList" class="history-list"></ul>
       </div>
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
+      <div class="main-content">
+        <h1><span id="selectedLanguage"></span> Vocabulary Generator</h1>
+        <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
+        <div class="content-wrapper">
+          <div id="vocabContent" class="vocab-area"></div>
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
+          </div>
+        </div>
+        <div class="button-group">
+          <button id="generateButton">Generate Word</button>
+          <button id="nextButton" style="display: none;">Next Word</button>
+        </div>
+        <p class="timer-display" id="timerDisplay">Interaction Time: 0s</p>
+        <div class="level-up-message" id="levelUpMessage"></div>
       </div>
-      <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
-      <div class="button-group">
-        <button id="generateButton">Generate Word</button>
-        <button id="nextButton" style="display: none">Next Word</button>
-      </div>
-      <p id="timerDisplay">Interaction Time: 0s</p>
-      <div class="level-up-message" id="levelUpMessage"></div>
     </div>
 
     <script>
@@ -91,41 +68,36 @@
       const vocabContent = document.getElementById("vocabContent");
       const generateButton = document.getElementById("generateButton");
       const nextButton = document.getElementById("nextButton");
-      const timerDisplay = document.getElementById("timerDisplay");
       const selectedLanguageElement = document.getElementById("selectedLanguage");
+      const languageSelect = document.getElementById("languageSelect");
       const difficultyDisplay = document.getElementById("difficultyDisplay");
+      const timerDisplay = document.getElementById("timerDisplay");
       const progressBar = document.getElementById("progressBar");
       const progressLabel = document.getElementById("progressLabel");
       const levelUpMessage = document.getElementById("levelUpMessage");
+      const progressIndicator = document.getElementById("progressIndicator");
+      const vocabContainer = document.getElementById("vocabContainer");
+      const wordsLearned = document.getElementById("wordsLearned");
+      const historyList = document.getElementById("historyList");
 
       // State
-      let selectedLanguage = "Default";
-      let currentVocabIndex = -1;
+      let selectedLanguage = "yoruba"; // Default to Yoruba
       let vocabList = [];
+      let history = [];
+      let currentVocabIndex = -1;
       let startTime = null;
       let interactionTime = 0;
       let languageTimeSpent = 0;
       let difficultyLevel = 1;
+      let wordsLearnedCount = 0;
       const difficultyNames = [
         "Easy", "Beginner", "Elementary", "Pre-Intermediate", "Intermediate",
         "Upper-Intermediate", "Advanced", "Proficient", "Expert", "Master",
         "Specialist", "Elite", "Legendary", "Epic", "Extreme"
       ];
       const difficultyThresholds = [
-        1800,  // 30 minutes
-        2700,  // 45 minutes
-        3600,  // 1 hour
-        5400,  // 1.5 hours
-        7200,  // 2 hours
-        9000,  // 2.5 hours
-        10800, // 3 hours
-        12600, // 3.5 hours
-        14400, // 4 hours
-        16200, // 4.5 hours
-        18000, // 5 hours
-        19800, // 5.5 hours
-        21600, // 6 hours
-        23400  // 6.5 hours
+        1800, 2700, 3600, 5400, 7200, 9000, 10800, 12600, 14400, 16200,
+        18000, 19800, 21600, 23400
       ];
       const positiveMessages = [
         "Great job! You've mastered another level!",
@@ -136,60 +108,74 @@
       ];
 
       async function getUserData() {
-        const user = await new Promise((resolve) => {
-          auth.onAuthStateChanged((user) => resolve(user));
-        });
+        try {
+          const user = await new Promise((resolve) => auth.onAuthStateChanged(resolve));
+          if (!user) throw new Error("No user logged in");
 
-        if (user) {
+          const urlParams = new URLSearchParams(window.location.search);
+          selectedLanguage = urlParams.get("language") || "yoruba";
+          selectedLanguageElement.textContent = selectedLanguage;
+          languageSelect.value = selectedLanguage;
+
           const userDoc = await db.collection("users").doc(user.uid).get();
-          selectedLanguage = userDoc.exists ? (userDoc.data().selectedLanguage || "Default") : "Default";
+          if (userDoc.exists && !urlParams.get("language")) {
+            selectedLanguage = userDoc.data().selectedLanguage || "yoruba";
+            selectedLanguageElement.textContent = selectedLanguage;
+            languageSelect.value = selectedLanguage;
+          }
 
           const vocabgenDoc = await db.collection("vocabgen").doc(`${user.uid}_${selectedLanguage}`).get();
           if (vocabgenDoc.exists) {
             languageTimeSpent = vocabgenDoc.data().languageTimeSpent || 0;
             difficultyLevel = vocabgenDoc.data().difficulty || 1;
+            wordsLearnedCount = vocabgenDoc.data().wordsLearned || 0;
           } else {
             languageTimeSpent = 0;
             difficultyLevel = 1;
+            wordsLearnedCount = 0;
           }
 
-          selectedLanguageElement.textContent = selectedLanguage;
           updateDifficultyDisplay();
           updateProgressBar();
+          updateStats();
           return user.uid;
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          vocabContent.innerHTML = "<p class='error'>Failed to load vocabulary generator. Please try again.</p>";
+          return null;
         }
-        return null;
       }
 
-      async function updateFirestoreTime(userId, timeSpent) {
+      async function updateFirestoreTime(userId, timeSpent, wordsDelta = 0) {
         if (!userId) return;
 
         const previousDifficulty = difficultyLevel;
         languageTimeSpent += timeSpent;
+        wordsLearnedCount += wordsDelta;
 
         let newDifficulty = 1;
         for (let i = 0; i < difficultyThresholds.length; i++) {
-          if (languageTimeSpent >= difficultyThresholds[i]) {
-            newDifficulty = i + 2;
-          } else {
-            break;
-          }
+          if (languageTimeSpent >= difficultyThresholds[i]) newDifficulty = i + 2;
+          else break;
         }
         difficultyLevel = Math.min(15, newDifficulty);
 
-        await db.collection("vocabgen").doc(`${userId}_${selectedLanguage}`).set({
-          userId: userId,
-          language: selectedLanguage,
-          languageTimeSpent: languageTimeSpent,
-          difficulty: difficultyLevel,
-          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
+        try {
+          await db.collection("vocabgen").doc(`${userId}_${selectedLanguage}`).set({
+            userId: userId,
+            language: selectedLanguage,
+            languageTimeSpent: languageTimeSpent,
+            difficulty: difficultyLevel,
+            wordsLearned: wordsLearnedCount,
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
 
-        updateDifficultyDisplay();
-        updateProgressBar();
-
-        if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) {
-          showLevelUpCelebration();
+          updateDifficultyDisplay();
+          updateProgressBar();
+          updateStats();
+          if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) showLevelUpCelebration();
+        } catch (error) {
+          console.error("Error updating Firestore:", error);
         }
       }
 
@@ -208,6 +194,10 @@
         progressLabel.textContent = `Progress to ${difficultyNames[difficultyLevel]}: ${Math.round(progressPercentage)}%`;
       }
 
+      function updateStats() {
+        wordsLearned.textContent = wordsLearnedCount;
+      }
+
       function showLevelUpCelebration() {
         confetti({
           particleCount: 100,
@@ -219,10 +209,7 @@
         const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
         levelUpMessage.textContent = `${randomMessage} Now at ${difficultyNames[difficultyLevel - 1]}!`;
         levelUpMessage.style.display = 'block';
-
-        setTimeout(() => {
-          levelUpMessage.style.display = 'none';
-        }, 3000);
+        setTimeout(() => levelUpMessage.style.display = 'none', 3000);
       }
 
       function startTimer() {
@@ -247,8 +234,8 @@
       }
 
       async function fetchVocabulary() {
+        progressIndicator.style.display = "block";
         try {
-          console.log("Fetching vocabulary for language:", selectedLanguage);
           const response = await fetch("http://localhost:5000/generateVocabulary", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -275,14 +262,17 @@
           const translation = transMatch ? transMatch[1] : "No translation found.";
           const usage = usageMatch ? usageMatch[1] : "No usage found.";
 
-          return { word, translation, usage };
+          return { word, translation, usage, saved: false };
         } catch (error) {
           console.error("Fetch error:", error.message);
           return {
             word: "Error",
             translation: error.message,
             usage: "Please try again later.",
+            saved: false
           };
+        } finally {
+          progressIndicator.style.display = "none";
         }
       }
 
@@ -300,8 +290,11 @@
         } else {
           const newVocab = await fetchVocabulary();
           vocabList.push(newVocab);
+          history.unshift(newVocab.word);
+          if (history.length > 5) history.pop();
           currentVocabIndex++;
           displayVocabulary(newVocab);
+          renderHistory();
         }
         generateButton.style.display = "none";
         nextButton.style.display = "inline-block";
@@ -313,18 +306,62 @@
             <h2>${vocab.word}</h2>
             <p><strong>Translation:</strong> ${vocab.translation}</p>
             <p><strong>Usage:</strong> ${vocab.usage}</p>
+            <button class="save-btn" ${vocab.saved ? 'disabled' : ''}>${vocab.saved ? 'Saved' : 'Save Word'}</button>
           </div>
         `;
+        const saveButton = vocabContent.querySelector(".save-btn");
+        saveButton.addEventListener("click", () => saveWord(vocab, currentVocabIndex));
+      }
+
+      async function saveWord(vocab, index) {
+        if (!vocab.saved) {
+          vocab.saved = true;
+          wordsLearnedCount++;
+          await updateFirestoreTime(userId, 0, 1);
+          renderHistory();
+          displayVocabulary(vocab); // Re-render to update button
+        }
+      }
+
+      function renderHistory() {
+        historyList.innerHTML = history.map(word => `<li>${word}</li>`).join('') || '<li class="no-history">No recent words</li>';
       }
 
       let userId;
       getUserData().then((uid) => {
         userId = uid;
+        progressIndicator.style.display = "none";
+        vocabContainer.style.display = "flex";
+
         generateButton.addEventListener("click", generateVocabulary);
         nextButton.addEventListener("click", generateVocabulary);
+        languageSelect.addEventListener("change", () => {
+          selectedLanguage = languageSelect.value;
+          selectedLanguageElement.textContent = selectedLanguage;
+          vocabList = [];
+          history = [];
+          currentVocabIndex = -1;
+          languageTimeSpent = 0;
+          difficultyLevel = 1;
+          wordsLearnedCount = 0;
+          vocabContent.innerHTML = "<p class='welcome'>Click 'Generate Word' to start learning!</p>";
+          generateButton.style.display = "inline-block";
+          nextButton.style.display = "none";
+          updateFirestoreTime(userId, 0);
+          renderHistory();
+          updateURL(selectedLanguage);
+        });
       }).catch((error) => {
         console.error("Initialization failed:", error);
+        progressIndicator.style.display = "none";
+        vocabContainer.style.display = "flex";
       });
+
+      function updateURL(language) {
+        const url = new URL(window.location);
+        url.searchParams.set('language', language);
+        window.history.pushState({}, '', url);
+      }
 
       window.addEventListener("beforeunload", async () => {
         if (startTime && userId) {

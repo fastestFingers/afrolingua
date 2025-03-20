@@ -4,90 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Translation Tasks - AfroLingua</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/AI/styles/translations.css" />
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <style>
-      .difficulty-display {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 5px 10px;
-        background-color: #f0f0f0;
-        border-radius: 3px;
-      }
-      .timer-display {
-        margin-top: 10px;
-        text-align: center;
-      }
-      .progress-container {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-      .progress-bar {
-        height: 20px;
-        width: 0%;
-        background: linear-gradient(to right, #000000, #ffd700);
-        transition: width 0.5s ease-in-out;
-      }
-      .progress-label {
-        text-align: center;
-        margin-top: 5px;
-        font-size: 14px;
-        color: #333;
-      }
-      .level-up-message {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #ffd700;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 24px;
-        text-align: center;
-        z-index: 2000;
-        display: none;
-      }
-      .translation-container {
-        position: relative;
-        display: inline-block;
-      }
-      .translation-input {
-        margin-right: 5px;
-      }
-      .checkmark {
-        display: none;
-        color: green;
-        font-size: 20px;
-        position: absolute;
-        right: -25px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-    </style>
   </head>
   <body>
-    <div class="chat-container">
-      <h1><span id="selectedLanguage"></span> Translation Tasks</h1>
-      <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
-      <div id="chatArea" class="chat-area"></div>
-      <div class="progress-container">
-        <div class="progress-bar" id="progressBar"></div>
+    <div class="progress-indicator" id="progressIndicator">
+      <div class="spinner"></div>
+    </div>
+    <div class="container" id="translationContainer" style="display: none;">
+      <div class="sidebar">
+        <h2>Settings</h2>
+        <label for="languageSelect">Language:</label>
+        <select id="languageSelect">
+          <option value="yoruba">Yoruba</option>
+          <option value="swahili">Swahili</option>
+          <option value="zulu">Zulu</option>
+          <option value="amharic">Amharic</option>
+          <option value="hausa">Hausa</option>
+        </select>
+        <h3>Performance</h3>
+        <p>Correct: <span id="correctCount">0</span></p>
+        <p>Incorrect: <span id="incorrectCount">0</span></p>
+        <h3>Task History</h3>
+        <ul id="historyList" class="history-list"></ul>
       </div>
-      <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
-      <div class="input-area">
-        <button id="generateButton">Generate Task</button>
+      <div class="main-content">
+        <h1><span id="selectedLanguage"></span> Translation Tasks</h1>
+        <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
+        <div class="content-wrapper">
+          <div id="chatArea" class="chat-area"></div>
+          <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            <p class="progress-label" id="progressLabel">Progress to Next Level: 0%</p>
+          </div>
+        </div>
+        <div class="input-area">
+          <button id="generateButton">Generate New Task</button>
+        </div>
+        <p class="timer-display" id="timerDisplay">Interaction Time: 0s</p>
+        <div class="level-up-message" id="levelUpMessage"></div>
       </div>
-      <p class="timer-display" id="timerDisplay">Interaction Time: 0s</p>
-      <div class="level-up-message" id="levelUpMessage"></div>
     </div>
 
     <script>
@@ -108,21 +68,28 @@
       const chatArea = document.getElementById("chatArea");
       const generateButton = document.getElementById("generateButton");
       const selectedLanguageElement = document.getElementById("selectedLanguage");
+      const languageSelect = document.getElementById("languageSelect");
       const difficultyDisplay = document.getElementById("difficultyDisplay");
       const timerDisplay = document.getElementById("timerDisplay");
       const progressBar = document.getElementById("progressBar");
       const progressLabel = document.getElementById("progressLabel");
       const levelUpMessage = document.getElementById("levelUpMessage");
+      const progressIndicator = document.getElementById("progressIndicator");
+      const translationContainer = document.getElementById("translationContainer");
+      const correctCount = document.getElementById("correctCount");
+      const incorrectCount = document.getElementById("incorrectCount");
+      const historyList = document.getElementById("historyList");
 
       // State
       let selectedLanguage = "Default";
-      let messages = []; // Stores tasks with user answers and correctness
+      let messages = [];
+      let taskHistory = [];
       let startTime = null;
       let interactionTime = 0;
       let languageTimeSpent = 0;
       let difficultyLevel = 1;
-      let answeredCorrectly = 0; // Track correct answers
-      let answeredIncorrectly = 0; // Track incorrect answers
+      let answeredCorrectly = 0;
+      let answeredIncorrectly = 0;
       const difficultyNames = [
         "Easy", "Beginner", "Elementary", "Pre-Intermediate", "Intermediate",
         "Upper-Intermediate", "Advanced", "Proficient", "Expert", "Master",
@@ -141,20 +108,28 @@
       ];
 
       async function getUserData() {
-        const user = await new Promise((resolve) => {
-          auth.onAuthStateChanged((user) => resolve(user));
-        });
+        try {
+          const user = await new Promise((resolve) => auth.onAuthStateChanged(resolve));
+          if (!user) throw new Error("No user logged in");
 
-        if (user) {
+          const urlParams = new URLSearchParams(window.location.search);
+          selectedLanguage = urlParams.get("language") || "yoruba";
+          selectedLanguageElement.textContent = selectedLanguage;
+          languageSelect.value = selectedLanguage;
+
           const userDoc = await db.collection("users").doc(user.uid).get();
-          selectedLanguage = userDoc.exists ? (userDoc.data().selectedLanguage || "Default") : "Default";
+          if (userDoc.exists && !urlParams.get("language")) {
+            selectedLanguage = userDoc.data().selectedLanguage || "yoruba";
+            selectedLanguageElement.textContent = selectedLanguage;
+            languageSelect.value = selectedLanguage;
+          }
 
           const translationsDoc = await db.collection("translations").doc(`${user.uid}_${selectedLanguage}`).get();
           if (translationsDoc.exists) {
             languageTimeSpent = translationsDoc.data().languageTimeSpent || 0;
             difficultyLevel = translationsDoc.data().difficulty || 1;
-            answeredCorrectly = translationsDoc.data().answered_correctly || 0; // Load from Firestore
-            answeredIncorrectly = translationsDoc.data().answered_incorrectly || 0; // Load from Firestore
+            answeredCorrectly = translationsDoc.data().answered_correctly || 0;
+            answeredIncorrectly = translationsDoc.data().answered_incorrectly || 0;
           } else {
             languageTimeSpent = 0;
             difficultyLevel = 1;
@@ -162,12 +137,15 @@
             answeredIncorrectly = 0;
           }
 
-          selectedLanguageElement.textContent = selectedLanguage;
           updateDifficultyDisplay();
           updateProgressBar();
+          updateStats();
           return user.uid;
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          chatArea.innerHTML = "<p class='error'>Failed to load translation tasks. Please try again.</p>";
+          return null;
         }
-        return null;
       }
 
       async function updateFirestoreTimeAndAnswers(userId, timeSpent, correctDelta = 0, incorrectDelta = 0) {
@@ -180,29 +158,28 @@
 
         let newDifficulty = 1;
         for (let i = 0; i < difficultyThresholds.length; i++) {
-          if (languageTimeSpent >= difficultyThresholds[i]) {
-            newDifficulty = i + 2;
-          } else {
-            break;
-          }
+          if (languageTimeSpent >= difficultyThresholds[i]) newDifficulty = i + 2;
+          else break;
         }
         difficultyLevel = Math.min(15, newDifficulty);
 
-        await db.collection("translations").doc(`${userId}_${selectedLanguage}`).set({
-          userId: userId,
-          language: selectedLanguage,
-          languageTimeSpent: languageTimeSpent,
-          difficulty: difficultyLevel,
-          answered_correctly: answeredCorrectly,
-          answered_incorrectly: answeredIncorrectly,
-          lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
+        try {
+          await db.collection("translations").doc(`${userId}_${selectedLanguage}`).set({
+            userId: userId,
+            language: selectedLanguage,
+            languageTimeSpent: languageTimeSpent,
+            difficulty: difficultyLevel,
+            answered_correctly: answeredCorrectly,
+            answered_incorrectly: answeredIncorrectly,
+            lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
 
-        updateDifficultyDisplay();
-        updateProgressBar();
-
-        if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) {
-          showLevelUpCelebration();
+          updateDifficultyDisplay();
+          updateProgressBar();
+          updateStats();
+          if (difficultyLevel > previousDifficulty && difficultyLevel <= 15) showLevelUpCelebration();
+        } catch (error) {
+          console.error("Error updating Firestore:", error);
         }
       }
 
@@ -221,6 +198,11 @@
         progressLabel.textContent = `Progress to ${difficultyNames[difficultyLevel]}: ${Math.round(progressPercentage)}%`;
       }
 
+      function updateStats() {
+        correctCount.textContent = answeredCorrectly;
+        incorrectCount.textContent = answeredIncorrectly;
+      }
+
       function showLevelUpCelebration() {
         confetti({
           particleCount: 100,
@@ -232,10 +214,7 @@
         const randomMessage = positiveMessages[Math.floor(Math.random() * positiveMessages.length)];
         levelUpMessage.textContent = `${randomMessage} Now at ${difficultyNames[difficultyLevel - 1]}!`;
         levelUpMessage.style.display = 'block';
-
-        setTimeout(() => {
-          levelUpMessage.style.display = 'none';
-        }, 3000);
+        setTimeout(() => levelUpMessage.style.display = 'none', 3000);
       }
 
       function startTimer() {
@@ -260,6 +239,7 @@
       }
 
       async function fetchTranslation() {
+        progressIndicator.style.display = "block";
         try {
           const response = await fetch("http://localhost:5000/generateTranslation", {
             method: "POST",
@@ -272,7 +252,8 @@
 
           if (!response.ok) {
             const result = await response.json();
-            throw new Error(result.error || `HTTP error! Status: ${response.status}`);
+            if (response.status === 429) throw new Error(result.error || "Rate limit exceeded.");
+            throw new Error(`HTTP error! Status: ${response.status}`);
           }
 
           const result = await response.json();
@@ -285,8 +266,9 @@
           return {
             sentence: sentenceMatch ? sentenceMatch[1] : "No sentence found.",
             translation: translationMatch ? translationMatch[1] : "No translation found.",
-            userAnswer: null, // Track user response
-            isCorrect: null // Track correctness
+            userAnswer: null,
+            isCorrect: null,
+            hintShown: false
           };
         } catch (error) {
           console.error("Fetch error:", error.message);
@@ -294,8 +276,11 @@
             sentence: "Error: Unable to load translation task. Please try again.",
             translation: "N/A",
             userAnswer: null,
-            isCorrect: null
+            isCorrect: null,
+            hintShown: false
           };
+        } finally {
+          progressIndicator.style.display = "none";
         }
       }
 
@@ -307,49 +292,67 @@
 
         const task = await fetchTranslation();
         messages.push({ role: "ai", content: task });
+        taskHistory.unshift(task.sentence);
+        if (taskHistory.length > 5) taskHistory.pop();
         renderChat();
+        renderHistory();
 
         const lastMessage = chatArea.lastElementChild;
         const input = lastMessage.querySelector(".translation-input");
+        const submitButton = lastMessage.querySelector(".submit-btn");
+
         input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            checkTranslation(input, task.translation, messages.length - 1);
-          }
+          if (e.key === "Enter") checkTranslation(input, task.translation, messages.length - 1);
         });
+        submitButton.addEventListener("click", () => checkTranslation(input, task.translation, messages.length - 1));
+        
+        const hintButton = lastMessage.querySelector(".hint-btn");
+        hintButton.addEventListener("click", () => showHint(task.translation, messages.length - 1));
       }
 
       function renderChat() {
         chatArea.innerHTML = "";
-        messages.forEach((msg, index) => {
-          const messageDiv = document.createElement("div");
-          messageDiv.className = `message ${msg.role}`;
-          if (msg.role === "ai") {
-            const answered = msg.content.userAnswer !== null;
-            const isCorrect = msg.content.isCorrect;
-            messageDiv.innerHTML = `
-              <p><strong>Translate this:</strong> ${msg.content.sentence}</p>
-              <div class="translation-container">
-                <input type="text" class="translation-input" 
-                  placeholder="Type your translation" 
-                  value="${msg.content.userAnswer || ''}" 
-                  ${answered ? 'disabled' : ''} 
-                  style="background-color: ${answered ? (isCorrect ? '#d4edda' : '#f8d7da') : ''}">
-                <span class="checkmark" style="display: ${answered && isCorrect ? 'inline' : 'none'}">✔</span>
-              </div>
-              ${answered && !isCorrect ? `<p style="color: #721c24">Incorrect. Correct translation: ${msg.content.translation}</p>` : ''}
-              ${answered && isCorrect ? `<p style="color: #155724">Correct!</p>` : ''}
-            `;
-          }
-          chatArea.appendChild(messageDiv);
-        });
+        if (messages.length === 0) {
+          chatArea.innerHTML = "<p class='welcome'>Click 'Generate New Task' to start practicing translations!</p>";
+        } else {
+          messages.forEach((msg, index) => {
+            const messageDiv = document.createElement("div");
+            messageDiv.className = `message ${msg.role}`;
+            if (msg.role === "ai") {
+              const answered = msg.content.userAnswer !== null;
+              const isCorrect = msg.content.isCorrect;
+              const hintShown = msg.content.hintShown;
+              messageDiv.innerHTML = `
+                <p><strong>Translate this:</strong> ${msg.content.sentence}</p>
+                <div class="translation-container">
+                  <input type="text" class="translation-input" 
+                    placeholder="Type your translation" 
+                    value="${msg.content.userAnswer || ''}" 
+                    ${answered ? 'disabled' : ''} 
+                    style="background-color: ${answered ? (isCorrect ? '#d4edda' : '#f8d7da') : ''}">
+                  <span class="checkmark" style="display: ${answered && isCorrect ? 'inline' : 'none'}">✔</span>
+                </div>
+                <button class="submit-btn" ${answered ? 'disabled' : ''}>Submit</button>
+                <button class="hint-btn" ${answered ? 'disabled' : ''}>Show Hint</button>
+                ${hintShown && !answered ? `<p class="hint">Hint: ${msg.content.translation.slice(0, Math.ceil(msg.content.translation.length / 2))}...</p>` : ''}
+                ${answered && !isCorrect ? `<p class="feedback incorrect">Incorrect. Correct translation: ${msg.content.translation}</p>` : ''}
+                ${answered && isCorrect ? `<p class="feedback correct">Correct!</p>` : ''}
+              `;
+            }
+            chatArea.appendChild(messageDiv);
+          });
+        }
         chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      function renderHistory() {
+        historyList.innerHTML = taskHistory.map(task => `<li>${task}</li>`).join('') || '<li class="no-history">No recent tasks</li>';
       }
 
       async function checkTranslation(input, correctTranslation, index) {
         const userAnswer = input.value.trim().toLowerCase();
         const isCorrect = userAnswer === correctTranslation.toLowerCase();
 
-        // Update state
         messages[index].content.userAnswer = userAnswer;
         messages[index].content.isCorrect = isCorrect;
 
@@ -358,24 +361,56 @@
 
         const container = input.parentElement;
         const checkmark = container.querySelector(".checkmark");
+        const submitButton = container.nextElementSibling; // The submit button follows the container
 
         if (isCorrect) {
           checkmark.style.display = "inline";
-          await updateFirestoreTimeAndAnswers(userId, 0, 1, 0); // Increment correct
+          await updateFirestoreTimeAndAnswers(userId, 0, 1, 0);
         } else {
-          await updateFirestoreTimeAndAnswers(userId, 0, 0, 1); // Increment incorrect
+          await updateFirestoreTimeAndAnswers(userId, 0, 0, 1);
         }
 
-        renderChat(); // Re-render to show feedback
+        submitButton.disabled = true; // Disable the submit button after checking
+        renderChat();
+      }
+
+      function showHint(translation, index) {
+        messages[index].content.hintShown = true;
+        renderChat();
       }
 
       let userId;
       getUserData().then((uid) => {
         userId = uid;
+        progressIndicator.style.display = "none";
+        translationContainer.style.display = "flex";
+
         generateButton.addEventListener("click", generateTranslation);
+        languageSelect.addEventListener("change", () => {
+          selectedLanguage = languageSelect.value;
+          selectedLanguageElement.textContent = selectedLanguage;
+          messages = [];
+          languageTimeSpent = 0;
+          difficultyLevel = 1;
+          answeredCorrectly = 0;
+          answeredIncorrectly = 0;
+          taskHistory = [];
+          renderChat();
+          renderHistory();
+          updateFirestoreTimeAndAnswers(userId, 0);
+          updateURL(selectedLanguage);
+        });
       }).catch((error) => {
         console.error("Initialization failed:", error);
+        progressIndicator.style.display = "none";
+        translationContainer.style.display = "flex";
       });
+
+      function updateURL(language) {
+        const url = new URL(window.location);
+        url.searchParams.set('language', language);
+        window.history.pushState({}, '', url);
+      }
 
       window.addEventListener("beforeunload", async () => {
         if (startTime && userId) {

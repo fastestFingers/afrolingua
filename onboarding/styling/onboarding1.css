@@ -1,214 +1,256 @@
-/* General Styles */
+/* Reset and Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    color: #333;
-  }
-  
-  /* Header Styles */
-  header {
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header .logo {
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(to right, #000000, #ffd700);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-  }
-  
-  /* Main Content Styles */
-  main {
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
+  font-family: "Poppins", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #fff8dc, #fff); /* Warm gradient */
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  border: 5px solid rgba(255, 215, 0, 0.2);
+  border-top: 5px solid #ffd700;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Overlay */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+/* Header */
+header {
+  background-color: #fff;
+  padding: 0 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(to right, #000000, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 20px; /* Space for header and footer */
+}
+
+.onboarding-section {
+  max-width: 800px;
+  width: 100%;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#onboarding-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#hiTranslation {
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #000000, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+#selectedLanguage {
+  font-size: 2.5rem;
+  color: #ffd700; /* Gold for emphasis */
+  font-weight: 700;
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+/* Selectable Containers */
+.selectable-container {
+  padding: 20px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.selectable-container:hover {
+  border-color: #ffd700;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.selectable-container.selected {
+  border: 2px solid #ffd700;
+  background: linear-gradient(to bottom, #fff8dc, #fff);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Footer and Next Button */
+footer {
+  padding: 20px;
+  text-align: right;
+}
+
+#nextButton {
+  padding: 12px 30px;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  background:  #ffd700;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+#nextButton:not(:disabled) {
+  opacity: 1;
+}
+
+#nextButton:disabled {
+  cursor: not-allowed;
+}
+
+#nextButton:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Blur Effect */
+.blur {
+  filter: blur(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .onboarding-section {
-    max-width: 800px; /* Increased width */
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    /* Removed box-shadow */
+    padding: 30px;
   }
-  
-  .onboarding-section h1 {
-    font-size: 2rem;
-    margin-bottom: 10px; /* Reduced margin */
-    color: #333;
-  }
-  
-  /* Title Styles */
+
   #onboarding-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px; /* Reduced margin */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Space between greeting and language */
+    font-size: 2rem;
+    flex-direction: column;
   }
-  
-  #hiTranslation {
-    font-size: 2.5rem;
-    background: linear-gradient(
-      to right,
-      #000000,
-      #ffd700
-    ); /* Match logo gradient */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
+
+  #hiTranslation, #selectedLanguage {
+    font-size: 2rem;
   }
-  
-  #selectedLanguage {
-    font-size: 2.5rem;
-    color: #000; /* Black color for the language name */
-    font-weight: bold;
-  }
-  
-  /* Subtext Styles */
+
   .subtext {
-    font-size: 1.2rem;
-    color: #666;
-    margin-top: 10px;
+    font-size: 1rem;
   }
-  
-  /* Grid Container for Selectable Items */
+
   .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    gap: 20px; /* Space between items */
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
-  
-  /* Selectable Containers */
-  .selectable-container {
+}
+
+@media (max-width: 480px) {
+  .onboarding-section {
     padding: 20px;
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    transition: border-color 0.5s ease;
   }
-  
-  .selectable-container.selected {
-    border: 2px solid;
-    border-image: linear-gradient(to right, #000000, #ffd700) 1;
+
+  #onboarding-title {
+    font-size: 1.5rem;
   }
-  
-  /* Next Button Styles */
+
+  #hiTranslation, #selectedLanguage {
+    font-size: 1.5rem;
+  }
+
+  .subtext {
+    font-size: 0.9rem;
+  }
+
+  .selectable-container {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
   #nextButton {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    padding: 12px 24px;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    border-image: linear-gradient(to right, #000000, #ffd700) 1;
-    color: black;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 10px 20px;
+    font-size: 1rem;
   }
-  
-  #nextButton:not(:disabled) {
-    opacity: 1; /* Visible when enabled */
-    transform: scale(1.05); /* Slight scale effect */
-  }
-  
-  #nextButton:disabled {
-    cursor: not-allowed;
-    opacity: 0; /* Hidden when disabled */
-  }
-  
-  #nextButton:hover:not(:disabled) {
-    transform: scale(1.1); /* Hover effect */
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .onboarding-section h1 {
-      font-size: 1.5rem;
-    }
-  
-    #onboarding-title {
-      font-size: 2rem;
-      flex-direction: column; /* Stack greeting and language on smaller screens */
-    }
-  
-    #hiTranslation {
-      font-size: 2rem;
-    }
-  
-    #selectedLanguage {
-      font-size: 2rem;
-    }
-  
-    .subtext {
-      font-size: 1rem;
-    }
-  
-    .grid-container {
-      grid-template-columns: 1fr; /* 1 column on smaller screens */
-    }
-  
-    #nextButton {
-      padding: 10px 20px;
-      font-size: 14px;
-    right: 10px;
-      bottom: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .onboarding-section h1 {
-      font-size: 1.25rem;
-    }
-  
-    #onboarding-title {
-      font-size: 1.75rem;
-    }
-  
-    #hiTranslation {
-      font-size: 1.75rem;
-    }
-  
-    #selectedLanguage {
-      font-size: 1.75rem;
-    }
-  
-    .subtext {
-      font-size: 0.9rem;
-    }
-  
-    #nextButton {
-      padding: 8px 16px;
-      font-size: 12px;
-      right: 5px;
-      bottom: 5px;
-    }
-  }
+}

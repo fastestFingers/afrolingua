@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Courses - AfroLingua</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/homePageView/styles/courses.css" />
   </head>
   <body>
-    <div class="courses-container">
+    <div class="progress-indicator" id="progressIndicator">
+      <div class="spinner"></div>
+    </div>
+
+    <div class="courses-container" id="coursesContainer" style="display: none;">
       <div class="title-container">
         <img id="languageFlag" class="title-flag" src="" alt="Language Flag" />
         <h1><span id="selectedLanguage"></span> Courses</h1>
@@ -55,6 +59,18 @@
             image: "https://plus.unsplash.com/premium_photo-1681488021050-3dc2f0acb943?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGljdGlvbmFyeXxlbnwwfHwwfHx8MA%3D%3D",
             link: "../AI/dictionary.html",
           },
+          {
+            name: "Pronunciation",
+            description: "Master sounds and tones. (Coming Soon)",
+            image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: null,
+          },
+          {
+            name: "Writing Skills",
+            description: "Improve your writing. (Coming Soon)",
+            image: "https://images.unsplash.com/photo-1455390582262-044c498ce311?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300&q=80",
+            link: null,
+          },
         ];
 
         const flagEmojiToUrl = {
@@ -87,7 +103,7 @@
           courseList.innerHTML = "";
           courses.forEach((course) => {
             const courseCard = document.createElement("div");
-            courseCard.className = "course-card";
+            courseCard.className = `course-card ${course.link ? '' : 'coming-soon'}`;
 
             const cardImage = document.createElement("img");
             cardImage.className = "course-image";
@@ -108,9 +124,6 @@
             contentDiv.appendChild(cardTitle);
             contentDiv.appendChild(cardDescription);
 
-            courseCard.appendChild(cardImage);
-            courseCard.appendChild(contentDiv);
-
             if (course.link) {
               const linkWrapper = document.createElement("a");
               linkWrapper.href = `${course.link}?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
@@ -118,11 +131,20 @@
               linkWrapper.appendChild(cardImage);
               linkWrapper.appendChild(contentDiv);
               courseCard.appendChild(linkWrapper);
+            } else {
+              courseCard.appendChild(cardImage);
+              courseCard.appendChild(contentDiv);
             }
 
             courseList.appendChild(courseCard);
           });
         }
+
+        // Simulate loading delay
+        setTimeout(() => {
+          document.getElementById("progressIndicator").style.display = "none";
+          document.getElementById("coursesContainer").style.display = "block";
+        }, 1000); // 1s delay for consistency
       })();
     </script>
   </body>

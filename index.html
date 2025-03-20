@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AfroLingua - Learn African Languages</title>
-    <link rel="stylesheet" href="styling/landing.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Language Learning Project</title>
+    <link rel="stylesheet" href="styling/landing.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.12.1/framer-motion.min.js"></script>
     <script>
-        function redirectToLanguages() {
-            window.location.href = "languages.html";
-        }
+      function redirectToLanguages() {
+        window.location.href = "languages.html";
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <h1 class="logo">AfroLingua</h1>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><button class="cta" onclick="redirectToLanguages()">Start Learning</button></li>
-            </ul>
-        </nav>
+      <nav>
+        <h1 class="logo">AfroLingua</h1>
+        <ul>
+          <li>
+            <a href="/login.html" class="nav-link">Login</a>
+          </li>
+          <li>
+            <button class="cta" onclick="redirectToLanguages()">
+              Start Learning
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
-    
+
     <section class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-content">
-            <h2>Unlock the Beauty of African Languages</h2>
-            <p>Learn Yoruba, Hausa, Igbo, Swahili, and more with AI-powered lessons.</p>
-            <button class="cta" onclick="redirectToLanguages()">Get Started</button>
-        </div>
+      <div class="hero-background"></div>
+      <div class="hero-content">
+        <h2>Unlock the Beauty of African Languages</h2>
+        <p>
+          Learn Yoruba, Hausa, Igbo, Swahili, and more with AI-powered lessons.
+        </p>
+      </div>
     </section>
-    
+
     <footer>
-        <p>&copy; 2025 AfroLingua. All Rights Reserved.</p>
+      <p>© 2025 AfroLingua. All Rights Reserved.</p>
     </footer>
-</body>
+  </body>
 </html>

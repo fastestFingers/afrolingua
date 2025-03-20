@@ -4,20 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary - AfroLingua</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/AI/styles/dictionary.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Dictionary</h1>
-        <div id="languageDisplay">Loading language...</div>
-        <input type="text" id="searchBox" placeholder="Enter a word to search">
-        <button id="searchButton">Search</button>
-        <div id="resultBox">
-            <ol id="resultList">
-                <li>Definition will appear here</li>
-            </ol>
-            <div class="loader" id="loader"></div>
+    <div class="progress-indicator" id="progressIndicator">
+        <div class="spinner"></div>
+    </div>
+    <div class="container" id="dictionaryContainer" style="display: none;">
+        <div class="sidebar">
+            <h2>Languages</h2>
+            <select id="languageSelect">
+                <option value="yoruba">Yoruba</option>
+                <option value="swahili">Swahili</option>
+                <option value="zulu">Zulu</option>
+                <option value="amharic">Amharic</option>
+                <option value="hausa">Hausa</option>
+            </select>
+            <h3>Recent Searches</h3>
+            <ul id="historyList" class="history-list"></ul>
+        </div>
+        <div class="main-content">
+            <h1><span id="languageDisplay">Loading language...</span> Dictionary</h1>
+            <div class="search-area">
+                <input type="text" id="searchBox" placeholder="Enter a word to search...">
+                <button id="searchButton">Search</button>
+            </div>
+            <div class="result-box" id="resultBox">
+                <div class="result-header">
+                    <h2 id="wordDisplay">-</h2>
+                    <button id="pronounceButton" class="pronounce-btn" disabled>Pronounce</button>
+                </div>
+                <ol id="resultList">
+                    <li class="welcome">Search for a word to see its definition.</li>
+                </ol>
+            </div>
         </div>
     </div>
 
@@ -27,28 +48,49 @@
         const resultBox = document.getElementById('resultBox');
         const resultList = document.getElementById('resultList');
         const languageDisplay = document.getElementById('languageDisplay');
-        const loader = document.getElementById('loader');
+        const wordDisplay = document.getElementById('wordDisplay');
+        const languageSelect = document.getElementById('languageSelect');
+        const historyList = document.getElementById('historyList');
+        const pronounceButton = document.getElementById('pronounceButton');
+        const progressIndicator = document.getElementById('progressIndicator');
+        const dictionaryContainer = document.getElementById('dictionaryContainer');
 
-        // Get language from URL params or default to Yoruba
+        let searchHistory = [];
+
+        // Load language and initialize
         async function loadLanguage() {
             const urlParams = new URLSearchParams(window.location.search);
-            const language = urlParams.get('language') || 'yoruba';
-            languageDisplay.textContent = `${language.charAt(0).toUpperCase() + language.slice(1)} Dictionary`;
+            let language = urlParams.get('language') || 'yoruba';
+            languageSelect.value = language;
+            languageDisplay.textContent = `${language.charAt(0).toUpperCase() + language.slice(1)}`;
+            progressIndicator.style.display = 'none';
+            dictionaryContainer.style.display = 'block';
+            updateURL(language);
+        }
+
+        // Update URL with selected language
+        function updateURL(language) {
+            const url = new URL(window.location);
+            url.searchParams.set('language', language);
+            window.history.pushState({}, '', url);
         }
 
         // Search function using server endpoint
         async function lookupWord() {
             const word = searchBox.value.trim();
-            const urlParams = new URLSearchParams(window.location.search);
-            const language = urlParams.get('language') || 'yoruba';
+            const language = languageSelect.value;
 
             if (!word) {
-                resultList.innerHTML = '<li>Please enter a word to search</li>';
+                resultList.innerHTML = '<li class="error">Please enter a word to search.</li>';
+                wordDisplay.textContent = '-';
+                pronounceButton.disabled = true;
                 return;
             }
 
-            loader.style.display = 'block'; // Show black circular progress indicator
-            resultList.innerHTML = ''; // Clear previous content
+            progressIndicator.style.display = 'block'; // Show circular progress indicator
+            resultList.innerHTML = '';
+            wordDisplay.textContent = word;
+            pronounceButton.disabled = true;
 
             try {
                 const response = await fetch('http://localhost:5000/dictionary', {
@@ -58,24 +100,61 @@
                 });
                 const result = await response.json();
                 if (result.success) {
-                    // Split the data into lines and create list items
-                    const lines = result.data.split('\n');
-                    resultList.innerHTML = lines.map(line => `<li>${line}</li>`).join('');
+                    const lines = result.data.split('\n').filter(line => line.trim());
+                    if (lines.length > 0) {
+                        resultList.innerHTML = lines.map(line => `<li>${line}</li>`).join('');
+                        pronounceButton.disabled = false; // Enable pronounce (placeholder)
+                        addToHistory(word);
+                    } else {
+                        resultList.innerHTML = '<li>No definitions found.</li>';
+                    }
                 } else {
-                    resultList.innerHTML = `<li>${result.error || 'Word not found'}</li>`;
+                    resultList.innerHTML = `<li class="error">${result.error || 'Word not found'}</li>`;
                 }
             } catch (error) {
                 console.error('Fetch error:', error);
-                resultList.innerHTML = '<li>Error connecting to server</li>';
+                resultList.innerHTML = '<li class="error">Error connecting to server. Please try again.</li>';
             } finally {
-                loader.style.display = 'none'; // Hide loader
+                progressIndicator.style.display = 'none'; // Hide loader
             }
+        }
+
+        // Add word to search history
+        function addToHistory(word) {
+            if (!searchHistory.includes(word)) {
+                searchHistory.unshift(word);
+                if (searchHistory.length > 5) searchHistory.pop(); // Limit to 5 recent searches
+                renderHistory();
+            }
+        }
+
+        // Render search history
+        function renderHistory() {
+            historyList.innerHTML = searchHistory.map(word => `<li>${word}</li>`).join('') || '<li class="no-history">No recent searches</li>';
         }
 
         // Event listeners
         searchButton.addEventListener('click', lookupWord);
         searchBox.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') lookupWord();
+        });
+        languageSelect.addEventListener('change', () => {
+            const language = languageSelect.value;
+            languageDisplay.textContent = `${language.charAt(0).toUpperCase() + language.slice(1)}`;
+            updateURL(language);
+            searchBox.value = '';
+            resultList.innerHTML = '<li class="welcome">Search for a word to see its definition.</li>';
+            wordDisplay.textContent = '-';
+            pronounceButton.disabled = true;
+        });
+        pronounceButton.addEventListener('click', () => {
+            alert('Pronunciation feature coming soon!');
+        });
+        historyList.addEventListener('click', (e) => {
+            if (e.target.tagName === 'LI' && e.target.textContent !== 'No recent searches') {
+                searchBox.value = e.target.textContent;
+                lookupWord();
+            }
         });
 
         // Load language on page load
