@@ -129,7 +129,7 @@ async function requestOpenAI(messages, maxTokens, temperature) {
           Authorization: `Bearer ${OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "gpt-4o-mini", // Updated to GPT-4o Mini
+          model: "gpt-4o-mini",
           messages: messages,
           max_tokens: maxTokens,
           temperature: temperature,
@@ -253,6 +253,7 @@ async function fetchGlosbeDetails(word) {
     }
   }
 }
+
 async function fetchWiktionaryDetails(word) {
   try {
     const timerLabel = `Wiktionary lookup for ${word}`;
@@ -280,7 +281,7 @@ async function fetchWiktionaryDetails(word) {
     return {
       partOfSpeech: partOfSpeechMatch ? partOfSpeechMatch[1] : "Unknown",
       definition: definitionMatch ? definitionMatch[1].trim() : word,
-      yoruba: yorubaMatch ? yorubaMatch[1] : null, // Fixed typo here
+      yoruba: yorubaMatch ? yorubaMatch[1] : null,
       example: exampleMatch ? `${exampleMatch[1]} (${exampleMatch[2]})` : "No example available"
     };
   } catch (error) {
@@ -540,35 +541,54 @@ app.post("/generateTranslation", async (req, res) => {
 app.post("/converse", async (req, res) => {
   const { language, message, conversationHistory } = req.body;
 
+  // Validate input
   if (!language || !message || !Array.isArray(conversationHistory)) {
     return res.status(400).json({ success: false, error: "Language, message, and valid conversation history are required" });
   }
 
-  const sanitizedHistory = conversationHistory.map(msg => ({
-    role: msg.role === "ai" ? "assistant" : msg.role,
-    content: msg.content
-  }));
-
+  // Define valid roles
   const validRoles = ["system", "assistant", "user", "function", "tool", "developer"];
-  for (const msg of sanitizedHistory) {
-    if (!validRoles.includes(msg.role)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: `Invalid role "${msg.role}" in conversation history. Supported roles: ${validRoles.join(", ")}`
-      });
+
+  // Sanitize conversation history and log for debugging
+  const sanitizedHistory = conversationHistory.map((msg, index) => {
+    const originalRole = msg.role;
+    const sanitizedRole = originalRole === "ai" ? "assistant" : originalRole;
+    
+    // Log if an invalid role is detected
+    if (!validRoles.includes(sanitizedRole)) {
+      console.error(`Invalid role found at index ${index}: "${originalRole}" sanitized to "${sanitizedRole}" is still invalid`);
     }
+
+    return {
+      role: sanitizedRole,
+      content: msg.content || "" // Ensure content exists
+    };
+  });
+
+  // Check for any remaining invalid roles after sanitization
+  const invalidRoles = sanitizedHistory.filter(msg => !validRoles.includes(msg.role));
+  if (invalidRoles.length > 0) {
+    return res.status(400).json({ 
+      success: false, 
+      error: `Invalid roles in conversation history: ${invalidRoles.map(m => m.role).join(", ")}. Supported roles: ${validRoles.join(", ")}`
+    });
   }
 
+  // Construct messages array
   const messages = [
     { role: "system", content: `You are a conversational partner helping me practice ${language}. Respond only in ${language}.` },
     ...sanitizedHistory,
     { role: "user", content: message },
   ];
 
+  // Log the full messages array for debugging
+  console.log("Messages sent to OpenAI:", JSON.stringify(messages, null, 2));
+
   try {
     const result = await requestOpenAI(messages, 100, 0.8);
     res.json(result);
   } catch (error) {
+    console.error("OpenAI request failed:", error.message);
     res.status(500).json({ success: false, error: "Failed to generate conversation response due to server error" });
   }
 });
