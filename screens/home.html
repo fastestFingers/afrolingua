@@ -74,6 +74,19 @@
       .profile-option:hover {
         background: #f0f0f0;
       }
+      /* Flexbox for layout adjustment */
+      main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .content-screen {
+        flex: 1;
+        display: none;
+      }
+      .content-screen.active {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -101,21 +114,19 @@
       </header>
 
       <main>
-        <section id="reviewScreen" class="content-screen active">
-          <!-- Review content will be loaded here -->
-        </section>
-        <section id="coursesScreen" class="content-screen"></section>
+        <section id="coursesScreen" class="content-screen active"></section>
+        <section id="reviewScreen" class="content-screen"></section>
       </main>
 
       <footer>
         <div class="footer-buttons">
-          <button class="footer-button active" data-screen="reviewScreen">
-            <i class="fas fa-chart-line"></i>
-            <span>Review</span>
-          </button>
-          <button class="footer-button" data-screen="coursesScreen">
+          <button class="footer-button active" data-screen="coursesScreen">
             <i class="fas fa-book"></i>
             <span>Courses</span>
+          </button>
+          <button class="footer-button" data-screen="reviewScreen">
+            <i class="fas fa-chart-line"></i>
+            <span>Review</span>
           </button>
         </div>
       </footer>
@@ -399,7 +410,7 @@
           setTimeout(() => {
             document.getElementById("loadingScreen").style.display = "none";
             document.getElementById("mainContent").style.display = "block";
-            switchScreen("reviewScreen", user);
+            switchScreen("coursesScreen", user); // Set Courses as default screen
           }, 1000);
         } else {
           console.log("No user signed in, redirecting to auth page.");

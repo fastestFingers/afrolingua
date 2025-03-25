@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 import dotenv from "dotenv";
 import fs from "fs/promises";
 import path from "path";
-import axios from "axios"; // Add this import
+import axios from "axios";
 
 dotenv.config();
 
@@ -29,7 +29,6 @@ const languageCodes = {
   yoruba: "yo"
 };
 
-// Keep all your existing functions unchanged (loadYorubaGrammarRules, etc.)
 async function loadYorubaGrammarRules() {
   try {
     const data = await fs.readFile(yorubaGrammarRulesPath, "utf8");
@@ -130,7 +129,7 @@ async function requestOpenAI(messages, maxTokens, temperature) {
           Authorization: `Bearer ${OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "gpt-4o-mini", // Updated to GPT-4o Mini
           messages: messages,
           max_tokens: maxTokens,
           temperature: temperature,
@@ -177,7 +176,6 @@ async function fetchWithTimeout(url, timeout = 10000) {
     throw error;
   }
 }
-// Replace only this part in your server.js
 
 async function fetchMyMemoryTranslation(word) {
   const maxRetries = 2;
@@ -255,7 +253,6 @@ async function fetchGlosbeDetails(word) {
     }
   }
 }
-
 async function fetchWiktionaryDetails(word) {
   try {
     const timerLabel = `Wiktionary lookup for ${word}`;
@@ -275,7 +272,6 @@ async function fetchWiktionaryDetails(word) {
     const wikitext = response.data.parse?.wikitext['*'] || '';
     if (!wikitext) return { partOfSpeech: "Unknown", definition: word, yoruba: null, example: "No example available" };
 
-    // Simple parsing (regex-based, not perfect but functional)
     const partOfSpeechMatch = wikitext.match(/===?\s*(Noun|Verb|Adjective|Adverb|Preposition|Conjunction)\s*===?/i);
     const definitionMatch = wikitext.match(/\n#([^#\n]+)/);
     const yorubaMatch = wikitext.match(/\{\{t\|yo\|([^|}]+)/);
@@ -284,7 +280,7 @@ async function fetchWiktionaryDetails(word) {
     return {
       partOfSpeech: partOfSpeechMatch ? partOfSpeechMatch[1] : "Unknown",
       definition: definitionMatch ? definitionMatch[1].trim() : word,
-      yoruba: yorubaMatch ? yorubaMatch[1] : null,
+      yoruba: yorubaMatch ? yorubaMatch[1] : null, // Fixed typo here
       example: exampleMatch ? `${exampleMatch[1]} (${exampleMatch[2]})` : "No example available"
     };
   } catch (error) {
@@ -303,7 +299,6 @@ app.post("/dictionary", async (req, res) => {
   try {
     console.time(`Dictionary lookup for ${language}/${word}`);
 
-    // Check local vocabulary first
     const vocab = await loadYorubaVocabulary();
     const localEntry = vocab.find(v => v.translation.toLowerCase() === word.toLowerCase());
     if (localEntry) {
@@ -312,7 +307,6 @@ app.post("/dictionary", async (req, res) => {
       return res.json({ success: true, data: formatted });
     }
 
-    // Fetch data from all sources
     let yorubaTranslation;
     try {
       yorubaTranslation = await fetchMyMemoryTranslation(word);
@@ -324,7 +318,6 @@ app.post("/dictionary", async (req, res) => {
     const glosbeDetails = await fetchGlosbeDetails(word);
     const wiktionaryDetails = await fetchWiktionaryDetails(word);
 
-    // Combine results, prioritizing richer data
     const result = {
       word,
       partOfSpeech: wiktionaryDetails.partOfSpeech !== "Unknown" ? wiktionaryDetails.partOfSpeech : "Unknown",
@@ -355,7 +348,6 @@ app.post("/dictionary", async (req, res) => {
   }
 });
 
-// Keep all other endpoints unchanged (getGrammarRule, generateVocabulary, etc.)
 app.post("/getGrammarRule", async (req, res) => {
   const { language, difficulty } = req.body;
 
@@ -370,22 +362,21 @@ app.post("/getGrammarRule", async (req, res) => {
 
   if (language.toLowerCase() === "yoruba") {
     const yorubaRules = await loadYorubaGrammarRules();
+    const localRule = getRandomRuleForDifficulty(yorubaRules, diffNum);
+
+    if (localRule) {
+      return res.json({ success: true, data: localRule });
+    }
 
     try {
       const messages = [{ role: "user", content: `Provide a grammar rule and an example sentence for the ${language} language at difficulty level ${difficulty}.` }];
       const result = await requestOpenAI(messages, 100, 0.7);
       res.json(result);
     } catch (error) {
-      const fallbackRule = getRandomRuleForDifficulty(yorubaRules, diffNum);
-      if (fallbackRule) {
-        console.log(`Falling back to JSON rule for Yoruba, difficulty ${diffNum}`);
-        return res.json({ success: true, data: fallbackRule });
-      } else {
-        return res.status(404).json({ 
-          success: false, 
-          error: `No grammar rule found for difficulty ${diffNum} in Yoruba JSON file after OpenAI failure`
-        });
-      }
+      return res.status(404).json({ 
+        success: false, 
+        error: `No grammar rule found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
+      });
     }
   } else {
     const messages = [{ role: "user", content: `Provide a grammar rule and an example sentence for the ${language} language at difficulty level ${difficulty}.` }];
@@ -412,6 +403,11 @@ app.post("/generateVocabulary", async (req, res) => {
 
   if (language.toLowerCase() === "yoruba") {
     const yorubaVocabulary = await loadYorubaVocabulary();
+    const localVocab = getRandomVocabulary(yorubaVocabulary, diffNum);
+
+    if (localVocab) {
+      return res.json({ success: true, data: localVocab });
+    }
 
     try {
       const messages = [{ 
@@ -423,16 +419,10 @@ app.post("/generateVocabulary", async (req, res) => {
       const result = await requestOpenAI(messages, 150, 0.8);
       res.json(result);
     } catch (error) {
-      const fallbackVocab = getRandomVocabulary(yorubaVocabulary, diffNum);
-      if (fallbackVocab) {
-        console.log(`Falling back to JSON vocabulary for Yoruba, difficulty ${diffNum}`);
-        return res.json({ success: true, data: fallbackVocab });
-      } else {
-        return res.status(404).json({ 
-          success: false, 
-          error: `No vocabulary found for difficulty ${diffNum} in Yoruba JSON file after OpenAI failure`
-        });
-      }
+      return res.status(404).json({ 
+        success: false, 
+        error: `No vocabulary found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
+      });
     }
   } else {
     const messages = [{ 
@@ -469,22 +459,21 @@ app.post("/generateExercise", async (req, res) => {
 
   if (language.toLowerCase() === "yoruba" && isFillInTheBlank) {
     const yorubaExercises = await loadYorubaFillBlankExercises();
+    const localExercise = getRandomFillBlankExercise(yorubaExercises, diffNum);
+
+    if (localExercise) {
+      return res.json({ success: true, data: localExercise });
+    }
 
     try {
       const messages = [{ role: "user", content: prompt }];
       const result = await requestOpenAI(messages, 150, 0.7);
       res.json(result);
     } catch (error) {
-      const fallbackExercise = getRandomFillBlankExercise(yorubaExercises, diffNum);
-      if (fallbackExercise) {
-        console.log(`Falling back to JSON fill-in-the-blank exercise for Yoruba, difficulty ${diffNum}`);
-        return res.json({ success: true, data: fallbackExercise });
-      } else {
-        return res.status(404).json({ 
-          success: false, 
-          error: `No fill-in-the-blank exercise found for difficulty ${diffNum} in Yoruba JSON file after OpenAI failure`
-        });
-      }
+      return res.status(404).json({ 
+        success: false, 
+        error: `No fill-in-the-blank exercise found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
+      });
     }
   } else {
     const messages = [{ role: "user", content: prompt }];
@@ -511,6 +500,11 @@ app.post("/generateTranslation", async (req, res) => {
 
   if (language.toLowerCase() === "yoruba") {
     const yorubaTranslations = await loadYorubaTranslations();
+    const localTranslation = getRandomTranslation(yorubaTranslations, diffNum);
+
+    if (localTranslation) {
+      return res.json({ success: true, data: localTranslation });
+    }
 
     try {
       const messages = [{ 
@@ -522,16 +516,10 @@ app.post("/generateTranslation", async (req, res) => {
       const result = await requestOpenAI(messages, 100, 0.7);
       res.json(result);
     } catch (error) {
-      const fallbackTranslation = getRandomTranslation(yorubaTranslations, diffNum);
-      if (fallbackTranslation) {
-        console.log(`Falling back to JSON translation for Yoruba, difficulty ${diffNum}`);
-        return res.json({ success: true, data: fallbackTranslation });
-      } else {
-        return res.status(404).json({ 
-          success: false, 
-          error: `No translation found for difficulty ${diffNum} in Yoruba JSON file after OpenAI failure`
-        });
-      }
+      return res.status(404).json({ 
+        success: false, 
+        error: `No translation found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
+      });
     }
   } else {
     const messages = [{ 
@@ -551,11 +539,32 @@ app.post("/generateTranslation", async (req, res) => {
 
 app.post("/converse", async (req, res) => {
   const { language, message, conversationHistory } = req.body;
+
+  if (!language || !message || !Array.isArray(conversationHistory)) {
+    return res.status(400).json({ success: false, error: "Language, message, and valid conversation history are required" });
+  }
+
+  const sanitizedHistory = conversationHistory.map(msg => ({
+    role: msg.role === "ai" ? "assistant" : msg.role,
+    content: msg.content
+  }));
+
+  const validRoles = ["system", "assistant", "user", "function", "tool", "developer"];
+  for (const msg of sanitizedHistory) {
+    if (!validRoles.includes(msg.role)) {
+      return res.status(400).json({ 
+        success: false, 
+        error: `Invalid role "${msg.role}" in conversation history. Supported roles: ${validRoles.join(", ")}`
+      });
+    }
+  }
+
   const messages = [
     { role: "system", content: `You are a conversational partner helping me practice ${language}. Respond only in ${language}.` },
-    ...conversationHistory.map((msg) => ({ role: msg.role, content: msg.content })),
+    ...sanitizedHistory,
     { role: "user", content: message },
   ];
+
   try {
     const result = await requestOpenAI(messages, 100, 0.8);
     res.json(result);

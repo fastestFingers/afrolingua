@@ -82,7 +82,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 20px 20px; /* Space for header and footer */
+  padding: 80px 20px 20px; /* Space for header */
 }
 
 .onboarding-section {
@@ -94,6 +94,9 @@ main {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
   animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @keyframes fadeIn {
@@ -138,6 +141,8 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
+  width: 100%;
+  margin-bottom: 20px; /* Space for the button */
 }
 
 /* Selectable Containers */
@@ -166,17 +171,12 @@ main {
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
-/* Footer and Next Button */
-footer {
-  padding: 20px;
-  text-align: right;
-}
-
+/* Next Button */
 #nextButton {
   padding: 12px 30px;
   border: 2px solid transparent;
   border-radius: 25px;
-  background:  #ffd700;
+  background: #ffd700;
   color: #fff;
   font-size: 1.1rem;
   font-weight: 600;
@@ -196,6 +196,11 @@ footer {
 #nextButton:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+footer {
+  padding: 20px;
 }
 
 /* Blur Effect */
