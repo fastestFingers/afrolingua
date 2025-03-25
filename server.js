@@ -24,17 +24,28 @@ const yorubaGrammarRulesPath = path.join(process.cwd(), "courses/yoruba/yoruba_g
 const yorubaFillBlankExercisesPath = path.join(process.cwd(), "courses/yoruba/yoruba_fillblank_exercises.json");
 const yorubaTranslationsPath = path.join(process.cwd(), "courses/yoruba/yoruba_translations.json");
 const yorubaVocabularyPath = path.join(process.cwd(), "courses/yoruba/yoruba_vocabulary.json");
+const hausaGrammarRulesPath = path.join(process.cwd(), "courses/hausa/hausa_grammar_rules.json"); // Added for Hausa
 
 const languageCodes = {
-  yoruba: "yo"
+  yoruba: "yo",
+  hausa: "ha"
 };
 
-async function loadYorubaGrammarRules() {
+const recentTranslations = new Map();
+const recentVocabulary = new Map();
+
+async function loadGrammarRules(language) {
+  const filePath = language.toLowerCase() === "yoruba" ? yorubaGrammarRulesPath : hausaGrammarRulesPath;
   try {
-    const data = await fs.readFile(yorubaGrammarRulesPath, "utf8");
-    return JSON.parse(data).grammar_rules || [];
+    const data = await fs.readFile(filePath, "utf8");
+    const rules = JSON.parse(data).grammar_rules || [];
+    // Ensure every rule has an example
+    return rules.map(rule => ({
+      ...rule,
+      example: rule.example || `Generic ${language} example sentence.`
+    }));
   } catch (error) {
-    console.error("Error loading Yoruba grammar rules:", error.message);
+    console.error(`Error loading ${language} grammar rules:`, error.message);
     return [];
   }
 }
@@ -72,7 +83,7 @@ async function loadYorubaVocabulary() {
 function getRandomRuleForDifficulty(rules, difficulty) {
   const matchingRules = rules.filter(rule => rule.difficulty === difficulty);
   if (matchingRules.length === 0) {
-    console.warn(`No rules found for difficulty ${difficulty} in Yoruba grammar JSON file`);
+    console.warn(`No rules found for difficulty ${difficulty}`);
     return null;
   }
   const randomIndex = Math.floor(Math.random() * matchingRules.length);
@@ -83,7 +94,7 @@ function getRandomRuleForDifficulty(rules, difficulty) {
 function getRandomFillBlankExercise(exercises, difficulty) {
   const matchingExercises = exercises.filter(ex => ex.difficulty === difficulty);
   if (matchingExercises.length === 0) {
-    console.warn(`No fill-in-the-blank exercises found for difficulty ${difficulty} in Yoruba JSON file`);
+    console.warn(`No fill-in-the-blank exercises found for difficulty ${difficulty}`);
     return null;
   }
   const randomIndex = Math.floor(Math.random() * matchingExercises.length);
@@ -91,26 +102,63 @@ function getRandomFillBlankExercise(exercises, difficulty) {
   return `Fill-in-the-Blank: ${exercise.sentence}\nAnswer: ${exercise.answer}`;
 }
 
-function getRandomTranslation(translations, difficulty) {
+function getRandomTranslation(translations, difficulty, language) {
   const matchingTranslations = translations.filter(t => t.difficulty === difficulty);
   if (matchingTranslations.length === 0) {
-    console.warn(`No translations found for difficulty ${difficulty} in Yoruba JSON file`);
+    console.warn(`No translations found for difficulty ${difficulty}`);
     return null;
   }
-  const randomIndex = Math.floor(Math.random() * matchingTranslations.length);
-  const translation = matchingTranslations[randomIndex];
-  return `Sentence: ${translation.sentence}\nTranslation: ${translation.translation}`;
+
+  let recent = recentTranslations.get(language) || new Set();
+  const maxRecent = Math.min(5, matchingTranslations.length);
+
+  const availableTranslations = matchingTranslations.filter(t => !recent.has(t.sentence));
+  if (availableTranslations.length === 0) {
+    recent.clear();
+    availableTranslations.push(...matchingTranslations);
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableTranslations.length);
+  const translation = availableTranslations[randomIndex];
+  const result = `Sentence: ${translation.sentence}\nTranslation: ${translation.translation}`;
+
+  recent.add(translation.sentence);
+  if (recent.size > maxRecent) {
+    const oldest = recent.values().next().value;
+    recent.delete(oldest);
+  }
+  recentTranslations.set(language, recent);
+
+  return result;
 }
 
-function getRandomVocabulary(vocabulary, difficulty) {
+function getRandomVocabulary(vocabulary, difficulty, language) {
   const matchingVocab = vocabulary.filter(v => v.difficulty === difficulty);
   if (matchingVocab.length === 0) {
-    console.warn(`No vocabulary found for difficulty ${difficulty} in Yoruba JSON file`);
+    console.warn(`No vocabulary found for difficulty ${difficulty}`);
     return null;
   }
-  const randomIndex = Math.floor(Math.random() * matchingVocab.length);
-  const vocab = matchingVocab[randomIndex];
-  return `Word: ${vocab.word}\nTranslation: ${vocab.translation}\nUsage: ${vocab.usage}`;
+
+  let recent = recentVocabulary.get(language) || new Set();
+  const availableVocab = matchingVocab.filter(v => !recent.has(v.word));
+  if (availableVocab.length === 0) {
+    recent.clear();
+    availableVocab.push(...matchingVocab);
+  }
+
+  const randomIndex = Math.floor(Math.random() * availableVocab.length);
+  const vocab = availableVocab[randomIndex];
+  const result = `Word: ${vocab.word}\nTranslation: ${vocab.translation}\nUsage: ${vocab.usage}`;
+
+  recent.add(vocab.word);
+  const maxRecent = Math.min(5, matchingVocab.length);
+  if (recent.size > maxRecent) {
+    const oldest = recent.values().next().value;
+    recent.delete(oldest);
+  }
+  recentVocabulary.set(language, recent);
+
+  return result;
 }
 
 async function requestOpenAI(messages, maxTokens, temperature) {
@@ -158,33 +206,12 @@ async function requestOpenAI(messages, maxTokens, temperature) {
   }
 }
 
-async function fetchWithTimeout(url, timeout = 10000) {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-  
-  try {
-    console.time(`Fetch ${url}`);
-    const response = await fetch(url, { signal: controller.signal });
-    console.timeEnd(`Fetch ${url}`);
-    clearTimeout(timeoutId);
-    if (!response.ok) {
-      throw new Error(`Fetch error: ${response.status}`);
-    }
-    return await response.json();
-  } catch (error) {
-    clearTimeout(timeoutId);
-    throw error;
-  }
-}
-
 async function fetchMyMemoryTranslation(word) {
   const maxRetries = 2;
   let attempt = 0;
 
   while (attempt < maxRetries) {
     try {
-      const timerLabel = `MyMemory lookup for ${word} (attempt ${attempt + 1})`;
-      console.time(timerLabel);
       const response = await axios.get('https://api.mymemory.translated.net/get', {
         params: {
           q: word,
@@ -193,7 +220,6 @@ async function fetchMyMemoryTranslation(word) {
         },
         timeout: 10000
       });
-      console.timeEnd(timerLabel);
 
       const translation = response.data.responseData.translatedText;
       if (translation === "NO TRANSLATION FOUND" || !translation) {
@@ -202,10 +228,9 @@ async function fetchMyMemoryTranslation(word) {
       return translation;
     } catch (error) {
       attempt++;
-      const errorMsg = error.response ? `${error.response.status}: ${JSON.stringify(error.response.data)}` : error.message;
-      console.error(`MyMemory attempt ${attempt} failed for "${word}": ${errorMsg}`);
+      console.error(`MyMemory attempt ${attempt} failed for "${word}": ${error.message}`);
       if (attempt === maxRetries) {
-        throw new Error(`MyMemory failed after ${maxRetries} attempts: ${errorMsg}`);
+        throw error;
       }
       await new Promise(resolve => setTimeout(resolve, 1000));
     }
@@ -218,8 +243,6 @@ async function fetchGlosbeDetails(word) {
 
   while (attempt < maxRetries) {
     try {
-      const timerLabel = `Glosbe lookup for ${word} (attempt ${attempt + 1})`;
-      console.time(timerLabel);
       const response = await axios.get('https://glosbe.com/gapi/translate', {
         params: {
           from: 'en',
@@ -229,7 +252,6 @@ async function fetchGlosbeDetails(word) {
         },
         timeout: 10000
       });
-      console.timeEnd(timerLabel);
 
       const translations = response.data.tuc;
       if (!translations || translations.length === 0) {
@@ -244,8 +266,7 @@ async function fetchGlosbeDetails(word) {
       };
     } catch (error) {
       attempt++;
-      const errorMsg = error.response ? `${error.response.status}: ${JSON.stringify(error.response.data)}` : error.message;
-      console.error(`Glosbe attempt ${attempt} failed for "${word}": ${errorMsg}`);
+      console.error(`Glosbe attempt ${attempt} failed for "${word}": ${error.message}`);
       if (attempt === maxRetries) {
         return { definition: word, example: "No example available" };
       }
@@ -256,8 +277,6 @@ async function fetchGlosbeDetails(word) {
 
 async function fetchWiktionaryDetails(word) {
   try {
-    const timerLabel = `Wiktionary lookup for ${word}`;
-    console.time(timerLabel);
     const response = await axios.get('https://en.wiktionary.org/w/api.php', {
       params: {
         action: 'parse',
@@ -268,21 +287,17 @@ async function fetchWiktionaryDetails(word) {
       },
       timeout: 10000
     });
-    console.timeEnd(timerLabel);
 
     const wikitext = response.data.parse?.wikitext['*'] || '';
     if (!wikitext) return { partOfSpeech: "Unknown", definition: word, yoruba: null, example: "No example available" };
 
     const partOfSpeechMatch = wikitext.match(/===?\s*(Noun|Verb|Adjective|Adverb|Preposition|Conjunction)\s*===?/i);
     const definitionMatch = wikitext.match(/\n#([^#\n]+)/);
-    const yorubaMatch = wikitext.match(/\{\{t\|yo\|([^|}]+)/);
-    const exampleMatch = wikitext.match(/\{\{ux\|yo\|([^|]+)\|([^}]+)\}\}/);
-
     return {
       partOfSpeech: partOfSpeechMatch ? partOfSpeechMatch[1] : "Unknown",
       definition: definitionMatch ? definitionMatch[1].trim() : word,
-      yoruba: yorubaMatch ? yorubaMatch[1] : null,
-      example: exampleMatch ? `${exampleMatch[1]} (${exampleMatch[2]})` : "No example available"
+      yoruba: null, // Wiktionary doesn’t reliably provide Yoruba translations here
+      example: "No example available" // Wiktionary parsing doesn’t extract examples reliably
     };
   } catch (error) {
     console.error(`Wiktionary lookup failed for "${word}": ${error.message}`);
@@ -298,13 +313,10 @@ app.post("/dictionary", async (req, res) => {
   }
 
   try {
-    console.time(`Dictionary lookup for ${language}/${word}`);
-
     const vocab = await loadYorubaVocabulary();
     const localEntry = vocab.find(v => v.translation.toLowerCase() === word.toLowerCase());
     if (localEntry) {
       const formatted = `Word: ${word}\nPart of Speech: ${localEntry.partOfSpeech || "Unknown"}\nDefinition: ${localEntry.definition || word}\nYoruba: ${localEntry.word}\nExample: ${localEntry.usage || "No example available"}`;
-      console.timeEnd(`Dictionary lookup for ${language}/${word}`);
       return res.json({ success: true, data: formatted });
     }
 
@@ -312,7 +324,6 @@ app.post("/dictionary", async (req, res) => {
     try {
       yorubaTranslation = await fetchMyMemoryTranslation(word);
     } catch (error) {
-      console.warn(`MyMemory failed, proceeding with partial data: ${error.message}`);
       yorubaTranslation = "Unknown";
     }
 
@@ -321,31 +332,17 @@ app.post("/dictionary", async (req, res) => {
 
     const result = {
       word,
-      partOfSpeech: wiktionaryDetails.partOfSpeech !== "Unknown" ? wiktionaryDetails.partOfSpeech : "Unknown",
+      partOfSpeech: wiktionaryDetails.partOfSpeech,
       definition: wiktionaryDetails.definition !== word ? wiktionaryDetails.definition : glosbeDetails.definition,
-      yoruba: wiktionaryDetails.yoruba || yorubaTranslation,
-      example: wiktionaryDetails.example !== "No example available" ? wiktionaryDetails.example : glosbeDetails.example
+      yoruba: yorubaTranslation,
+      example: glosbeDetails.example
     };
 
     const formatted = `Word: ${result.word}\nPart of Speech: ${result.partOfSpeech}\nDefinition: ${result.definition}\nYoruba: ${result.yoruba}\nExample: ${result.example}`;
-    console.timeEnd(`Dictionary lookup for ${language}/${word}`);
     res.json({ success: true, data: formatted });
-
   } catch (error) {
     console.error(`Dictionary lookup failed for "${word}": ${error.message}`);
-    try {
-      const vocab = await loadYorubaVocabulary();
-      const entry = vocab.find(v => v.translation.toLowerCase() === word.toLowerCase());
-      if (entry) {
-        const formatted = `Word: ${word}\nPart of Speech: ${entry.partOfSpeech || "Unknown"}\nDefinition: ${entry.definition || word}\nYoruba: ${entry.word}\nExample: ${entry.usage || "No example available"}`;
-        console.timeEnd(`Dictionary lookup for ${language}/${word}`);
-        return res.json({ success: true, data: formatted });
-      }
-      res.status(404).json({ success: false, error: "Word not found in MyMemory, Glosbe, Wiktionary, or local data" });
-    } catch (localError) {
-      console.error(`Local fallback failed: ${localError.message}`);
-      res.status(500).json({ success: false, error: "Server error fetching data" });
-    }
+    res.status(500).json({ success: false, error: "Server error fetching data" });
   }
 });
 
@@ -361,32 +358,43 @@ app.post("/getGrammarRule", async (req, res) => {
     return res.status(400).json({ success: false, error: "Difficulty must be a number between 1 and 15" });
   }
 
-  if (language.toLowerCase() === "yoruba") {
-    const yorubaRules = await loadYorubaGrammarRules();
-    const localRule = getRandomRuleForDifficulty(yorubaRules, diffNum);
+  const langLower = language.toLowerCase();
+
+  // Load local rules for supported languages
+  if (["yoruba", "hausa"].includes(langLower)) {
+    const rules = await loadGrammarRules(language);
+    const localRule = getRandomRuleForDifficulty(rules, diffNum);
 
     if (localRule) {
       return res.json({ success: true, data: localRule });
     }
+  }
 
-    try {
-      const messages = [{ role: "user", content: `Provide a grammar rule and an example sentence for the ${language} language at difficulty level ${difficulty}.` }];
-      const result = await requestOpenAI(messages, 100, 0.7);
-      res.json(result);
-    } catch (error) {
-      return res.status(404).json({ 
-        success: false, 
-        error: `No grammar rule found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
+  // OpenAI fallback
+  try {
+    const prompt = `Provide a grammar rule and an example sentence for the ${language} language at difficulty level ${difficulty}. Format the response exactly as:\nRule: [grammar rule]\nExample: [example sentence in ${language}]`;
+    const messages = [{ role: "user", content: prompt }];
+    const result = await requestOpenAI(messages, 100, 0.7);
+
+    const content = result.data;
+    if (!content.includes("Rule:") || !content.includes("Example:")) {
+      console.warn(`OpenAI response for ${language} did not follow expected format: ${content}`);
+      const ruleMatch = content.match(/Rule:\s*(.+)/) || ["Rule: Unknown rule"];
+      return res.json({
+        success: true,
+        data: `${ruleMatch[0]}\nExample: Generic ${language} sentence.`
       });
     }
-  } else {
-    const messages = [{ role: "user", content: `Provide a grammar rule and an example sentence for the ${language} language at difficulty level ${difficulty}.` }];
-    try {
-      const result = await requestOpenAI(messages, 100, 0.7);
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ success: false, error: "Failed to generate grammar rule due to server error" });
-    }
+
+    res.json({ success: true, data: content });
+  } catch (error) {
+    console.error(`Failed to fetch grammar rule for ${language} at difficulty ${diffNum}: ${error.message}`);
+    const fallback = langLower === "yoruba"
+      ? "Rule: Verb agreement is key in Yoruba.\nExample: Mo jeun. (I ate.)"
+      : langLower === "hausa"
+      ? "Rule: In Hausa, the basic sentence structure follows the Subject-Verb-Object (SVO) order.\nExample: Na tafi gida. (I went home.)"
+      : `Rule: Basic ${language} grammar rule.\nExample: Sample ${language} sentence.`;
+    res.json({ success: true, data: fallback });
   }
 });
 
@@ -402,42 +410,53 @@ app.post("/generateVocabulary", async (req, res) => {
     return res.status(400).json({ success: false, error: "Difficulty must be a number between 1 and 15" });
   }
 
-  if (language.toLowerCase() === "yoruba") {
+  const langLower = language.toLowerCase();
+
+  if (langLower === "yoruba") {
     const yorubaVocabulary = await loadYorubaVocabulary();
-    const localVocab = getRandomVocabulary(yorubaVocabulary, diffNum);
+    const localVocab = getRandomVocabulary(yorubaVocabulary, diffNum, langLower);
 
     if (localVocab) {
       return res.json({ success: true, data: localVocab });
     }
+  }
 
-    try {
-      const messages = [{ 
-        role: "user", 
-        content: difficulty 
-          ? `Generate a vocabulary word in ${language} with its English translation and a contextual sentence at difficulty level ${difficulty}.` 
-          : `Generate a vocabulary word in ${language} with its English translation and a contextual sentence.` 
-      }];
-      const result = await requestOpenAI(messages, 150, 0.8);
-      res.json(result);
-    } catch (error) {
-      return res.status(404).json({ 
-        success: false, 
-        error: `No vocabulary found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
-      });
+  try {
+    let recent = recentVocabulary.get(langLower) || new Set();
+    const recentWords = Array.from(recent).join(", ");
+
+    const prompt = difficulty
+      ? `Generate a unique vocabulary word in ${language} at difficulty level ${difficulty} with its English translation and a contextual usage sentence. Do not repeat these words: ${recentWords || "none"}. Format exactly as:\nWord: [word in ${language}]\nTranslation: [English translation]\nUsage: [sentence in ${language} using the word]`
+      : `Generate a unique vocabulary word in ${language} with its English translation and a contextual usage sentence. Do not repeat these words: ${recentWords || "none"}. Format exactly as:\nWord: [word in ${language}]\nTranslation: [English translation]\nUsage: [sentence in ${language} using the word]`;
+
+    const messages = [{ role: "user", content: prompt }];
+    const result = await requestOpenAI(messages, 150, 0.8);
+
+    const content = result.data;
+    if (!content.includes("Word:") || !content.includes("Translation:") || !content.includes("Usage:")) {
+      throw new Error("Invalid vocabulary format");
     }
-  } else {
-    const messages = [{ 
-      role: "user", 
-      content: difficulty 
-        ? `Generate a vocabulary word in ${language} with its English translation and a contextual sentence at difficulty level ${difficulty}.` 
-        : `Generate a vocabulary word in ${language} with its English translation and a contextual sentence.` 
-    }];
-    try {
-      const result = await requestOpenAI(messages, 150, 0.8);
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ success: false, error: "Failed to generate vocabulary due to server error" });
+
+    const wordMatch = content.match(/Word:\s*(.+)/);
+    const word = wordMatch ? wordMatch[1] : null;
+
+    if (word) {
+      const maxRecent = 5;
+      recent.add(word);
+      if (recent.size > maxRecent) {
+        const oldest = recent.values().next().value;
+        recent.delete(oldest);
+      }
+      recentVocabulary.set(langLower, recent);
     }
+
+    res.json({ success: true, data: content });
+  } catch (error) {
+    console.error(`Failed to generate vocabulary for ${language}: ${error.message}`);
+    const fallback = langLower === "yoruba"
+      ? "Word: Oko\nTranslation: Car\nUsage: Mo n wa oko mi ni garage."
+      : "Word: Sample\nTranslation: Example\nUsage: This is a sample usage.";
+    res.json({ success: true, data: fallback });
   }
 });
 
@@ -453,37 +472,30 @@ app.post("/generateExercise", async (req, res) => {
     return res.status(400).json({ success: false, error: "Difficulty must be a number between 1 and 15" });
   }
 
-  const isFillInTheBlank = Math.random() < 0.5;
-  const prompt = isFillInTheBlank
-    ? `Create a fill-in-the-blank exercise in ${language} at difficulty level ${difficulty}.`
-    : `Create a multiple-choice exercise in ${language} at difficulty level ${difficulty}.`;
+  try {
+    if (language.toLowerCase() === "yoruba") {
+      const yorubaExercises = await loadYorubaFillBlankExercises();
+      const localExercise = getRandomFillBlankExercise(yorubaExercises, diffNum);
 
-  if (language.toLowerCase() === "yoruba" && isFillInTheBlank) {
-    const yorubaExercises = await loadYorubaFillBlankExercises();
-    const localExercise = getRandomFillBlankExercise(yorubaExercises, diffNum);
-
-    if (localExercise) {
-      return res.json({ success: true, data: localExercise });
+      if (localExercise) {
+        return res.json({ success: true, data: localExercise });
+      }
     }
 
-    try {
-      const messages = [{ role: "user", content: prompt }];
-      const result = await requestOpenAI(messages, 150, 0.7);
-      res.json(result);
-    } catch (error) {
-      return res.status(404).json({ 
-        success: false, 
-        error: `No fill-in-the-blank exercise found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
-      });
-    }
-  } else {
+    const prompt = `Create a fill-in-the-blank exercise in ${language} at difficulty level ${difficulty}. The sentence should be in ${language} with one word replaced by ___. Format exactly as:\nQuestion: [sentence with blank]\nAnswer: [correct word]`;
     const messages = [{ role: "user", content: prompt }];
-    try {
-      const result = await requestOpenAI(messages, 150, 0.7);
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ success: false, error: "Failed to generate exercise due to server error" });
+    const result = await requestOpenAI(messages, 200, 0.7);
+
+    const content = result.data;
+    if (!content.includes("Question:") || !content.includes("Answer:")) {
+      throw new Error("Invalid exercise format");
     }
+
+    res.json({ success: true, data: content });
+  } catch (error) {
+    console.error(`Exercise generation failed: ${error.message}`);
+    const fallback = "Question: Mo n lo ___ si ile-iwe.\nAnswer: okada";
+    res.json({ success: true, data: fallback });
   }
 });
 
@@ -499,97 +511,74 @@ app.post("/generateTranslation", async (req, res) => {
     return res.status(400).json({ success: false, error: "Difficulty must be a number between 1 and 15" });
   }
 
-  if (language.toLowerCase() === "yoruba") {
+  const langLower = language.toLowerCase();
+
+  if (langLower === "yoruba") {
     const yorubaTranslations = await loadYorubaTranslations();
-    const localTranslation = getRandomTranslation(yorubaTranslations, diffNum);
+    const localTranslation = getRandomTranslation(yorubaTranslations, diffNum, langLower);
 
     if (localTranslation) {
       return res.json({ success: true, data: localTranslation });
     }
+  }
 
-    try {
-      const messages = [{ 
-        role: "user", 
-        content: difficulty 
-          ? `Translate a short sentence from ${language} to English at difficulty level ${difficulty}.` 
-          : `Translate a short sentence from ${language} to English.` 
-      }];
-      const result = await requestOpenAI(messages, 100, 0.7);
-      res.json(result);
-    } catch (error) {
-      return res.status(404).json({ 
-        success: false, 
-        error: `No translation found for difficulty ${diffNum} in Yoruba JSON file or OpenAI`
-      });
+  try {
+    let recent = recentTranslations.get(langLower) || new Set();
+    const recentSentences = Array.from(recent).join("; ");
+
+    const prompt = difficulty
+      ? `Generate a unique short sentence in ${language} at difficulty level ${difficulty} and provide its English translation. Do not repeat these sentences: ${recentSentences || "none"}. Format the response as:\nSentence: [sentence in ${language}]\nTranslation: [English translation]`
+      : `Generate a unique short sentence in ${language} and provide its English translation. Do not repeat these sentences: ${recentSentences || "none"}. Format the response as:\nSentence: [sentence in ${language}]\nTranslation: [English translation]`;
+
+    const messages = [{ role: "user", content: prompt }];
+    const result = await requestOpenAI(messages, 100, 0.9);
+
+    const content = result.data;
+    const sentenceMatch = content.match(/Sentence:\s*(.+)/);
+    const sentence = sentenceMatch ? sentenceMatch[1] : null;
+
+    if (sentence) {
+      const maxRecent = 5;
+      recent.add(sentence);
+      if (recent.size > maxRecent) {
+        const oldest = recent.values().next().value;
+        recent.delete(oldest);
+      }
+      recentTranslations.set(langLower, recent);
     }
-  } else {
-    const messages = [{ 
-      role: "user", 
-      content: difficulty 
-        ? `Translate a short sentence from ${language} to English at difficulty level ${difficulty}.` 
-        : `Translate a short sentence from ${language} to English.` 
-    }];
-    try {
-      const result = await requestOpenAI(messages, 100, 0.7);
-      res.json(result);
-    } catch (error) {
-      res.status(500).json({ success: false, error: "Failed to generate translation due to server error" });
-    }
+
+    res.json({ success: true, data: content });
+  } catch (error) {
+    console.error(`Failed to generate translation for ${language}: ${error.message}`);
+    res.status(500).json({ success: false, error: "Failed to generate translation" });
   }
 });
 
 app.post("/converse", async (req, res) => {
   const { language, message, conversationHistory } = req.body;
 
-  // Validate input
   if (!language || !message || !Array.isArray(conversationHistory)) {
     return res.status(400).json({ success: false, error: "Language, message, and valid conversation history are required" });
   }
 
-  // Define valid roles
-  const validRoles = ["system", "assistant", "user", "function", "tool", "developer"];
+  const validRoles = ["system", "assistant", "user"];
+  const sanitizedHistory = conversationHistory.map(msg => ({
+    role: msg.role === "ai" ? "assistant" : msg.role,
+    content: msg.content || ""
+  })).filter(msg => validRoles.includes(msg.role));
 
-  // Sanitize conversation history and log for debugging
-  const sanitizedHistory = conversationHistory.map((msg, index) => {
-    const originalRole = msg.role;
-    const sanitizedRole = originalRole === "ai" ? "assistant" : originalRole;
-    
-    // Log if an invalid role is detected
-    if (!validRoles.includes(sanitizedRole)) {
-      console.error(`Invalid role found at index ${index}: "${originalRole}" sanitized to "${sanitizedRole}" is still invalid`);
-    }
-
-    return {
-      role: sanitizedRole,
-      content: msg.content || "" // Ensure content exists
-    };
-  });
-
-  // Check for any remaining invalid roles after sanitization
-  const invalidRoles = sanitizedHistory.filter(msg => !validRoles.includes(msg.role));
-  if (invalidRoles.length > 0) {
-    return res.status(400).json({ 
-      success: false, 
-      error: `Invalid roles in conversation history: ${invalidRoles.map(m => m.role).join(", ")}. Supported roles: ${validRoles.join(", ")}`
-    });
-  }
-
-  // Construct messages array
   const messages = [
     { role: "system", content: `You are a conversational partner helping me practice ${language}. Respond only in ${language}.` },
     ...sanitizedHistory,
     { role: "user", content: message },
   ];
 
-  // Log the full messages array for debugging
-  console.log("Messages sent to OpenAI:", JSON.stringify(messages, null, 2));
-
   try {
     const result = await requestOpenAI(messages, 100, 0.8);
     res.json(result);
   } catch (error) {
     console.error("OpenAI request failed:", error.message);
-    res.status(500).json({ success: false, error: "Failed to generate conversation response due to server error" });
+    res.status(500).json({ success: false, error: "Failed to generate conversation response" });
   }
 });
 
@@ -599,8 +588,6 @@ app.post("/transcribe", async (req, res) => {
   if (!language || !text) {
     return res.status(400).json({ success: false, error: "Language and text are required" });
   }
-
-  console.log(`Received transcription: ${text} in ${language}`);
 
   try {
     const messages = [

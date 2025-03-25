@@ -10,6 +10,24 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+      .error-message {
+        color: #d32f2f;
+        background: #ffebee;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+      .error-message button {
+        background: #d32f2f;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    </style>
   </head>
   <body>
     <div class="progress-indicator" id="progressIndicator">
@@ -32,7 +50,6 @@
         <ul id="historyList" class="history-list"></ul>
       </div>
       <div class="main-content">
-        
         <h1><span id="selectedLanguage"></span> Grammar Rules & Sentence Structure</h1>
         <div class="difficulty-display" id="difficultyDisplay">Difficulty: Easy (1/15)</div>
         <div class="content-wrapper">
@@ -68,7 +85,6 @@
       const db = firebase.firestore();
 
       // Elements
-      const backButton = document.getElementById("backButton");
       const grammarContent = document.getElementById("grammarContent");
       const generateButton = document.getElementById("generateButton");
       const nextButton = document.getElementById("nextButton");
@@ -85,8 +101,7 @@
       const historyList = document.getElementById("historyList");
 
       // State
-      let selectedLanguage = "yoruba"; // Default to Yoruba
-      let selectedFlag = "🇳🇬";
+      let selectedLanguage = "yoruba";
       let currentRuleIndex = -1;
       let rules = [];
       let history = [];
@@ -111,16 +126,6 @@
         "Awesome progress! Keep shining!",
         "Level up! You're unstoppable!"
       ];
-
-      // Handle Back Button
-      function setupBackButton() {
-        const urlParams = new URLSearchParams(window.location.search);
-        selectedLanguage = urlParams.get("language") || "yoruba";
-        selectedFlag = urlParams.get("flag") || "🇳🇬";
-        backButton.addEventListener("click", () => {
-          window.location.href = `/homePageView/courses.html?language=${encodeURIComponent(selectedLanguage)}&flag=${encodeURIComponent(selectedFlag)}`;
-        });
-      }
 
       async function getUserData() {
         try {
@@ -250,37 +255,60 @@
 
       async function fetchGrammarRule() {
         progressIndicator.style.display = "block";
+        generateButton.disabled = true;
+        nextButton.disabled = true;
+        
         try {
+          console.log("Fetching grammar rule for:", selectedLanguage, "at difficulty:", difficultyLevel);
           const response = await fetch("http://localhost:5000/getGrammarRule", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ language: selectedLanguage, difficulty: difficultyLevel }),
+            headers: { 
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({ 
+              language: selectedLanguage, 
+              difficulty: difficultyLevel 
+            }),
           });
 
+          console.log("Response status:", response.status);
+          
           if (!response.ok) {
-            const result = await response.json();
-            if (response.status === 429) throw new Error(result.error || "Rate limit exceeded.");
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            console.error("Error response:", errorData);
+            throw new Error(errorData.error || `Server responded with status ${response.status}`);
           }
 
           const result = await response.json();
-          if (!result.success) throw new Error(result.error || "Unknown error from server");
+          console.log("API response:", result);
+          
+          if (!result.success) {
+            throw new Error(result.error || "Unknown error from server");
+          }
 
           const content = result.data.trim();
           const ruleMatch = content.match(/Rule:\s*(.+)/);
           const exampleMatch = content.match(/Example:\s*(.+)/);
+          
           return {
             rule: ruleMatch ? ruleMatch[1] : "No rule found.",
             example: exampleMatch ? exampleMatch[1] : "No example found."
           };
         } catch (error) {
           console.error("Error fetching grammar rule:", error);
-          return {
-            rule: "Error: Unable to fetch rule",
-            example: error.message
-          };
+          grammarContent.innerHTML = `
+            <div class="error-message">
+              <p>Error loading grammar rule:</p>
+              <p>${error.message}</p>
+              <button onclick="generateRule()">Try Again</button>
+            </div>
+          `;
+          return null;
         } finally {
           progressIndicator.style.display = "none";
+          generateButton.disabled = false;
+          nextButton.disabled = false;
         }
       }
 
@@ -289,21 +317,19 @@
 
         if (currentRuleIndex >= 0) {
           const timeSpent = resetTimer();
-          await updateFirestoreTime(userId, timeSpent, 1); // Increment rules learned
+          await updateFirestoreTime(userId, timeSpent, 1);
         }
 
-        if (currentRuleIndex < rules.length - 1) {
-          currentRuleIndex++;
-          displayRule(rules[currentRuleIndex]);
-        } else {
-          const newRule = await fetchGrammarRule();
-          rules.push(newRule);
-          history.unshift(newRule.rule);
-          if (history.length > 5) history.pop();
-          currentRuleIndex++;
-          displayRule(newRule);
-          renderHistory();
-        }
+        const newRule = await fetchGrammarRule();
+        if (!newRule) return;
+
+        rules.push(newRule);
+        history.unshift(newRule.rule);
+        if (history.length > 5) history.pop();
+        currentRuleIndex = rules.length - 1;
+        displayRule(newRule);
+        renderHistory();
+        
         generateButton.style.display = "none";
         nextButton.style.display = "inline-block";
       }
@@ -313,6 +339,7 @@
           <div class="rule-card">
             <h2>Grammar Rule</h2>
             <p>${rule.rule}</p>
+            <br>
             <h2>Example</h2>
             <p>${rule.example}</p>
           </div>
@@ -328,7 +355,6 @@
         userId = uid;
         progressIndicator.style.display = "none";
         grammarContainer.style.display = "flex";
-        setupBackButton();
 
         generateButton.addEventListener("click", generateRule);
         nextButton.addEventListener("click", generateRule);
@@ -347,20 +373,17 @@
           nextButton.style.display = "none";
           updateFirestoreTime(userId, 0);
           renderHistory();
-          updateURL(selectedLanguage);
+          
+          // Update URL without reloading
+          const url = new URL(window.location);
+          url.searchParams.set('language', selectedLanguage);
+          window.history.pushState({}, '', url);
         });
       }).catch((error) => {
         console.error("Initialization failed:", error);
         progressIndicator.style.display = "none";
         grammarContainer.style.display = "flex";
-        setupBackButton();
       });
-
-      function updateURL(language) {
-        const url = new URL(window.location);
-        url.searchParams.set('language', language);
-        window.history.pushState({}, '', url);
-      }
 
       window.addEventListener("beforeunload", async () => {
         if (startTime && userId) {

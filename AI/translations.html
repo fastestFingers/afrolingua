@@ -21,9 +21,7 @@
         <label for="languageSelect">Language:</label>
         <select id="languageSelect">
           <option value="yoruba">Yoruba</option>
-          <option value="swahili">Swahili</option>
-          <option value="zulu">Zulu</option>
-          <option value="amharic">Amharic</option>
+          <option value="igbo">Igbo</option>
           <option value="hausa">Hausa</option>
         </select>
         <h3>Performance</h3>
@@ -81,7 +79,7 @@
       const historyList = document.getElementById("historyList");
 
       // State
-      let selectedLanguage = "Default";
+      let selectedLanguage = "yoruba"; // Default to Yoruba
       let messages = [];
       let taskHistory = [];
       let startTime = null;
@@ -114,12 +112,18 @@
 
           const urlParams = new URLSearchParams(window.location.search);
           selectedLanguage = urlParams.get("language") || "yoruba";
+          if (!["yoruba", "igbo", "hausa"].includes(selectedLanguage)) {
+            selectedLanguage = "yoruba"; // Default to Yoruba if invalid
+          }
           selectedLanguageElement.textContent = selectedLanguage;
           languageSelect.value = selectedLanguage;
 
           const userDoc = await db.collection("users").doc(user.uid).get();
           if (userDoc.exists && !urlParams.get("language")) {
             selectedLanguage = userDoc.data().selectedLanguage || "yoruba";
+            if (!["yoruba", "igbo", "hausa"].includes(selectedLanguage)) {
+              selectedLanguage = "yoruba"; // Ensure valid language
+            }
             selectedLanguageElement.textContent = selectedLanguage;
             languageSelect.value = selectedLanguage;
           }
